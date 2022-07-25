@@ -1,0 +1,4 @@
+
+class CustomResponseTypes {
+  CustomResponseTypes._();
+}
