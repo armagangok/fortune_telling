@@ -1,7 +1,7 @@
 import '../../core/network/contracts/base_network_model.dart';
 import 'base_fortune_model.dart';
 
-class TestModel extends BaseNetworkModel implements BaseFortuneModel {
+class DailyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   @override
   String? burc;
 
@@ -20,7 +20,7 @@ class TestModel extends BaseNetworkModel implements BaseFortuneModel {
   @override
   String? fortune;
 
-  TestModel({
+  DailyFortuneModel({
     this.burc,
     this.mottosu,
     this.zaman,
@@ -31,7 +31,7 @@ class TestModel extends BaseNetworkModel implements BaseFortuneModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return TestModel(
+    return DailyFortuneModel(
       burc: json['Burc'],
       zaman: json['zaman'] ?? "",
       mottosu: json['Mottosu'],
