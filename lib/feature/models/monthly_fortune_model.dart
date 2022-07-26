@@ -6,6 +6,9 @@ class MonthlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   String? burc;
 
   @override
+  String? zaman;
+
+  @override
   String? elementi;
 
   @override
@@ -19,6 +22,7 @@ class MonthlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
 
   MonthlyFortuneModel({
     this.burc,
+    this.zaman,
     this.elementi,
     this.gezegeni,
     this.mottosu,
@@ -29,6 +33,7 @@ class MonthlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   fromJson(Map<String, dynamic> json) {
     return MonthlyFortuneModel(
       burc: json['Burc'],
+      zaman: json['zaman'] ?? "",
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],

@@ -1,23 +1,29 @@
-
-import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
-
+import '../../core/network/contracts/base_network_model.dart';
 import 'base_fortune_model.dart';
 
 class TestModel extends BaseNetworkModel implements BaseFortuneModel {
   @override
   String? burc;
+
   @override
   String? mottosu;
+
+  @override
+  String? zaman;
+
   @override
   String? gezegeni;
+
   @override
   String? elementi;
+
   @override
   String? fortune;
 
   TestModel({
     this.burc,
     this.mottosu,
+    this.zaman,
     this.gezegeni,
     this.elementi,
     this.fortune,
@@ -27,6 +33,7 @@ class TestModel extends BaseNetworkModel implements BaseFortuneModel {
   fromJson(Map<String, dynamic> json) {
     return TestModel(
       burc: json['Burc'],
+      zaman: json['zaman'] ?? "",
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],
