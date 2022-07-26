@@ -9,17 +9,18 @@ import 'network_requestor.dart';
 class NetworkExecuter {
   NetworkExecuter._();
 
-  static Future<K?> request<T extends BaseNetworkModel, K>(
-      {required RequestOptions options, required T responseType}) async {
+  static Future<K?> request<T extends BaseNetworkModel, K>({
+    required RequestOptions options,
+    required T responseType,
+  }) async {
     if (await NetworkConnectivityChecker.status) {
       try {
-        var response =
-            await NetworkRequestor.sendRequest(options: options);
-        var decodedResponse = NetworkDecoder
-            .decode<T, K>(response: response, responseType: responseType);
+        var response = await NetworkRequestor.sendRequest(options: options);
+        var decodedResponse = NetworkDecoder.decode<T, K>(
+            response: response, responseType: responseType);
         return decodedResponse;
       } on DioError catch (dioError) {
-          LogHelper.shared.debugPrint("Dio Error $dioError");
+        LogHelper.shared.debugPrint("Dio Error $dioError");
       } on TypeError catch (e) {
         LogHelper.shared.debugPrint("Type Error $e");
       }

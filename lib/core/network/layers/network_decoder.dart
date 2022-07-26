@@ -5,8 +5,10 @@ import '../contracts/base_network_model.dart';
 class NetworkDecoder {
   NetworkDecoder._();
 
-  static K decode<T extends BaseNetworkModel, K>(
-      {required Response<dynamic> response, required T responseType}) {
+  static K decode<T extends BaseNetworkModel, K>({
+    required Response<dynamic> response,
+    required T responseType,
+  }) {
     try {
       if (response.data is List) {
         var list = response.data as List;
