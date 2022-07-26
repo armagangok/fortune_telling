@@ -5,6 +5,6 @@ class MyRequestOptions {
   // static final instance = MyRequestOptions._();
 
   static final RequestOptions requestoptions = RequestOptions(
-    path: "https://burc-yorumlari.herokuapp.com/get/aslan",
+    path: "https://burc-yorumlari.herokuapp.com/get/aslan/yillik",
   );
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/models/yearly_fortune_model.dart';
 
-import '../network/layers/network_executer.dart';
-import '../network/request_options.dart/request_options.dart';
+import 'core/network/layers/network_executer.dart';
+import 'core/network/request_options.dart/request_options.dart';
 import 'test_model.dart';
 
 class TestView extends StatelessWidget {
@@ -13,13 +14,15 @@ class TestView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            List<TestModel> a = await NetworkExecuter.request(
+            List<YearlyFortuneModel> a = await NetworkExecuter.request(
               options: MyRequestOptions.requestoptions,
-              responseType: TestModel(),
+              responseType: YearlyFortuneModel(),
             );
 
             for (var element in a) {
-              print(element.gunlukYorum);
+              print(element.burc);
+              print(element.fortune);
+              print(element.elementi);
             }
           },
           icon: const Text("press"),
