@@ -1,7 +1,7 @@
-import 'package:fortune_telling/core/models/base_fortune_model.dart';
-import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
+import '../../core/network/contracts/base_network_model.dart';
+import 'base_fortune_model.dart';
 
-class WeeklyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
+class MonthlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   @override
   String? burc;
 
@@ -9,30 +9,30 @@ class WeeklyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   String? elementi;
 
   @override
-  String? fortune;
-
-  @override
   String? gezegeni;
 
   @override
   String? mottosu;
-  
-  WeeklyFortuneModel({
+
+  @override
+  String? fortune;
+
+  MonthlyFortuneModel({
     this.burc,
     this.elementi,
-    this.fortune,
     this.gezegeni,
     this.mottosu,
+    this.fortune,
   });
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return WeeklyFortuneModel(
+    return MonthlyFortuneModel(
       burc: json['Burc'],
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],
-      fortune: json['GunlukYorum'],
+      fortune: json['AylikYorum'],
     );
   }
 }

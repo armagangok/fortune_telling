@@ -1,5 +1,7 @@
-import 'package:fortune_telling/core/models/base_fortune_model.dart';
+
 import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
+
+import 'base_fortune_model.dart';
 
 class TestModel extends BaseNetworkModel implements BaseFortuneModel {
   @override
