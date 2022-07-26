@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../network/layers/network_executer.dart';
+import '../network/request_options.dart/request_options.dart';
 import 'test_model.dart';
 
 class TestView extends StatelessWidget {
@@ -14,9 +14,7 @@ class TestView extends StatelessWidget {
         leading: IconButton(
           onPressed: () async {
             List<TestModel> a = await NetworkExecuter.request(
-              options: RequestOptions(
-                path: "https://burc-yorumlari.herokuapp.com/get/aslan",
-              ),
+              options: MyRequestOptions.requestoptions,
               responseType: TestModel(),
             );
 
