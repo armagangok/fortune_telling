@@ -16,8 +16,6 @@ class TestModel extends BaseNetworkModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-
-
     return TestModel(
       burc: json['Burc'],
       mottosu: json['Mottosu'],
