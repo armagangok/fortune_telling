@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/feature/controllers/fortune_controller.dart';
+import 'package:fortune_telling/feature/models/career_fortune_model.dart';
 import 'package:fortune_telling/feature/models/daily_fortune_model.dart';
 import 'package:fortune_telling/feature/models/monthly_fortune_model.dart';
 import 'package:get/instance_manager.dart';
@@ -15,11 +16,11 @@ class TestView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            await fortuneController.getFortune(
-              getType: "get",
+            await fortuneController.getFortuneFeature(
+              getType: "gets",
               sign: "aslan",
-              time: "aylik",
-              responseType: MonthlyFortuneModel(),
+              time: "kariyer",
+              responseType: CareerFortuneModel(),
             );
           },
           icon: const Text("press"),

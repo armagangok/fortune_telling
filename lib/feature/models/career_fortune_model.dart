@@ -1,6 +1,7 @@
 import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
+import 'base_fortune_feature_model.dart';
 
-class CareerFortuneModel extends BaseNetworkModel {
+class CareerFortuneModel extends BaseFortuneFeatureModel {
   String? burc;
 
   String? ozellik;
@@ -14,16 +15,6 @@ class CareerFortuneModel extends BaseNetworkModel {
   CareerFortuneModel(
       {this.burc, this.ozellik, this.baslik, this.yorum, this.unluler});
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Burc'] = burc;
-    data['Ozellik'] = ozellik;
-    data['Baslik'] = baslik;
-    data['Yorum'] = yorum;
-    data['Unluler'] = unluler;
-    return data;
-  }
-
   @override
   fromJson(Map<String, dynamic> json) {
     return CareerFortuneModel(
@@ -34,6 +25,16 @@ class CareerFortuneModel extends BaseNetworkModel {
       unluler: json['Unluler'],
     );
   }
+
+   /*  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Burc'] = burc;
+    data['Ozellik'] = ozellik;
+    data['Baslik'] = baslik;
+    data['Yorum'] = yorum;
+    data['Unluler'] = unluler;
+    return data;
+  } */
 
   /* CareerFortuneModel.fromJson(Map<String, dynamic> json) {
     burc = json['Burc'];

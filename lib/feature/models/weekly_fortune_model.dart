@@ -34,7 +34,7 @@ class WeeklyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   fromJson(Map<String, dynamic> json) {
     return WeeklyFortuneModel(
       burc: json['Burc'],
-      zaman: json['zaman'] ?? "",
+      zaman: json['Zaman'] ?? "",
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],

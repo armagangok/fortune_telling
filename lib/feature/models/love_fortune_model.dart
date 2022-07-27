@@ -1,6 +1,6 @@
-import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
+import 'base_fortune_feature_model.dart';
 
-class LoveFortuneModel extends BaseNetworkModel {
+class LoveFortuneModel extends BaseFortuneFeatureModel {
   String? burc;
   String? ozellik;
   String? baslik;
@@ -20,6 +20,7 @@ class LoveFortuneModel extends BaseNetworkModel {
       unluler: json['Unluler'],
     );
   }
+
 
   /* LoveFortuneModel.fromJson(Map<String, dynamic> json) {
     burc = json['Burc'];
