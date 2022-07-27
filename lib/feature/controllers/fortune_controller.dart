@@ -12,9 +12,13 @@ class FortuneController extends GetxController {
   //   super.onInit();
   // }
 
-  Future getFortune(String sign) async {
+  Future getFortune({String? getType, String? sign, String? time}) async {
     List<BaseFortuneModel> a = await NetworkExecuter.request(
-      options: MyRequestOptions.instance.requestoptions(sign),
+      options: MyRequestOptions.instance.requestOptions(
+        getType: getType,
+        sign: sign,
+        time: time,
+      ),
       responseType: DailyFortuneModel(),
     );
 

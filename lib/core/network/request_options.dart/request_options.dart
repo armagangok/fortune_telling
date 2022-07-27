@@ -4,9 +4,14 @@ class MyRequestOptions {
   MyRequestOptions._();
   static final instance = MyRequestOptions._();
 
-  RequestOptions requestoptions(String sign) => RequestOptions(
+  RequestOptions requestOptions({
+    String? sign,
+    String? getType,
+    String? time,
+  }) =>
+      RequestOptions(
         baseUrl: "https://burc-yorumlari.herokuapp.com",
-        path: "/get/$sign",
+        path: "/$getType/$sign/$time",
       );
 
   // String getType(String getType) => getType;

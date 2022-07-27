@@ -13,7 +13,11 @@ class TestView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            await fortuneController.getFortune("yay");
+            await fortuneController.getFortune(
+              getType: "get",
+              sign: "kova",
+              time: "",
+            );
           },
           icon: const Text("press"),
         ),
