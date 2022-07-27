@@ -28,7 +28,7 @@ class CareerFortuneModel extends BaseNetworkModel {
   fromJson(Map<String, dynamic> json) {
     return CareerFortuneModel(
       burc: json['Burc'],
-      ozellik: json['Ozellik'] ?? "",
+      ozellik: json['Ozellik'],
       baslik: json['Baslik'],
       yorum: json['Yorum'],
       unluler: json['Unluler'],

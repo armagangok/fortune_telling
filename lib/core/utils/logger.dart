@@ -7,7 +7,7 @@ class LogHelper {
 
   final _logger = Logger();
 
-  final debugMode = false;
+  final debugMode = true;
 
   void debugPrint(String message) {
     if (debugMode) _logger.d(message);

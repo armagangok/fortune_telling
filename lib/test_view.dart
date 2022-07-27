@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/models/yearly_fortune_model.dart';
-
-import 'core/network/layers/network_executer.dart';
-import 'core/network/request_options.dart/request_options.dart';
-import 'test_model.dart';
+import 'package:fortune_telling/feature/controllers/fortune_controller.dart';
+import 'package:get/instance_manager.dart';
 
 class TestView extends StatelessWidget {
-  const TestView({Key? key}) : super(key: key);
+  TestView({Key? key}) : super(key: key);
+
+  final FortuneController fortuneController = Get.put(FortuneController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +13,7 @@ class TestView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () async {
-            List<YearlyFortuneModel> a = await NetworkExecuter.request(
-              options: MyRequestOptions.requestoptions,
-              responseType: YearlyFortuneModel(),
-            );
-
-            for (var element in a) {
-              print(element.burc);
-              print(element.fortune);
-              print(element.elementi);
-            }
+            await fortuneController.getFortune("yay");
           },
           icon: const Text("press"),
         ),

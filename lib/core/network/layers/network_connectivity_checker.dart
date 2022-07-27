@@ -4,11 +4,18 @@ class NetworkConnectivityChecker {
   NetworkConnectivityChecker._();
 
   static Future<bool> get status async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      return false;
-    } else {
-      return true;
+    final ConnectivityResult connectivityResult =
+        await Connectivity().checkConnectivity();
+
+    switch (connectivityResult) {
+      case ConnectivityResult.mobile:
+        return true;
+
+      case ConnectivityResult.wifi:
+        return true;
+
+      default:
+        return false;
     }
   }
 }

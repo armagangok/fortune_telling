@@ -14,7 +14,7 @@ class LoveFortuneModel extends BaseNetworkModel {
   fromJson(Map<String, dynamic> json) {
     return LoveFortuneModel(
       burc: json['Burc'],
-      ozellik: json['Ozellik'] ?? "",
+      ozellik: json['Ozellik'],
       baslik: json['Baslik'],
       yorum: json['Yorum'],
       unluler: json['Unluler'],
