@@ -33,11 +33,11 @@ class MonthlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
   fromJson(Map<String, dynamic> json) {
     return MonthlyFortuneModel(
       burc: json['Burc'],
-      zaman: json['zaman'],
+      zaman: json['Zaman'],
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],
-      fortune: json['AylikYorum'],
+      fortune: json['Yorum'],
     );
   }
 }

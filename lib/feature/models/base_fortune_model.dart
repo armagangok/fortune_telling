@@ -1,4 +1,5 @@
-abstract class BaseFortuneModel {
+import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
+abstract class BaseFortuneModel extends BaseNetworkModel{
   String? burc;
 
   String? zaman;

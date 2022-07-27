@@ -1,6 +1,7 @@
+import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
 import 'package:fortune_telling/feature/models/base_fortune_model.dart';
+import 'package:fortune_telling/feature/models/monthly_fortune_model.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-
 import '../../core/network/layers/network_executer.dart';
 import '../../core/network/request_options.dart/request_options.dart';
 import '../models/daily_fortune_model.dart';
@@ -12,14 +13,18 @@ class FortuneController extends GetxController {
   //   super.onInit();
   // }
 
-  Future getFortune({String? getType, String? sign, String? time}) async {
+  Future getFortune(
+      {String? getType,
+      String? sign,
+      String? time,
+      required BaseFortuneModel responseType}) async {
     List<BaseFortuneModel> a = await NetworkExecuter.request(
       options: MyRequestOptions.instance.requestOptions(
         getType: getType,
         sign: sign,
         time: time,
       ),
-      responseType: DailyFortuneModel(),
+      responseType: responseType,
     );
 
     print(a[0].fortune);
