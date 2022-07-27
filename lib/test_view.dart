@@ -19,7 +19,7 @@ class TestView extends StatelessWidget {
             await fortuneController.getFortuneFeature(
               getType: "gets",
               sign: "aslan",
-              time: "kariyer",
+              feature: "ask",
               responseType: CareerFortuneModel(),
             );
           },

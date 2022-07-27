@@ -29,13 +29,12 @@ class FortuneController extends GetxController {
   Future getFortuneFeature(
       {String? getType,
       String? sign,
-      String? time,
+      String? feature,
       required BaseFortuneFeatureModel responseType}) async {
     List<BaseFortuneFeatureModel> a = await NetworkExecuter.request(
-      options: MyRequestOptions.instance.requestOptions(
-        getType: getType,
+      options: MyRequestOptions.instance.requestFeatureOptions(
         sign: sign,
-        time: time,
+        feature: feature,
       ),
       responseType: responseType,
     );

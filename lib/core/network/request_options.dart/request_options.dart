@@ -8,13 +8,19 @@ class MyRequestOptions {
     String? sign,
     String? getType,
     String? time,
+    String? feature,
   }) =>
       RequestOptions(
         baseUrl: "https://burc-yorumlari.herokuapp.com",
-        path: "/$getType/$sign/$time",
+        path: "/$getType/$sign/$time/$feature",
       );
 
-  // String getType(String getType) => getType;
-  // String signType(String signType) => signType;
-  // String getTime(String time) => time;
+  RequestOptions requestFeatureOptions({
+    String? sign,
+    String? feature,
+  }) =>
+      RequestOptions(
+        baseUrl: "https://burc-yorumlari.herokuapp.com/gets",
+        path: "/$sign/$feature",
+      );
 }
