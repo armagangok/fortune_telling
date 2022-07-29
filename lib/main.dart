@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/view/splash/routes/app_pages.dart';
+import 'package:fortune_telling/view/splash/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'feature/view/splash/view/splash_view.dart';
+import 'view/splash/view/splash_view.dart';
+
+
 
 
 void main() async{

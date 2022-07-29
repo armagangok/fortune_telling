@@ -1,10 +1,11 @@
-import 'package:fortune_telling/feature/view/splash/view/splash_view.dart';
+import 'package:fortune_telling/test_view.dart';
 import 'package:get/get.dart';
 import '../../login/view/login_view.dart';
 import '../bindings/splash_binding.dart';
-
+import '../view/splash_view.dart';
 
 part 'app_routes.dart';
+
 class AppPages {
   AppPages._();
 
@@ -13,12 +14,16 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SPLASH,
-      page: () =>  SplashView(),
+      page: () => SplashView(),
       binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.HOME,
-      page: () =>  LoginView(),
+      page: () => LoginView(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => TestView(),
     ),
   ];
 }
