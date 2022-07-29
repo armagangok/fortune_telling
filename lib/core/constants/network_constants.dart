@@ -1,9 +1,7 @@
 class NetworkConstant {
   NetworkConstant._();
-  static final instance = NetworkConstant._();
 
-  static const daily = "";
-  static const monthly = "aylik";
-  static const yearly = "yillik";
-  static const weekly = "haftalik";
+  static const String haftalik = "haftalik";
+  static const String aylik = "aylik";
+  static const String yillik = "yillik";
 }

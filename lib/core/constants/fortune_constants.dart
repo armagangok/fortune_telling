@@ -17,10 +17,8 @@ class FortuneConstanst {
   static const String kariyer = "kariyer";
   static const String ask = "ask";
 
-  static const String get = "get";
+  static const String get_ = "get";
   static const String gets = "gets";
 
-  static const String haftalik = "haftalik";
-  static const String aylik = "aylik";
-  static const String yillik = "yillik";
+
 }
