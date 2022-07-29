@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/view/splash/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'feature/view/splash/view/splash_view.dart';
 
-import 'test_view.dart';
 
-void main() {
+void main() async{
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -13,11 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TestView(),
+      home: const SplashView(),
     );
   }
 }
