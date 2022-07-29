@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
+
+import '../../../core/extension/context_extension.dart';
 import '../controller/splash_controller.dart';
 
-class SplashView extends GetView<SplashController> {
+class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    Get.put(SplashController());
     return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: Image.asset('assets/fortune.jpg'),
-          ),
-        ],
+      body: SizedBox(
+        width: double.infinity,
+        height: context.height(1),
+        child: Image.asset(
+          'assets/fortune.jpg',
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

@@ -1,0 +1,36 @@
+import 'package:fortune_telling/test_view.dart';
+import 'package:get/get.dart';
+
+import '../../feature/binding/bindings.dart';
+import '../../view/login/view/login_view.dart';
+import '../../view/splash/controller/splash_controller.dart';
+import '../../view/splash/view/splash_view.dart';
+
+part 'app_routes.dart';
+
+class AppPages {
+  AppPages._();
+  static const initial = Routes.SPLASH;
+
+  static final routes = [
+    GetPage(
+        name: _Paths.SPLASH,
+        page: () => const SplashView(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut<SplashController>(
+            () => SplashController(),
+          );
+        })),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => LoginView(),
+      bindings: <Bindings>[
+        TextControllerBinding(),
+      ],
+    ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => TestView(),
+    ),
+  ];
+}
