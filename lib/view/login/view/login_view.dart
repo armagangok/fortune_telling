@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/test_view.dart';
+import 'package:fortune_telling/view/home/home_view.dart';
 import 'package:fortune_telling/view/login/controller/text_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -38,7 +38,7 @@ class LoginView extends StatelessWidget {
                       userdata.write('isLogged', true);
                       userdata.write('isim', isim);
                       userdata.write('soyisim', soyisim);
-                      Get.offAll(TestView());
+                      Get.offAll(HomeView());
                     } else {
                       Get.snackbar("Error", "Please Enter Username & Password",
                           snackPosition: SnackPosition.BOTTOM);

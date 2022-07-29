@@ -4,8 +4,8 @@ import 'package:fortune_telling/feature/models/career_fortune_model.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get_storage/get_storage.dart';
 
-class TestView extends StatelessWidget {
-  TestView({Key? key}) : super(key: key);
+class HomeView extends StatelessWidget {
+  HomeView({Key? key}) : super(key: key);
 
   final FortuneController fortuneController = Get.put(FortuneController());
   final userdata = GetStorage();

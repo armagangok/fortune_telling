@@ -1,6 +1,7 @@
+import 'package:fortune_telling/feature/controllers/fortune_controller.dart';
 import 'package:get/get.dart';
 
-import '../../test_view.dart';
+import '../../view/home/home_view.dart';
 import '../../view/login/controller/text_controller.dart';
 import '../../view/login/view/login_view.dart';
 import '../../view/splash/controller/splash_controller.dart';
@@ -15,7 +16,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SPLASH,
-      page: () => SplashView(),
+      page: () => const SplashView(),
       binding: BindingsBuilder(
         () {
           Get.lazyPut<SplashController>(() => SplashController());
@@ -33,7 +34,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL,
-      page: () => TestView(),
+      page: () => HomeView(),
+      binding: BindingsBuilder(
+        () {
+          // Get.lazyPut<FortuneController>(() => FortuneController());
+        },
+      ),
     ),
   ];
 }
