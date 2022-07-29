@@ -23,10 +23,10 @@ class LoginView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("isim"),
+              const Text("name"),
               TextField(controller: textController.usernameController),
               const SizedBox(height: 10),
-              const Text("soyisim"),
+              const Text("surname"),
               TextField(controller: textController.passwordController),
               const SizedBox(height: 10),
               ElevatedButton(

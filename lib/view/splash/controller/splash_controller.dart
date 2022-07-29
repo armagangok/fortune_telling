@@ -7,18 +7,21 @@ import '../../../core/navigation/app_pages.dart';
 
 class SplashController extends GetxController {
   @override
-  void onInit() async {
+  void onReady() async {
     await loading();
-    super.onInit();
+    super.onReady();
   }
 
   final userdata = GetStorage();
 
   Future<void> loading() async {
-    Timer(const Duration(seconds: 2), () {
-      userdata.read('isLogged') == false
-          ? Get.offAndToNamed(Routes.DETAIL)
-          : Get.offAndToNamed(Routes.HOME);
-    });
+    Timer(
+      const Duration(seconds: 2),
+      () {
+        userdata.read('isLogged') == false
+            ? Get.offAndToNamed(Routes.DETAIL)
+            : Get.offAndToNamed(Routes.HOME);
+      },
+    );
   }
 }
