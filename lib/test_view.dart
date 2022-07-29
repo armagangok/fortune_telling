@@ -12,22 +12,25 @@ class TestView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () async {
-            await fortuneController.getFortuneFeature(
-              getType: "gets",
-              sign: "aslan",
-              feature: "ask",
-              responseType: CareerFortuneModel(),
-            );
-          },
-          icon: const Text("press"),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () async {
+              await fortuneController.getFortuneFeature(
+                getType: "gets",
+                sign: "aslan",
+                feature: "ask",
+                responseType: CareerFortuneModel(),
+              );
+            },
+            icon: const Text("press"),
+          ),
         ),
-      ),
-      body: Column(
-        children: [Text("NAME : ${userdata.read('isim')}")],
+        body: Column(
+          children: [Text("NAME : ${userdata.read('isim')}")],
+        ),
       ),
     );
   }
