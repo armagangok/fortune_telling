@@ -5,11 +5,12 @@ import '../../../core/extension/context_extension.dart';
 import '../controller/splash_controller.dart';
 
 class SplashView extends StatelessWidget {
-  const SplashView({Key? key}) : super(key: key);
+  SplashView({Key? key}) : super(key: key);
+
+  final SplashController splashController = Get.put(SplashController.instance);
 
   @override
   Widget build(BuildContext context) {
-    Get.find<SplashController>();
     return Scaffold(
       body: SizedBox(
         width: double.infinity,

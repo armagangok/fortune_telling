@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
   final MyStorage _myStorage = MyStorage.instance;
-  final TextController textController = Get.put(TextController());
+  final TextController textController = Get.put(TextController.instance);
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SPLASH,
-      page: () => const SplashView(),
+      page: () =>  SplashView(),
       // binding: BindingsBuilder(
       //   () {
       //     Get.lazyPut<SplashController>(() => SplashController());

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'view/splash/controller/splash_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -19,12 +18,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       initialRoute: AppPages.initial,
-      initialBinding: BindingsBuilder(() {
-        Get.lazyPut(() => SplashController());
-      }),
+      // initialBinding: BindingsBuilder(() {
+      //   Get.lazyPut(() => SplashController());
+      // }),
       getPages: AppPages.routes,
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: const SplashView(),
+      home: SplashView(),
     );
   }
 }
