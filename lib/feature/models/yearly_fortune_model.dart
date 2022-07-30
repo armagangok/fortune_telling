@@ -1,5 +1,4 @@
-import 'package:fortune_telling/core/network/contracts/base_network_model.dart';
-
+import '../../core/network/contracts/base_network_model.dart';
 import 'base_fortune_model.dart';
 
 class YearlyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/view/home/home_view.dart';
-import 'package:fortune_telling/view/login/controller/text_controller.dart';
+import '../../../core/database/local/my_storage.dart';
+import '../../home/home_view.dart';
+import '../controller/text_controller.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../../core/extension/context_extension.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
-  final userdata = GetStorage();
-
+  final MyStorage _myStorage = MyStorage.instance;
   final TextController textController = Get.find();
 
   @override
@@ -35,9 +34,9 @@ class LoginView extends StatelessWidget {
                     String soyisim = textController.passwordController.text;
 
                     if (isim != '' && soyisim != '') {
-                      userdata.write('isLogged', true);
-                      userdata.write('isim', isim);
-                      userdata.write('soyisim', soyisim);
+                      _myStorage.getStrogare.write('isLogged', true);
+                      _myStorage.getStrogare.write('isim', isim);
+                      _myStorage.getStrogare.write('soyisim', soyisim);
                       Get.offAll(HomeView());
                     } else {
                       Get.snackbar("Error", "Please Enter Username & Password",

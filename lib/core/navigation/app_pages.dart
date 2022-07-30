@@ -1,4 +1,4 @@
-import 'package:fortune_telling/feature/controllers/fortune_controller.dart';
+import '../../feature/controllers/fortune_controller.dart';
 import 'package:get/get.dart';
 
 import '../../view/home/home_view.dart';

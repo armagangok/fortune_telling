@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/controllers/fortune_controller.dart';
-import 'package:fortune_telling/feature/models/career_fortune_model.dart';
 import 'package:get/instance_manager.dart';
-import 'package:get_storage/get_storage.dart';
+
+import '../../core/database/local/my_storage.dart';
+import '../../feature/controllers/fortune_controller.dart';
+import '../../feature/models/career_fortune_model.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
   final FortuneController fortuneController = Get.put(FortuneController());
-  final userdata = GetStorage();
+  final MyStorage myStorage = MyStorage.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class HomeView extends StatelessWidget {
           ),
         ),
         body: Column(
-          children: [Text("NAME : ${userdata.read('isim')}")],
+          children: [Text("NAME : ${myStorage.getStrogare.read('isim')}")],
         ),
       ),
     );

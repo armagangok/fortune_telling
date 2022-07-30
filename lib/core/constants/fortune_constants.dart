@@ -13,12 +13,5 @@ class FortuneConstanst {
   static const String oglak = "Oğlak";
   static const String kova = "Kova";
   static const String balik = "Balık";
-
-  static const String kariyer = "kariyer";
-  static const String ask = "ask";
-
-  static const String get_ = "get";
-  static const String gets = "gets";
-
-
+  
 }
