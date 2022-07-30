@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import '../../../core/database/local/my_storage.dart';
-import '../../home/home_view.dart';
-import '../controller/text_controller.dart';
 import 'package:get/get.dart';
 
+import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
+import '../../home/home_view.dart';
+import '../controller/text_controller.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
   final MyStorage _myStorage = MyStorage.instance;
-  final TextController textController = Get.find();
+  final TextController textController = Get.put(TextController());
 
   @override
   Widget build(BuildContext context) {
