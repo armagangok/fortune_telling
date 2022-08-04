@@ -1,4 +1,6 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/view/login/controller/fortune_find_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/database/local/my_storage.dart';
@@ -28,6 +30,15 @@ class LoginView extends StatelessWidget {
               const Text("surname"),
               TextField(controller: textController.passwordController),
               const SizedBox(height: 10),
+              DateTimePicker(
+                initialValue: '',
+                firstDate: DateTime(1960),
+                lastDate: DateTime(2023),
+                dateLabelText: 'Date',
+                onChanged: (val) {
+                  print(getZodicaSign(DateTime.parse(val)));
+                },
+              ),
               ElevatedButton(
                   onPressed: () {
                     String isim = textController.usernameController.text;
