@@ -1,4 +1,4 @@
-import 'package:fortune_telling/core/constants/fortune_constants.dart';
+import '../../../core/constants/fortune_constants.dart';
 
 class ZodiacController {
   ZodiacController._();

@@ -5,5 +5,13 @@ class MyStorage {
   static final instance = MyStorage._();
 
   final GetStorage _getStorageInstance = GetStorage();
-  GetStorage get getStrogare => _getStorageInstance;
+
+  
+  GetStorage get getStorage => _getStorageInstance;
+  void a() {
+
+    
+
+  
+  }
 }

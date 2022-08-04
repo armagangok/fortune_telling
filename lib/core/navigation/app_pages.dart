@@ -29,14 +29,14 @@ class AppPages {
       //   },
       // ),
     ),
-    GetPage(
-      name: _Paths.DETAIL,
-      page: () => HomeView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
-      // ),
-    ),
+    // GetPage(
+    //   name: _Paths.DETAIL,
+    //   page: () => HomeView(),
+    //   // binding: BindingsBuilder(
+    //   //   () {
+    //   //     // Get.lazyPut<FortuneController>(() => FortuneController());
+    //   //   },
+    //   // ),
+    // ),
   ];
 }

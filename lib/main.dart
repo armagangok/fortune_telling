@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/view/home/home_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'core/navigation/app_pages.dart';
-import 'view/splash/view/splash_view.dart';
+import 'view/personal/personal_view.dart';
 
 void main() async {
   await GetStorage.init();
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
       // }),
       // getPages: AppPages.routes,
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: HomeView(),
+      home: PersonalView(),
     );
   }
 }

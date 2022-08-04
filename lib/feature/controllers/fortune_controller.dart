@@ -1,6 +1,6 @@
-import 'package:fortune_telling/core/constants/fortune_constants.dart';
-import 'package:fortune_telling/feature/models/daily_fortune_model.dart';
-import 'package:fortune_telling/feature/models/monthly_fortune_model.dart';
+import '../../core/constants/fortune_constants.dart';
+import '../models/daily_fortune_model.dart';
+import '../models/monthly_fortune_model.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -10,20 +10,13 @@ import '../models/base_fortune_feature_model.dart';
 import '../models/base_fortune_model.dart';
 
 class FortuneController extends GetxController {
-  Rx<DailyFortuneModel?> dailyFortune = Rx(null);
-  Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
+  FortuneController._();
+  static final instance = FortuneController._();
 
-  @override
-  void onInit() async {
-    super.onInit();
-    await getFortune(
-      sign: FortuneConstanst.yay,
-      time: "",
-      responseType: DailyFortuneModel(),
-    );
-  }
+  // Rx<DailyFortuneModel?> dailyFortune = Rx(null);
+  // Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
 
-  Future getFortune({
+  Future<dynamic> getFortune({
     String? sign,
     String? time,
     required BaseFortuneModel responseType,
@@ -36,7 +29,7 @@ class FortuneController extends GetxController {
       responseType: responseType,
     );
 
-    dailyFortune.value = a[0];
+    return a[0];
   }
 
   Future getFortuneFeature({

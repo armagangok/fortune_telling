@@ -1,12 +1,11 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/view/login/controller/fortune_find_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
-import '../../home/home_view.dart';
 import '../controller/text_controller.dart';
+import '../controller/zodiac_controller.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
@@ -36,26 +35,35 @@ class LoginView extends StatelessWidget {
                 firstDate: DateTime(1960),
                 lastDate: DateTime(2023),
                 dateLabelText: 'Date',
-                onChanged: (val) {
-                  print(zodiacController.getZodicaSign(DateTime.parse(val)));
+                onChanged: (val) async {
+                  await _myStorage.getStorage.write(
+                    "birthDay",
+                    val,
+                  );
+
+                  print(_myStorage.getStorage.read("birthDay"));
                 },
               ),
               ElevatedButton(
-                  onPressed: () {
-                    String isim = textController.usernameController.text;
-                    String soyisim = textController.passwordController.text;
+                  onPressed: () async {
+                    final String isim = textController.usernameController.text;
+                    final String soyisim =
+                        textController.passwordController.text;
 
-                    if (isim != '' && soyisim != '') {
-                      _myStorage.getStrogare.write('isLogged', true);
-                      _myStorage.getStrogare.write('isim', isim);
-                      _myStorage.getStrogare.write('soyisim', soyisim);
-                      Get.offAll(HomeView());
+                    if (isim.isNotEmpty || soyisim.isNotEmpty) {
+                      await _myStorage.getStorage.write('isLogged', true);
+                      await _myStorage.getStorage.write('isim', isim);
+
+                      // Get.offAll(HomeView());
                     } else {
-                      Get.snackbar("Error", "Please Enter Username & Password",
-                          snackPosition: SnackPosition.BOTTOM);
+                      Get.snackbar(
+                        "Warning",
+                        "Please Enter Username & Password",
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
                     }
                   },
-                  child: const Text("send")),
+                  child: const Text("Send")),
               const SizedBox(height: 10),
             ],
           ),
