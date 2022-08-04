@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/models/daily_fortune_model.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/database/local/my_storage.dart';
 import '../../feature/controllers/fortune_controller.dart';
-import '../../feature/models/career_fortune_model.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -19,19 +20,28 @@ class HomeView extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () async {
-              await fortuneController.getFortuneFeature(
-                getType: "gets",
+              await fortuneController.getFortune(
                 sign: "aslan",
-                feature: "ask",
-                responseType: CareerFortuneModel(),
+                time: "",
+                responseType: DailyFortuneModel(),
               );
             },
             icon: const Text("press"),
           ),
         ),
-        body: Column(
-          children: [Text("NAME : ${myStorage.getStrogare.read('isim')}")],
-        ),
+        body: Obx(() => fortuneController.dailyFortune.value != null
+            ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("NAME : ${myStorage.getStrogare.read('isim')}"),
+                  const Spacer(flex: 1),
+                  Text(fortuneController.dailyFortune.value!.burc!),
+                  Text(fortuneController.dailyFortune.value!.fortune!),
+                  Text(fortuneController.dailyFortune.value!.mottosu!),
+                  const Spacer(flex: 50)
+                ],
+              )
+            : const Text("Waiting for data...")),
       ),
     );
   }

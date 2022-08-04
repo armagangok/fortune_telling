@@ -13,6 +13,7 @@ class LoginView extends StatelessWidget {
 
   final MyStorage _myStorage = MyStorage.instance;
   final TextController textController = Get.put(TextController.instance);
+  final ZodiacController zodiacController = Get.put(ZodiacController.instance);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class LoginView extends StatelessWidget {
                 lastDate: DateTime(2023),
                 dateLabelText: 'Date',
                 onChanged: (val) {
-                  print(getZodicaSign(DateTime.parse(val)));
+                  print(zodiacController.getZodicaSign(DateTime.parse(val)));
                 },
               ),
               ElevatedButton(

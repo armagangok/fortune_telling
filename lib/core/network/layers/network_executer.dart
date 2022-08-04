@@ -16,8 +16,11 @@ class NetworkExecuter {
     if (await NetworkConnectivityChecker.status) {
       try {
         var response = await NetworkRequestor.sendRequest(options: options);
+        print(response.data);
         var decodedResponse = NetworkDecoder.decode<T, K>(
-            response: response, responseType: responseType);
+          response: response,
+          responseType: responseType,
+        );
         return decodedResponse;
       } on DioError catch (dioError) {
         LogHelper.shared.debugPrint("Dio Error $dioError");

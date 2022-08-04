@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/view/home/home_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -17,13 +18,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: AppPages.initial,
+      // initialRoute: AppPages.initial,
       // initialBinding: BindingsBuilder(() {
       //   Get.lazyPut(() => SplashController());
       // }),
-      getPages: AppPages.routes,
+      // getPages: AppPages.routes,
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: SplashView(),
+      home: HomeView(),
     );
   }
 }
