@@ -2,7 +2,7 @@ class KAsset {
   KAsset._();
 
   static const backgroundImage = "assets/bg.jpg";
-  static const basak = "assets/zodiac_icons/Aquarius.png";
+  static const kova = "assets/zodiac_icons/Aquarius.png";
   static const koc = "assets/zodiac_icons/Aries.png";
   static const yengec = "assets/zodiac_icons/Cancer.png";
   static const oglak = "assets/zodiac_icons/Capricorn.png";
@@ -13,5 +13,5 @@ class KAsset {
   static const yay = "assets/zodiac_icons/Sagittarius.png";
   static const akrep = "assets/zodiac_icons/Scorpio.png";
   static const boga = "assets/zodiac_icons/Taurus.png";
-  static const kova = "assets/zodiac_icons/Virgo.png";
+  static const basak = "assets/zodiac_icons/Virgo.png";
 }

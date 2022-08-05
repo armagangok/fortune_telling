@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // initialRoute: AppPages.initial,
-      // getPages: AppPages.routes,
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
       theme: AppThemeDark.instance.darkTheme,
       home: PersonalView(),
     );

@@ -1,5 +1,7 @@
+import 'package:fortune_telling/view/personal/personal_view.dart';
 import 'package:get/get.dart';
 
+import '../../view/home/home_view.dart';
 import '../../view/login/view/login_view.dart';
 import '../../view/splash/view/splash_view.dart';
 
@@ -28,14 +30,25 @@ class AppPages {
       //   },
       // ),
     ),
-    // GetPage(
-    //   name: _Paths.DETAIL,
-    //   page: () => HomeView(),
-    //   // binding: BindingsBuilder(
-    //   //   () {
-    //   //     // Get.lazyPut<FortuneController>(() => FortuneController());
-    //   //   },
-    //   // ),
-    // ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => HomeView(),
+      // binding: BindingsBuilder(
+      //   () {
+      //     // Get.lazyPut<FortuneController>(() => FortuneController());
+      //   },
+      // ),
+    ),
+
+
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => PersonalView(),
+      // binding: BindingsBuilder(
+      //   () {
+      //     // Get.lazyPut<FortuneController>(() => FortuneController());
+      //   },
+      // ),
+    ),
   ];
 }
