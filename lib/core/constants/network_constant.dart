@@ -7,5 +7,6 @@ class KNetwork {
   static const String get1 = "get";
   static const String gets = "gets";
   static const String kariyer = "kariyer";
-  static const String ask = "ask";
+  static const String ask = "aşk";
+  static const String saglik = "sağlık";
 }

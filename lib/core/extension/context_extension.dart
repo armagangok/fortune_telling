@@ -18,6 +18,8 @@ extension EasyContext on BuildContext {
     );
   }
 
+  EdgeInsets all(double value) => EdgeInsets.all(value * width(1));
+
   EdgeInsets vertical({
     double left = 0.0,
     double top = 0.0,

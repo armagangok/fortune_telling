@@ -27,7 +27,7 @@ class PersonalView extends StatelessWidget {
             () => _personalController.dailyFortune.value != null
                 ? ListView(
                     padding: context.symmetric(
-                      horizontal: 0.05,
+                      horizontal: 0.03,
                       vertical: 0.025,
                     ),
                     children: [
@@ -37,13 +37,39 @@ class PersonalView extends StatelessWidget {
                       heigth005,
                       Center(child: MyTabBar()),
                       _tabBarController.currentIndex.value == 0
-                          ? fortuneText
+                          ? Card(
+                              color: const Color.fromARGB(255, 66, 66, 66)
+                                  .withOpacity(0.5),
+                              child: Padding(
+                                padding: context.all(0.04),
+                                child: fortuneText,
+                              ),
+                            )
                           : const Center(),
                       _tabBarController.currentIndex.value == 1
-                          ? const Text("Aşk yorumu yüklenecek")
+                          ? Card(
+                              color: const Color.fromARGB(255, 66, 66, 66)
+                                  .withOpacity(0.5),
+                              child: Padding(
+                                padding: context.all(0.04),
+                                child: Text(
+                                  _personalController.loveFortune.value!.yorum!,
+                                ),
+                              ),
+                            )
                           : const Center(),
                       _tabBarController.currentIndex.value == 2
-                          ? const Text("SağlıkAşk yorumu yüklenecek")
+                          ?Card(
+                              color: const Color.fromARGB(255, 66, 66, 66)
+                                  .withOpacity(0.5),
+                              child: Padding(
+                                padding: context.all(0.04),
+                                child: Text(
+                              _personalController.healthFortune.value!.yorum!,
+                            ),
+                              ),
+                            ) 
+                          
                           : const Center(),
                     ],
                   )

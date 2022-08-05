@@ -25,18 +25,20 @@ class FortuneController extends GetxController {
     return a[0];
   }
 
-  Future getFortuneFeature({
+  Future<BaseFortuneFeatureModel> getFortuneFeature({
     String? getType,
     String? sign,
     String? feature,
     required BaseFortuneFeatureModel responseType,
   }) async {
-    await NetworkExecuter.request(
+    List<dynamic> a = await NetworkExecuter.request(
       options: MyRequestOptions.instance.requestFeatureOptions(
         sign: sign,
         feature: feature,
       ),
       responseType: responseType,
     );
+
+    return a[0];
   }
 }

@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
+import '../../../core/constants/network_constant.dart';
 import '../../../core/database/local/my_storage.dart';
 import '../../../feature/controllers/fortune_controller.dart';
+import '../../../feature/models/base_fortune_feature_model.dart';
 import '../../../feature/models/daily_fortune_model.dart';
+import '../../../feature/models/love_fortune_model.dart';
 import '../../login/controller/zodiac_controller.dart';
 
 class PersonalController extends GetxController {
@@ -17,6 +20,9 @@ class PersonalController extends GetxController {
   final Rx<String?> userName = Rx(null);
   final Rx<String?> birtthDay = Rx(null);
   Rx<DailyFortuneModel?> dailyFortune = Rx(null);
+  Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
+  Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
+  Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
   @override
   void onInit() async {
@@ -29,6 +35,23 @@ class PersonalController extends GetxController {
       sign: sign,
       time: "",
       responseType: DailyFortuneModel(),
+    );
+    loveFortune.value = await _fortuneController.getFortuneFeature(
+      responseType: LoveFortuneModel(),
+      sign: sign,
+      feature: KNetwork.ask,
+    );
+
+    healthFortune.value = await _fortuneController.getFortuneFeature(
+      responseType: LoveFortuneModel(),
+      sign: sign,
+      feature: KNetwork.saglik,
+    );
+
+    careerFortune.value = await _fortuneController.getFortuneFeature(
+      responseType: LoveFortuneModel(),
+      sign: sign,
+      feature: KNetwork.kariyer,
     );
 
     super.onInit();
