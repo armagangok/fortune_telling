@@ -8,6 +8,8 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const DETAIL = _Paths.DETAIL;
   static const PERSONAL = _Paths.PERSONAL;
+  static const ZODIAC_DETAIL = _Paths.ZODIAC_DETAIL;
+  static const ZODIAC_SIGN = _Paths.ZODIAC_SIGN;
 }
 
 abstract class _Paths {
@@ -16,4 +18,6 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const DETAIL = '/detail';
   static const PERSONAL = '/personal';
+  static const ZODIAC_DETAIL = '/zodiacdetail';
+  static const ZODIAC_SIGN = '/zodiacsign';
 }

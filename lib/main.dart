@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/view/splash/view/splash_view.dart';
+import 'package:fortune_telling/view/zodiac_signs/zodiac_signs_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       theme: AppThemeDark.instance.darkTheme,
-      home: SplashView(),
+      home: ZodiacSignsView(),
     );
   }
 }
