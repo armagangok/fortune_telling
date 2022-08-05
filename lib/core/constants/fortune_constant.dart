@@ -1,5 +1,5 @@
-class FortuneConstanst {
-  FortuneConstanst._();
+class KFortune {
+  KFortune._();
 
   static const String koc = "Koç";
   static const String boga = "Boğa";
@@ -13,5 +13,4 @@ class FortuneConstanst {
   static const String oglak = "Oğlak";
   static const String kova = "Kova";
   static const String balik = "Balık";
-  
 }

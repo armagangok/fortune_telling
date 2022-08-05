@@ -36,12 +36,12 @@ class LoginView extends StatelessWidget {
                 lastDate: DateTime(2023),
                 dateLabelText: 'Date',
                 onChanged: (val) async {
-                  await _myStorage.getStorage.write(
+                  await _myStorage.storage.write(
                     "birthDay",
                     val,
                   );
 
-                  print(_myStorage.getStorage.read("birthDay"));
+                  print(_myStorage.storage.read("birthDay"));
                 },
               ),
               ElevatedButton(
@@ -51,8 +51,8 @@ class LoginView extends StatelessWidget {
                         textController.passwordController.text;
 
                     if (isim.isNotEmpty || soyisim.isNotEmpty) {
-                      await _myStorage.getStorage.write('isLogged', true);
-                      await _myStorage.getStorage.write('isim', isim);
+                      await _myStorage.storage.write('isLogged', true);
+                      await _myStorage.storage.write('isim', isim);
 
                       // Get.offAll(HomeView());
                     } else {

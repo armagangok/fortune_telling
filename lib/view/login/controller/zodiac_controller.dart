@@ -1,4 +1,4 @@
-import '../../../core/constants/fortune_constants.dart';
+import '../../../core/constants/fortune_constant.dart';
 
 class ZodiacController {
   ZodiacController._();
@@ -10,29 +10,29 @@ class ZodiacController {
 
     switch (months) {
       case 01:
-        return days >= 21 ? FortuneConstanst.kova : FortuneConstanst.oglak;
+        return days >= 21 ? KFortune.kova : KFortune.oglak;
       case 02:
-        return days >= 20 ? FortuneConstanst.balik : FortuneConstanst.kova;
+        return days >= 20 ? KFortune.balik : KFortune.kova;
       case 03:
-        return days >= 21 ? FortuneConstanst.koc : FortuneConstanst.balik;
+        return days >= 21 ? KFortune.koc : KFortune.balik;
       case 04:
-        return days >= 21 ? FortuneConstanst.boga : FortuneConstanst.koc;
+        return days >= 21 ? KFortune.boga : KFortune.koc;
       case 05:
-        return days >= 22 ? FortuneConstanst.ikizler : FortuneConstanst.boga;
+        return days >= 22 ? KFortune.ikizler : KFortune.boga;
       case 06:
-        return days >= 22 ? FortuneConstanst.yengec : FortuneConstanst.ikizler;
+        return days >= 22 ? KFortune.yengec : KFortune.ikizler;
       case 07:
-        return days >= 23 ? FortuneConstanst.aslan : FortuneConstanst.yengec;
+        return days >= 23 ? KFortune.aslan : KFortune.yengec;
       case 08:
-        return days >= 23 ? FortuneConstanst.basak : FortuneConstanst.aslan;
+        return days >= 23 ? KFortune.basak : KFortune.aslan;
       case 09:
-        return days >= 24 ? FortuneConstanst.terazi : FortuneConstanst.basak;
+        return days >= 24 ? KFortune.terazi : KFortune.basak;
       case 10:
-        return days >= 24 ? FortuneConstanst.akrep : FortuneConstanst.terazi;
+        return days >= 24 ? KFortune.akrep : KFortune.terazi;
       case 11:
-        return days >= 23 ? FortuneConstanst.yay : FortuneConstanst.akrep;
+        return days >= 23 ? KFortune.yay : KFortune.akrep;
       case 12:
-        return days >= 22 ? FortuneConstanst.oglak : FortuneConstanst.yay;
+        return days >= 22 ? KFortune.oglak : KFortune.yay;
       default:
         return "";
     }

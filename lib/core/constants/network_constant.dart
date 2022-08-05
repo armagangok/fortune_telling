@@ -1,5 +1,5 @@
-class NetworkConstant {
-  NetworkConstant._();
+class KNetwork {
+  KNetwork._();
 
   static const String haftalik = "haftalik";
   static const String aylik = "aylik";

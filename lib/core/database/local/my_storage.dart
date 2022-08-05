@@ -6,12 +6,5 @@ class MyStorage {
 
   final GetStorage _getStorageInstance = GetStorage();
 
-  
-  GetStorage get getStorage => _getStorageInstance;
-  void a() {
-
-    
-
-  
-  }
+  GetStorage get storage => _getStorageInstance;
 }

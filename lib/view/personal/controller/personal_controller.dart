@@ -20,9 +20,9 @@ class PersonalController extends GetxController {
 
   @override
   void onInit() async {
-    userName.value = _myStorage.getStorage.read("isim");
+    userName.value = _myStorage.storage.read("isim");
     String sign = _zodiacController.getZodicaSign(DateTime.parse(
-      _myStorage.getStorage.read("birthDay"),
+      _myStorage.storage.read("birthDay"),
     ));
 
     dailyFortune.value = await _fortuneController.getFortune(

@@ -1,4 +1,4 @@
-import '../../core/constants/fortune_constants.dart';
+import '../../core/constants/fortune_constant.dart';
 import '../models/daily_fortune_model.dart';
 import '../models/monthly_fortune_model.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';

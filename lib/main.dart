@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/theme/dark_theme.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       //   Get.lazyPut(() => SplashController());
       // }),
       // getPages: AppPages.routes,
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: AppThemeDark.instance.darkTheme,
       home: PersonalView(),
     );
   }
