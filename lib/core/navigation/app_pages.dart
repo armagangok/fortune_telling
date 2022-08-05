@@ -42,7 +42,7 @@ class AppPages {
 
 
     GetPage(
-      name: _Paths.DETAIL,
+      name: _Paths.PERSONAL,
       page: () => PersonalView(),
       // binding: BindingsBuilder(
       //   () {

@@ -57,7 +57,7 @@ class MyTabBar extends StatelessWidget {
   Widget get width => Builder(
         builder: (context) {
           return SizedBox(
-            width: context.width(0.05),
+            width: context.width(0.08),
           );
         },
       );

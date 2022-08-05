@@ -32,15 +32,12 @@ class PersonalView extends StatelessWidget {
                       vertical: 0.025,
                     ),
                     children: [
-                      AppBar(
-                        backgroundColor: Colors.transparent,
-                        title: userNametext,
-                        centerTitle: true,
-                      ),
+                      appBar(),
                       zoidacImage,
                       zodiacSignText,
-                      heigth005,
+                      heigth025,
                       Center(child: MyTabBar()),
+                      heigth015,
                       _tabBarController.currentIndex.value == 0
                           ? cardWidget(
                               _personalController.dailyFortune.value!.fortune,
@@ -58,16 +55,32 @@ class PersonalView extends StatelessWidget {
                           : const Center(),
                     ],
                   )
-                : const Center(
-                    child: Text(
-                      "Burç verileriniz yükleniyor. Lütfen bekleyiniz...",
-                    ),
-                  ),
+                : loadingWidget(),
           ),
         ),
       ),
     );
   }
+
+  Center loadingWidget() {
+    return const Center(
+      child: Text(
+        "Burç verileriniz yükleniyor. Lütfen bekleyiniz...",
+      ),
+    );
+  }
+
+  //
+
+  AppBar appBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      title: userNametext,
+      centerTitle: true,
+    );
+  }
+
+  //
 
   Widget cardWidget(text) {
     return Builder(builder: (context) {
@@ -83,10 +96,21 @@ class PersonalView extends StatelessWidget {
     });
   }
 
-  Widget get heigth005 => Builder(
+  //
+
+  Widget get heigth025 => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.height(0.05),
+            height: context.height(0.025),
+          );
+        },
+      );
+
+  //
+  Widget get heigth015 => Builder(
+        builder: (context) {
+          return SizedBox(
+            height: context.height(0.015),
           );
         },
       );

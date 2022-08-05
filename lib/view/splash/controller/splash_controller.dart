@@ -22,7 +22,7 @@ class SplashController extends GetxController {
       const Duration(seconds: 2),
       () {
         userdata.read('isLogged')
-            ? Get.offAndToNamed(Routes.HOME)
+            ? Get.offAndToNamed(Routes.PERSONAL)
             : Get.offAndToNamed(Routes.DETAIL);
       },
     );
