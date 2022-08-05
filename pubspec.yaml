@@ -40,6 +40,7 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   date_time_picker: ^2.1.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

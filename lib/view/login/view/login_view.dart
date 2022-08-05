@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/utils/logger.dart';
 import 'package:get/get.dart';
 
 import '../../../core/database/local/my_storage.dart';
@@ -40,8 +41,6 @@ class LoginView extends StatelessWidget {
                     "birthDay",
                     val,
                   );
-
-                  print(_myStorage.storage.read("birthDay"));
                 },
               ),
               ElevatedButton(
@@ -51,8 +50,8 @@ class LoginView extends StatelessWidget {
                         textController.passwordController.text;
 
                     if (isim.isNotEmpty || soyisim.isNotEmpty) {
-                      await _myStorage.storage.write('isLogged', true);
                       await _myStorage.storage.write('isim', isim);
+                      await _myStorage.storage.write('isLogged', true);
 
                       // Get.offAll(HomeView());
                     } else {
@@ -62,6 +61,7 @@ class LoginView extends StatelessWidget {
                         snackPosition: SnackPosition.BOTTOM,
                       );
                     }
+                    print(_myStorage.storage.read("isLogged"));
                   },
                   child: const Text("Send")),
               const SizedBox(height: 10),

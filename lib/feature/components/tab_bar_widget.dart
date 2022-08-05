@@ -96,7 +96,7 @@ class MyTabBar extends StatelessWidget {
                           const BorderRadius.all(Radius.circular(200)),
                       color:
                           clickedNumber == tabBarController.currentIndex.value
-                              ? const Color.fromARGB(255, 134, 20, 255)
+                              ? const Color.fromARGB(255, 134, 20, 255).withOpacity(0.5)
                               : Colors.transparent,
                     ),
                     padding: EdgeInsets.symmetric(

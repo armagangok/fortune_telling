@@ -1,11 +1,12 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/controllers/tab_controller.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
 import '../../feature/components/tab_bar_widget.dart';
+import '../../feature/controllers/tab_controller.dart';
 import '../login/controller/zodiac_controller.dart';
 import 'controller/personal_controller.dart';
 
@@ -31,45 +32,29 @@ class PersonalView extends StatelessWidget {
                       vertical: 0.025,
                     ),
                     children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        title: userNametext,
+                        centerTitle: true,
+                      ),
                       zoidacImage,
                       zodiacSignText,
-                      userNametext,
                       heigth005,
                       Center(child: MyTabBar()),
                       _tabBarController.currentIndex.value == 0
-                          ? Card(
-                              color: const Color.fromARGB(255, 66, 66, 66)
-                                  .withOpacity(0.5),
-                              child: Padding(
-                                padding: context.all(0.04),
-                                child: fortuneText,
-                              ),
+                          ? cardWidget(
+                              _personalController.dailyFortune.value!.fortune,
                             )
                           : const Center(),
                       _tabBarController.currentIndex.value == 1
-                          ? Card(
-                              color: const Color.fromARGB(255, 66, 66, 66)
-                                  .withOpacity(0.5),
-                              child: Padding(
-                                padding: context.all(0.04),
-                                child: Text(
-                                  _personalController.loveFortune.value!.yorum!,
-                                ),
-                              ),
+                          ? cardWidget(
+                              _personalController.loveFortune.value!.yorum!,
                             )
                           : const Center(),
                       _tabBarController.currentIndex.value == 2
-                          ?Card(
-                              color: const Color.fromARGB(255, 66, 66, 66)
-                                  .withOpacity(0.5),
-                              child: Padding(
-                                padding: context.all(0.04),
-                                child: Text(
+                          ? cardWidget(
                               _personalController.healthFortune.value!.yorum!,
-                            ),
-                              ),
-                            ) 
-                          
+                            )
                           : const Center(),
                     ],
                   )
@@ -82,6 +67,20 @@ class PersonalView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget cardWidget(text) {
+    return Builder(builder: (context) {
+      return Card(
+        color: const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
+        child: Padding(
+          padding: context.all(0.04),
+          child: Text(
+            text,
+          ),
+        ),
+      );
+    });
   }
 
   Widget get heigth005 => Builder(
@@ -107,8 +106,14 @@ class PersonalView extends StatelessWidget {
 
   //
 
-  Text get userNametext => Text(
-        "Merhaba ${_personalController.userName.value!} senin için çok özel bir burç yorumu hazırladık!",
+  Widget get userNametext => Builder(
+        builder: (context) {
+          return AutoSizeText(
+            "Merhaba ${_personalController.userName.value!} senin için çok özel bir burç yorumu hazırladık!",
+            style: context.textTheme.bodyMedium,
+            maxLines: 2,
+          );
+        },
       );
 
   //

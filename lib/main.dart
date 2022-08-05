@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/view/splash/view/splash_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'core/navigation/app_pages.dart';
 import 'core/theme/dark_theme.dart';
-import 'view/personal/personal_view.dart';
 
 void main() async {
   await GetStorage.init();
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       theme: AppThemeDark.instance.darkTheme,
-      home: PersonalView(),
+      home: SplashView(),
     );
   }
 }

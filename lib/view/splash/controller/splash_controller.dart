@@ -21,9 +21,9 @@ class SplashController extends GetxController {
     Timer(
       const Duration(seconds: 2),
       () {
-        userdata.read('isLogged') == false
-            ? Get.offAndToNamed(Routes.DETAIL)
-            : Get.offAndToNamed(Routes.HOME);
+        userdata.read('isLogged')
+            ? Get.offAndToNamed(Routes.HOME)
+            : Get.offAndToNamed(Routes.DETAIL);
       },
     );
   }
