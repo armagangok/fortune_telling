@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/theme/dark_theme.dart';
+import 'package:fortune_telling/view/personal/personal_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'view/personal/personal_view.dart';
+import 'core/navigation/app_pages.dart';
 
 void main() async {
   await GetStorage.init();
@@ -18,9 +19,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // initialRoute: AppPages.initial,
-      // initialBinding: BindingsBuilder(() {
-      //   Get.lazyPut(() => SplashController());
-      // }),
       // getPages: AppPages.routes,
       theme: AppThemeDark.instance.darkTheme,
       home: PersonalView(),

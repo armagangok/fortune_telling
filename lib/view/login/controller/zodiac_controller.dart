@@ -1,3 +1,4 @@
+import '../../../core/constants/asset_constant.dart';
 import '../../../core/constants/fortune_constant.dart';
 
 class ZodiacController {
@@ -33,6 +34,49 @@ class ZodiacController {
         return days >= 23 ? KFortune.yay : KFortune.akrep;
       case 12:
         return days >= 22 ? KFortune.oglak : KFortune.yay;
+      default:
+        return "";
+    }
+  }
+
+  String getZodiacSignImagePath(String zodiacSign) {
+    switch (zodiacSign) {
+      case "Yay":
+        return KAsset.yay;
+
+      case "Aslan":
+        return KAsset.aslan;
+
+      case "Başak":
+        return KAsset.basak;
+
+      case "Yengeç":
+        return KAsset.aslan;
+
+      case "Kova":
+        return KAsset.kova;
+
+      case "Koç":
+        return KAsset.koc;
+
+      case "Akrep":
+        return KAsset.akrep;
+
+      case "Boğa":
+        return KAsset.boga;
+
+      case "Balık":
+        return KAsset.balik;
+
+      case "İkizler":
+        return KAsset.ikizler;
+
+      case "Terazi":
+        return KAsset.terazi;
+
+      case "Oğlak":
+        return KAsset.oglak;
+
       default:
         return "";
     }

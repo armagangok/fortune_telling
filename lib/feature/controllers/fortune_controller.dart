@@ -1,7 +1,3 @@
-import '../../core/constants/fortune_constant.dart';
-import '../models/daily_fortune_model.dart';
-import '../models/monthly_fortune_model.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../core/network/layers/network_executer.dart';
@@ -12,9 +8,6 @@ import '../models/base_fortune_model.dart';
 class FortuneController extends GetxController {
   FortuneController._();
   static final instance = FortuneController._();
-
-  // Rx<DailyFortuneModel?> dailyFortune = Rx(null);
-  // Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
 
   Future<dynamic> getFortune({
     String? sign,
