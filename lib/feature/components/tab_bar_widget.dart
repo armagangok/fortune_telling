@@ -9,7 +9,7 @@ import '../controllers/tab_controller.dart';
 class MyTabBar extends StatelessWidget {
   MyTabBar({Key? key}) : super(key: key);
 
-  final TabBarController tabBarController = Get.put(TabBarController());
+  final TabBarController tabBarController = Get.put(TabBarController.instance);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class MyTabBar extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const ClampingScrollPhysics(),
         child: SizedBox(
-          
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +95,8 @@ class MyTabBar extends StatelessWidget {
                           const BorderRadius.all(Radius.circular(200)),
                       color:
                           clickedNumber == tabBarController.currentIndex.value
-                              ? const Color.fromARGB(255, 134, 20, 255).withOpacity(0.5)
+                              ? const Color.fromARGB(255, 134, 20, 255)
+                                  .withOpacity(0.5)
                               : Colors.transparent,
                     ),
                     padding: EdgeInsets.symmetric(
@@ -108,7 +108,6 @@ class MyTabBar extends StatelessWidget {
                       size: 30,
                     ),
                   ),
-                  
                 ],
               );
             },

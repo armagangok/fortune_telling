@@ -11,7 +11,7 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const initial = Routes.ZODIAC_SIGN;
+  static const initial = Routes.PERSONAL;
 
   static final routes = [
     GetPage(

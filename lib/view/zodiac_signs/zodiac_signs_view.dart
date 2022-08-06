@@ -11,6 +11,10 @@ class ZodiacSignsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         body: GridView.builder(
           padding: context.all(0.025),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

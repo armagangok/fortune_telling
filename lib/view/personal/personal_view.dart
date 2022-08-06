@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/navigation/app_pages.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
@@ -16,12 +18,28 @@ class PersonalView extends StatelessWidget {
   final PersonalController _personalController =
       Get.put(PersonalController.instance);
 
-  final TabBarController _tabBarController = Get.put(TabBarController());
+  final TabBarController _tabBarController = Get.put(TabBarController.instance);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: Column(
+            children: [
+              TextButton(
+                child: const Text("Burcum ne?"),
+                onPressed: () {},
+              ),
+              TextButton(
+                child: const Text("Diğer Burçlar"),
+                onPressed: () {
+                  Get.toNamed(Routes.ZODIAC_SIGN);
+                },
+              ),
+            ],
+          ),
+        ),
         body: Container(
           decoration: decoration,
           child: Obx(
@@ -32,7 +50,8 @@ class PersonalView extends StatelessWidget {
                       vertical: 0.025,
                     ),
                     children: [
-                      appBar(),
+                      appBar,
+                      userNametext,
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
@@ -55,30 +74,27 @@ class PersonalView extends StatelessWidget {
                           : const Center(),
                     ],
                   )
-                : loadingWidget(),
+                : loadingWidget,
           ),
         ),
       ),
     );
   }
 
-  Center loadingWidget() {
-    return const Center(
-      child: Text(
-        "Burç verileriniz yükleniyor. Lütfen bekleyiniz...",
-      ),
-    );
-  }
+  Widget get loadingWidget => const Center(
+        child: Text(
+          "Burç verileriniz yükleniyor. Lütfen bekleyiniz...",
+        ),
+      );
 
   //
 
-  AppBar appBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      title: userNametext,
-      centerTitle: true,
-    );
-  }
+  AppBar get appBar => AppBar(
+        backgroundColor: Colors.transparent,
+        // title: userNametext,
+
+        centerTitle: true,
+      );
 
   //
 
