@@ -2,58 +2,106 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../../core/constants/network_constant.dart';
-import '../../../core/database/local/my_storage.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';
+import '../../../feature/models/career_fortune_model.dart';
 import '../../../feature/models/daily_fortune_model.dart';
 import '../../../feature/models/love_fortune_model.dart';
-import '../../login/controller/zodiac_controller.dart';
+import '../../../feature/models/monthly_fortune_model.dart';
+import '../../../feature/models/weekly_fortune_model.dart';
+import '../../../feature/models/yearly_fortune_model.dart';
 
 class ZodiacSignController extends GetxController {
+  static final ZodiacSignController _inst = ZodiacSignController._();
   ZodiacSignController._();
-  static final instance = ZodiacSignController._();
+
+  factory ZodiacSignController({String newSign = ""}) {
+    _inst.sign = newSign;
+    return _inst;
+  }
 
   final FortuneController _fortuneController = FortuneController.instance;
-  final MyStorage _myStorage = MyStorage.instance;
-  final ZodiacController _zodiacController = ZodiacController.instance;
 
-  final Rx<String?> userName = Rx(null);
-  final Rx<String?> birtthDay = Rx(null);
+  String? sign;
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   getDailyFortune(sign!);
+  //   getYearlyFortune(sign!);
+  //   getWeeklyFortune(sign!);
+  //   getMonthlyFortune(sign!);
+  //   getLoveFortune(sign!);
+  //   getHealthFortune(sign!);
+  //   getCareerFortune(sign!);
+  // }
+
   Rx<DailyFortuneModel?> dailyFortune = Rx(null);
+
+  Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
+  Rx<DailyFortuneModel?> weaklyFortune = Rx(null);
+  Rx<DailyFortuneModel?> yearlyFortune = Rx(null);
   Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
   Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
   Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
-  @override
-  void onInit() async {
-    userName.value = _myStorage.storage.read("isim");
-    String sign = _zodiacController.getZodicaSign(DateTime.parse(
-      _myStorage.storage.read("birthDay"),
-    ));
-
+  Future<void> getDailyFortune(String sign) async {
     dailyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: "",
       responseType: DailyFortuneModel(),
     );
+
+    print(sign);
+  }
+
+  Future<void> getWeeklyFortune(String sign) async {
+    weaklyFortune.value = await _fortuneController.getFortune(
+      sign: sign,
+      time: KNetwork.weekly,
+      responseType: WeeklyFortuneModel(),
+    );
+  }
+
+  Future<void> getMonthlyFortune(String sign) async {
+    weaklyFortune.value = await _fortuneController.getFortune(
+      sign: sign,
+      time: KNetwork.monthly,
+      responseType: MonthlyFortuneModel(),
+    );
+  }
+
+  Future<void> getYearlyFortune(String sign) async {
+    yearlyFortune.value = await _fortuneController.getFortune(
+      sign: sign,
+      time: KNetwork.yearly,
+      responseType: YearlyFortuneModel(),
+    );
+  }
+
+  Future<void> getLoveFortune(String sign) async {
     loveFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
-      feature: KNetwork.ask,
+      feature: KNetwork.love,
     );
+  }
 
+  Future<void> getHealthFortune(String sign) async {
     healthFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
-      feature: KNetwork.saglik,
+      feature: KNetwork.health,
     );
-
-    careerFortune.value = await _fortuneController.getFortuneFeature(
-      responseType: LoveFortuneModel(),
-      sign: sign,
-      feature: KNetwork.kariyer,
-    );
-
-    super.onInit();
   }
+
+  Future<void> getCareerFortune(String sign) async {
+    careerFortune.value = await _fortuneController.getFortuneFeature(
+      responseType: CareerFortuneModel(),
+      sign: sign,
+      feature: KNetwork.career,
+    );
+  }
+
+  // Future<void> getFortuneModel(String sign) async {}
 }

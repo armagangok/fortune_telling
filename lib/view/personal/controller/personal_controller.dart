@@ -39,19 +39,19 @@ class PersonalController extends GetxController {
     loveFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
-      feature: KNetwork.ask,
+      feature: KNetwork.love,
     );
 
     healthFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
-      feature: KNetwork.saglik,
+      feature: KNetwork.health,
     );
 
     careerFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
-      feature: KNetwork.kariyer,
+      feature: KNetwork.career,
     );
 
     super.onInit();
