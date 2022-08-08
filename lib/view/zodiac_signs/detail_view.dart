@@ -11,20 +11,46 @@ class ZodiacDetailView extends StatelessWidget {
   }) : super(key: key);
 
   final ZodiacModel zodiacModel;
+  
 
   @override
   Widget build(BuildContext context) {
-    print(zodiacModel.zodiacName);
     final ZodiacSignController zodiacSignController =
         Get.put(ZodiacSignController(newSign: zodiacModel.zodiacName));
     zodiacSignController.getDailyFortune(zodiacModel.zodiacName);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(zodiacModel.zodiacName),
+      appBar: appBar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Obx(
+            () => zodiacSignController.dailyFortune.value!.fortune != null
+                ? Text(zodiacSignController.dailyFortune.value!.fortune!)
+                : const SizedBox(),
+          ),
+          Obx(
+            () => zodiacSignController.dailyFortune.value!.elementi != null
+                ? Text(zodiacSignController.dailyFortune.value!.elementi!)
+                : const SizedBox(),
+          ),
+          Obx(
+            () => zodiacSignController.dailyFortune.value!.mottosu != null
+                ? Text(zodiacSignController.dailyFortune.value!.mottosu!)
+                : const SizedBox(),
+          ),
+          Obx(
+            () => zodiacSignController.dailyFortune.value!.gezegeni != null
+                ? Text(zodiacSignController.dailyFortune.value!.gezegeni!)
+                : const SizedBox(),
+          ),
+        ],
       ),
-      body: Obx(() => zodiacSignController.dailyFortune.value != null
-          ? Text(zodiacSignController.dailyFortune.value!.fortune!)
-          : const SizedBox()),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: Text(zodiacModel.zodiacName),
     );
   }
 }

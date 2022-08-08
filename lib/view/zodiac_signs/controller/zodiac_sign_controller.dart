@@ -1,5 +1,6 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
 
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
@@ -19,6 +20,12 @@ class ZodiacSignController extends GetxController {
     _inst.sign = newSign;
     return _inst;
   }
+
+  // @override
+  // void onClose() {
+  //   Get.delete();
+  //   super.onClose();
+  // }
 
   final FortuneController _fortuneController = FortuneController.instance;
 
@@ -51,8 +58,6 @@ class ZodiacSignController extends GetxController {
       time: "",
       responseType: DailyFortuneModel(),
     );
-
-    print(sign);
   }
 
   Future<void> getWeeklyFortune(String sign) async {

@@ -8,7 +8,7 @@ import 'network_requestor.dart';
 
 class NetworkExecuter {
   NetworkExecuter._();
-
+  
   static Future<K?> request<T extends BaseNetworkModel, K>({
     required RequestOptions options,
     required T responseType,
@@ -16,7 +16,7 @@ class NetworkExecuter {
     if (await NetworkConnectivityChecker.status) {
       try {
         var response = await NetworkRequestor.sendRequest(options: options);
-        print(response.data);
+
         var decodedResponse = NetworkDecoder.decode<T, K>(
           response: response,
           responseType: responseType,
