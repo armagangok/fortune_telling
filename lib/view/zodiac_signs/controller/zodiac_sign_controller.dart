@@ -1,7 +1,4 @@
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/instance_manager.dart';
-
+import 'package:get/get.dart';
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';
@@ -21,11 +18,23 @@ class ZodiacSignController extends GetxController {
     return _inst;
   }
 
-  // @override
-  // void onClose() {
-  //   Get.delete();
-  //   super.onClose();
-  // }
+  /* @override
+  void dispose() {
+    Get.delete<ZodiacSignController>();
+    super.dispose();
+  } */
+  
+  @override
+  void onClose() {
+    Get.delete<ZodiacSignController>();
+    /* monthlyFortune.value = null;
+    weaklyFortune.value = null;
+    yearlyFortune.value = null;
+    loveFortune.value = null;
+    healthFortune.value = null;
+    careerFortune.value = null; */
+    super.onClose();
+  }
 
   final FortuneController _fortuneController = FortuneController.instance;
 
@@ -44,7 +53,6 @@ class ZodiacSignController extends GetxController {
   // }
 
   Rx<DailyFortuneModel?> dailyFortune = Rx(null);
-
   Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
   Rx<DailyFortuneModel?> weaklyFortune = Rx(null);
   Rx<DailyFortuneModel?> yearlyFortune = Rx(null);

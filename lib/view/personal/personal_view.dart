@@ -24,22 +24,7 @@ class PersonalView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          child: Column(
-            children: [
-              TextButton(
-                child: const Text("Burcum ne?"),
-                onPressed: () {},
-              ),
-              TextButton(
-                child: const Text("Diğer Burçlar"),
-                onPressed: () {
-                  Get.toNamed(Routes.ZODIAC_SIGN);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: _drawer(),
         body: Container(
           decoration: decoration,
           child: Obx(
@@ -52,6 +37,7 @@ class PersonalView extends StatelessWidget {
                     children: [
                       appBar,
                       userNametext,
+                      heigth015,
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
@@ -77,6 +63,25 @@ class PersonalView extends StatelessWidget {
                 : loadingWidget,
           ),
         ),
+      ),
+    );
+  }
+
+  Drawer _drawer() {
+    return Drawer(
+      child: Column(
+        children: [
+          TextButton(
+            child: const Text("Burcum ne?"),
+            onPressed: () {},
+          ),
+          TextButton(
+            child: const Text("Diğer Burçlar"),
+            onPressed: () {
+              Get.toNamed(Routes.ZODIAC_SIGN);
+            },
+          ),
+        ],
       ),
     );
   }

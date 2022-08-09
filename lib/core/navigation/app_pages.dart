@@ -2,8 +2,6 @@ import 'package:fortune_telling/view/personal/personal_view.dart';
 import 'package:fortune_telling/view/zodiac_signs/detail_view.dart';
 import 'package:fortune_telling/view/zodiac_signs/zodiac_signs_view.dart';
 import 'package:get/get.dart';
-
-import '../../view/home/home_view.dart';
 import '../../view/login/view/login_view.dart';
 import '../../view/splash/view/splash_view.dart';
 
@@ -11,7 +9,7 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const initial = Routes.PERSONAL;
+  static const initial = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -24,17 +22,8 @@ class AppPages {
       // ),
     ),
     GetPage(
-      name: _Paths.HOME,
+      name: _Paths.LOGIN,
       page: () => LoginView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     Get.lazyPut<TextController>(() => TextController());
-      //   },
-      // ),
-    ),
-    GetPage(
-      name: _Paths.DETAIL,
-      page: () => HomeView(),
       // binding: BindingsBuilder(
       //   () {
       //     // Get.lazyPut<FortuneController>(() => FortuneController());

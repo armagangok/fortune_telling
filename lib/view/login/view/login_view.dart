@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/navigation/app_pages.dart';
 import 'package:fortune_telling/core/utils/logger.dart';
 import 'package:get/get.dart';
 
@@ -52,6 +53,7 @@ class LoginView extends StatelessWidget {
                     if (isim.isNotEmpty || soyisim.isNotEmpty) {
                       await _myStorage.storage.write('isim', isim);
                       await _myStorage.storage.write('isLogged', true);
+                      Get.toNamed(Routes.PERSONAL);
 
                       // Get.offAll(HomeView());
                     } else {
