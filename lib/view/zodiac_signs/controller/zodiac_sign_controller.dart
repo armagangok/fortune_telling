@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';
@@ -10,47 +11,22 @@ import '../../../feature/models/weekly_fortune_model.dart';
 import '../../../feature/models/yearly_fortune_model.dart';
 
 class ZodiacSignController extends GetxController {
-  static final ZodiacSignController _inst = ZodiacSignController._();
+  static final ZodiacSignController _instance = ZodiacSignController._();
   ZodiacSignController._();
-
   factory ZodiacSignController({String newSign = ""}) {
-    _inst.sign = newSign;
-    return _inst;
+    _instance.sign = newSign;
+    return _instance;
   }
 
-  /* @override
-  void dispose() {
-    Get.delete<ZodiacSignController>();
-    super.dispose();
-  } */
-  
   @override
   void onClose() {
-    Get.delete<ZodiacSignController>();
-    /* monthlyFortune.value = null;
-    weaklyFortune.value = null;
-    yearlyFortune.value = null;
-    loveFortune.value = null;
-    healthFortune.value = null;
-    careerFortune.value = null; */
+    cleanUp();
     super.onClose();
   }
 
   final FortuneController _fortuneController = FortuneController.instance;
 
   String? sign;
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   getDailyFortune(sign!);
-  //   getYearlyFortune(sign!);
-  //   getWeeklyFortune(sign!);
-  //   getMonthlyFortune(sign!);
-  //   getLoveFortune(sign!);
-  //   getHealthFortune(sign!);
-  //   getCareerFortune(sign!);
-  // }
 
   Rx<DailyFortuneModel?> dailyFortune = Rx(null);
   Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
@@ -61,6 +37,7 @@ class ZodiacSignController extends GetxController {
   Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
   Future<void> getDailyFortune(String sign) async {
+    dailyFortune.value = null;
     dailyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: "",
@@ -116,5 +93,13 @@ class ZodiacSignController extends GetxController {
     );
   }
 
-  // Future<void> getFortuneModel(String sign) async {}
+  void cleanUp() {
+    dailyFortune.value = null;
+    monthlyFortune.value = null;
+    weaklyFortune.value = null;
+    yearlyFortune.value = null;
+    loveFortune.value = null;
+    healthFortune.value = null;
+    careerFortune.value = null;
+  }
 }

@@ -14,7 +14,7 @@ class FortuneController extends GetxController {
     String? time,
     required BaseFortuneModel responseType,
   }) async {
-    List<dynamic> a = await NetworkExecuter.request(
+    List<dynamic> data = await NetworkExecuter.request(
       options: MyRequestOptions.instance.requestOptions(
         sign: sign,
         time: time,
@@ -22,7 +22,7 @@ class FortuneController extends GetxController {
       responseType: responseType,
     );
 
-    return a[0];
+    return data[0];
   }
 
   Future<BaseFortuneFeatureModel> getFortuneFeature({
@@ -31,7 +31,7 @@ class FortuneController extends GetxController {
     String? feature,
     required BaseFortuneFeatureModel responseType,
   }) async {
-    List<dynamic> a = await NetworkExecuter.request(
+    List<dynamic> data = await NetworkExecuter.request(
       options: MyRequestOptions.instance.requestFeatureOptions(
         sign: sign,
         feature: feature,
@@ -39,6 +39,6 @@ class FortuneController extends GetxController {
       responseType: responseType,
     );
 
-    return a[0];
+    return data[0];
   }
 }

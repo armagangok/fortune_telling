@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
@@ -19,6 +20,7 @@ class PersonalView extends StatelessWidget {
       Get.put(PersonalController.instance);
 
   final TabBarController _tabBarController = Get.put(TabBarController.instance);
+  var instance = TabBarController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +43,19 @@ class PersonalView extends StatelessWidget {
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
-                      Center(child: MyTabBar()),
+                      Center(child: MyTabBar(row: row)),
                       heigth015,
-                      _tabBarController.currentIndex.value == 0
+                      _tabBarController.getIndex == 0
                           ? cardWidget(
                               _personalController.dailyFortune.value!.fortune,
                             )
                           : const Center(),
-                      _tabBarController.currentIndex.value == 1
+                      _tabBarController.getIndex == 1
                           ? cardWidget(
                               _personalController.loveFortune.value!.yorum!,
                             )
                           : const Center(),
-                      _tabBarController.currentIndex.value == 2
+                      _tabBarController.getIndex == 2
                           ? cardWidget(
                               _personalController.healthFortune.value!.yorum!,
                             )
@@ -187,4 +189,31 @@ class PersonalView extends StatelessWidget {
           );
         },
       );
+
+  Row get row {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ExpandedItem(
+          text: "Genel",
+          clickedNumber: 0,
+          iconData: CupertinoIcons.person_fill,
+          onTap: () => instance.changeIndex(0),
+        ),
+        ExpandedItem(
+          text: "Aşk",
+          clickedNumber: 1,
+          iconData: CupertinoIcons.heart_fill,
+          onTap: () => instance.changeIndex(1),
+        ),
+        ExpandedItem(
+          text: "Sağlık",
+          clickedNumber: 2,
+          iconData: CupertinoIcons.scissors,
+          onTap: () => instance.changeIndex(2),
+        ),
+      ],
+    );
+  }
 }

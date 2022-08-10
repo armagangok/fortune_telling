@@ -4,10 +4,9 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 class TabBarController extends GetxController {
   TabBarController._();
   static final instance = TabBarController._();
-  final RxInt currentIndex = RxInt(0);
+  final RxInt _currentIndex = RxInt(0);
 
-  changeIndex(newIndex) {
-    currentIndex.value = newIndex;
-    notifyChildrens();
-  }
+  int get getIndex => _currentIndex.value;
+
+  void changeIndex(newIndex) => _currentIndex.value = newIndex;
 }

@@ -18,40 +18,37 @@ class ZodiacDetailView extends StatelessWidget {
         Get.put(ZodiacSignController(newSign: zodiacModel.zodiacName));
     zodiacSignController.getDailyFortune(zodiacModel.zodiacName);
     return Scaffold(
-        appBar: appBar(zodiacSignController),
-        body: Obx(
-          () => zodiacSignController.dailyFortune.value != null
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    zodiacSignController.dailyFortune.value!.fortune != null
-                        ? Text(
-                            zodiacSignController.dailyFortune.value!.fortune!)
-                        : const SizedBox(),
-                    zodiacSignController.dailyFortune.value!.elementi != null
-                        ? Text(
-                            zodiacSignController.dailyFortune.value!.elementi!)
-                        : const SizedBox(),
-                    zodiacSignController.dailyFortune.value!.mottosu != null
-                        ? Text(
-                            zodiacSignController.dailyFortune.value!.mottosu!)
-                        : const SizedBox(),
-                    zodiacSignController.dailyFortune.value!.gezegeni != null
-                        ? Text(
-                            zodiacSignController.dailyFortune.value!.gezegeni!)
-                        : const SizedBox(),
-                  ],
-                )
-              : const Center(
-                  child: CircularProgressIndicator(),
-                ),
-        ));
+      appBar: appBar(zodiacSignController),
+      body: Obx(
+        () => zodiacSignController.dailyFortune.value != null
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  zodiacSignController.dailyFortune.value!.fortune != null
+                      ? Text(zodiacSignController.dailyFortune.value!.fortune!)
+                      : const SizedBox(),
+                  zodiacSignController.dailyFortune.value!.elementi != null
+                      ? Text(zodiacSignController.dailyFortune.value!.elementi!)
+                      : const SizedBox(),
+                  zodiacSignController.dailyFortune.value!.mottosu != null
+                      ? Text(zodiacSignController.dailyFortune.value!.mottosu!)
+                      : const SizedBox(),
+                  zodiacSignController.dailyFortune.value!.gezegeni != null
+                      ? Text(zodiacSignController.dailyFortune.value!.gezegeni!)
+                      : const SizedBox(),
+                ],
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ),
+      ),
+    );
   }
 
   AppBar appBar(zodiacSignController) {
     return AppBar(
       leading: IconButton(
-          icon: Icon(CupertinoIcons.back),
+          icon: const Icon(CupertinoIcons.back),
           onPressed: () {
             //  zodiacSignController.dailyFortune.value = null;
             Get.back();
