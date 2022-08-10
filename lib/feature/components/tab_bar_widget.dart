@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/instance_manager.dart';
 
 import '../../core/extension/context_extension.dart';
 import '../controllers/tab_controller.dart';
@@ -24,9 +23,9 @@ class TabBarWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const ClampingScrollPhysics(),
         child: Row(
-              mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-          children:  widgetList,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: widgetList,
         ),
       );
     });
@@ -48,20 +47,20 @@ class ExpandedItem extends StatelessWidget {
     required this.clickedNumber,
     this.iconData,
     required this.onTap,
+    required this.tabControler,
   }) : super(key: key);
 
   final String text;
   final int clickedNumber;
   final IconData? iconData;
   final Function onTap;
+  final BaseTabControler tabControler;
 
   @override
   Widget build(BuildContext context) {
-    final TabBarController tabBarController =
-        Get.put(TabBarController.instance);
     return Builder(
       builder: (context) {
-        return InkWell(
+        return GestureDetector(
           onTap: () => onTap(),
           child: Obx(
             () {
@@ -72,7 +71,7 @@ class ExpandedItem extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
-                      color: clickedNumber == tabBarController.getIndex
+                      color: clickedNumber == tabControler.getIndex
                           ? Colors.white
                           : null,
                     ),
@@ -84,7 +83,7 @@ class ExpandedItem extends StatelessWidget {
                       ),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(200)),
-                      color: clickedNumber == tabBarController.getIndex
+                      color: clickedNumber == tabControler.getIndex
                           ? const Color.fromARGB(255, 134, 20, 255)
                               .withOpacity(0.5)
                           : Colors.transparent,

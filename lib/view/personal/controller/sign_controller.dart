@@ -9,9 +9,9 @@ import '../../../feature/models/daily_fortune_model.dart';
 import '../../../feature/models/love_fortune_model.dart';
 import '../../login/controller/zodiac_controller.dart';
 
-class PersonalController extends GetxController {
-  PersonalController._();
-  static final instance = PersonalController._();
+class SignController extends GetxController {
+  SignController._();
+  static final instance = SignController._();
 
   final FortuneController _fortuneController = FortuneController.instance;
   final MyStorage _myStorage = MyStorage.instance;

@@ -13,4 +13,6 @@ class KFortune {
   static const String oglak = "Oğlak";
   static const String kova = "Kova";
   static const String balik = "Balık";
+
+  
 }

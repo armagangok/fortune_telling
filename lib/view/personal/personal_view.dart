@@ -9,24 +9,21 @@ import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
 import '../../core/navigation/app_pages.dart';
 import '../../feature/components/tab_bar_widget.dart';
-import '../../feature/controllers/tab_controller.dart';
 import '../login/controller/zodiac_controller.dart';
-import 'controller/personal_controller.dart';
+import 'controller/sign_controller.dart';
+import 'controller/tab_controller.dart';
 
 class PersonalView extends StatelessWidget {
   PersonalView({Key? key}) : super(key: key);
 
-  final PersonalController _personalController =
-      Get.put(PersonalController.instance);
-
+  final SignController _personalController = Get.put(SignController.instance);
   final TabBarController _tabBarController = Get.put(TabBarController.instance);
-  var instance = TabBarController.instance;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: _drawer(),
+        drawer: _drawer,
         body: Container(
           decoration: decoration,
           child: Obx(
@@ -43,23 +40,11 @@ class PersonalView extends StatelessWidget {
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
-                      Center(child: TabBarWidget(widgetList: widgetList)),
+                      Center(
+                        child: TabBarWidget(widgetList: widgetList),
+                      ),
                       heigth015,
-                      _tabBarController.getIndex == 0
-                          ? cardWidget(
-                              _personalController.dailyFortune.value!.fortune,
-                            )
-                          : const Center(),
-                      _tabBarController.getIndex == 1
-                          ? cardWidget(
-                              _personalController.loveFortune.value!.yorum!,
-                            )
-                          : const Center(),
-                      _tabBarController.getIndex == 2
-                          ? cardWidget(
-                              _personalController.healthFortune.value!.yorum!,
-                            )
-                          : const Center(),
+                      fortunes,
                     ],
                   )
                 : loadingWidget,
@@ -69,24 +54,42 @@ class PersonalView extends StatelessWidget {
     );
   }
 
-  Drawer _drawer() {
-    return Drawer(
-      child: Column(
+  Column get fortunes => Column(
         children: [
-          TextButton(
-            child: const Text("Burcum ne?"),
-            onPressed: () {},
-          ),
-          TextButton(
-            child: const Text("Diğer Burçlar"),
-            onPressed: () {
-              Get.toNamed(Routes.ZODIAC_SIGN);
-            },
-          ),
+          _tabBarController.getIndex == 0
+              ? cardWidget(
+                  _personalController.dailyFortune.value!.fortune,
+                )
+              : const Center(),
+          _tabBarController.getIndex == 1
+              ? cardWidget(
+                  _personalController.loveFortune.value!.yorum!,
+                )
+              : const Center(),
+          _tabBarController.getIndex == 2
+              ? cardWidget(
+                  _personalController.healthFortune.value!.yorum!,
+                )
+              : const Center(),
         ],
-      ),
-    );
-  }
+      );
+
+  Drawer get _drawer => Drawer(
+        child: Column(
+          children: [
+            TextButton(
+              child: const Text("Burcum ne?"),
+              onPressed: () {},
+            ),
+            TextButton(
+              child: const Text("Diğer Burçlar"),
+              onPressed: () {
+                Get.toNamed(Routes.ZODIAC_SIGN);
+              },
+            ),
+          ],
+        ),
+      );
 
   Widget get loadingWidget => const Center(
         child: Text(
@@ -195,19 +198,22 @@ class PersonalView extends StatelessWidget {
           text: "Genel",
           clickedNumber: 0,
           iconData: CupertinoIcons.person_fill,
-          onTap: () => instance.changeIndex(0),
+          tabControler: _tabBarController,
+          onTap: () => _tabBarController.setIndex = 0,
         ),
         ExpandedItem(
           text: "Aşk",
           clickedNumber: 1,
           iconData: CupertinoIcons.heart_fill,
-          onTap: () => instance.changeIndex(1),
+          tabControler: _tabBarController,
+          onTap: () => _tabBarController.setIndex = 1,
         ),
         ExpandedItem(
           text: "Sağlık",
           clickedNumber: 2,
           iconData: CupertinoIcons.scissors,
-          onTap: () => instance.changeIndex(2),
+          tabControler: _tabBarController,
+          onTap: () => _tabBarController.setIndex = 2,
         ),
       ];
 }
