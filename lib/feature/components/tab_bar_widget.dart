@@ -5,13 +5,13 @@ import 'package:get/instance_manager.dart';
 import '../../core/extension/context_extension.dart';
 import '../controllers/tab_controller.dart';
 
-class MyTabBar extends StatelessWidget {
-  const MyTabBar({
+class TabBarWidget extends StatelessWidget {
+  const TabBarWidget({
     Key? key,
-    required this.row,
+    required this.widgetList,
   }) : super(key: key);
 
-  final Row row;
+  final List<Widget> widgetList;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,10 @@ class MyTabBar extends StatelessWidget {
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const ClampingScrollPhysics(),
-        child: SizedBox(
-          child: row,
+        child: Row(
+              mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+          children:  widgetList,
         ),
       );
     });

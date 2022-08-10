@@ -43,7 +43,7 @@ class PersonalView extends StatelessWidget {
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
-                      Center(child: MyTabBar(row: row)),
+                      Center(child: TabBarWidget(widgetList: widgetList)),
                       heigth015,
                       _tabBarController.getIndex == 0
                           ? cardWidget(
@@ -190,11 +190,7 @@ class PersonalView extends StatelessWidget {
         },
       );
 
-  Row get row {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+  List<Widget> get widgetList => [
         ExpandedItem(
           text: "Genel",
           clickedNumber: 0,
@@ -213,7 +209,5 @@ class PersonalView extends StatelessWidget {
           iconData: CupertinoIcons.scissors,
           onTap: () => instance.changeIndex(2),
         ),
-      ],
-    );
-  }
+      ];
 }

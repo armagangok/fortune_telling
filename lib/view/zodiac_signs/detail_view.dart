@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/components/tab_bar_widget.dart';
 import 'package:get/get.dart';
 
 import 'controller/zodiac_sign_controller.dart';
@@ -19,29 +20,7 @@ class ZodiacDetailView extends StatelessWidget {
     zodiacSignController.getDailyFortune(zodiacModel.zodiacName);
     return Scaffold(
       appBar: appBar(zodiacSignController),
-      body: Obx(
-        () => zodiacSignController.dailyFortune.value != null
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  zodiacSignController.dailyFortune.value!.fortune != null
-                      ? Text(zodiacSignController.dailyFortune.value!.fortune!)
-                      : const SizedBox(),
-                  zodiacSignController.dailyFortune.value!.elementi != null
-                      ? Text(zodiacSignController.dailyFortune.value!.elementi!)
-                      : const SizedBox(),
-                  zodiacSignController.dailyFortune.value!.mottosu != null
-                      ? Text(zodiacSignController.dailyFortune.value!.mottosu!)
-                      : const SizedBox(),
-                  zodiacSignController.dailyFortune.value!.gezegeni != null
-                      ? Text(zodiacSignController.dailyFortune.value!.gezegeni!)
-                      : const SizedBox(),
-                ],
-              )
-            : const Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
+      body: Obx(() => const TabBarWidget(widgetList: [])),
     );
   }
 
@@ -57,3 +36,26 @@ class ZodiacDetailView extends StatelessWidget {
     );
   }
 }
+
+
+// zodiacSignController.dailyFortune.value != null
+//             ? Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   zodiacSignController.dailyFortune.value!.fortune != null
+//                       ? Text(zodiacSignController.dailyFortune.value!.fortune!)
+//                       : const SizedBox(),
+//                   zodiacSignController.dailyFortune.value!.elementi != null
+//                       ? Text(zodiacSignController.dailyFortune.value!.elementi!)
+//                       : const SizedBox(),
+//                   zodiacSignController.dailyFortune.value!.mottosu != null
+//                       ? Text(zodiacSignController.dailyFortune.value!.mottosu!)
+//                       : const SizedBox(),
+//                   zodiacSignController.dailyFortune.value!.gezegeni != null
+//                       ? Text(zodiacSignController.dailyFortune.value!.gezegeni!)
+//                       : const SizedBox(),
+//                 ],
+//               )
+//             : const Center(
+//                 child: CircularProgressIndicator(),
+//               ),
