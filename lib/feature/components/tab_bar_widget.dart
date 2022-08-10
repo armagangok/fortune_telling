@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/view/personal/controller/tab_controller.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../core/extension/context_extension.dart';
@@ -23,8 +24,6 @@ class TabBarWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const ClampingScrollPhysics(),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: widgetList,
         ),
       );
@@ -78,16 +77,8 @@ class ExpandedItem extends StatelessWidget {
                             : null,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Container(
-                      color: clickedNumber == tabControler.getIndex
-                          ? const Color.fromARGB(255, 134, 20, 255)
-                              .withOpacity(0.5)
-                          : Colors.transparent,
-                      height: 10,
-                      width: 10,
-                    ),
-                    /*  Container(
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 134, 20, 255),
@@ -107,7 +98,7 @@ class ExpandedItem extends StatelessWidget {
                         iconData,
                         size: 30,
                       ),
-                    ), */
+                    ),
                   ],
                 ),
               );
@@ -115,6 +106,60 @@ class ExpandedItem extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class ExpandedItem2 extends StatelessWidget {
+  final int clickedNumber;
+  final String text;
+  final TabBarController tabBarController;
+  final Function onTap;
+  const ExpandedItem2({
+    Key? key,
+    required this.clickedNumber,
+    required this.text,
+    required this.tabBarController,
+    required this.onTap,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => GestureDetector(
+        onTap: () => onTap(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: context.width(0.01),
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                
+                bottom: BorderSide(
+                  width: context.width(0.004),
+                  color: clickedNumber == tabBarController.getIndex
+                      ? Colors.white
+                      : Colors.transparent,
+                ),
+              ),
+            ),
+            padding: EdgeInsets.symmetric(
+              
+              vertical: context.width(0.006),
+            ),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: TextStyle(
+                color: clickedNumber == tabBarController.getIndex
+                    ? Colors.white
+                    : Colors.grey,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

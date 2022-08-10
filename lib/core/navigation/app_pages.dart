@@ -1,9 +1,9 @@
-import 'package:fortune_telling/view/personal/personal_view.dart';
-import 'package:fortune_telling/view/zodiac_signs/detail_view.dart';
-import 'package:fortune_telling/view/zodiac_signs/zodiac_signs_view.dart';
 import 'package:get/get.dart';
+
 import '../../view/login/view/login_view.dart';
+import '../../view/personal/personal_view.dart';
 import '../../view/splash/view/splash_view.dart';
+import '../../view/zodiac_signs/zodiac_signs_view.dart';
 
 part 'app_routes.dart';
 
@@ -39,19 +39,19 @@ class AppPages {
       //   },
       // ),
     ),
+    // GetPage(
+    //   name: _Paths.ZODIAC_DETAIL,
+    //   page: () => ZodiacDetailView(
+    //     zodiacModel: Get.arguments,
+    //   ),
+    //   // binding: BindingsBuilder(
+    //   //   () {
+    //   //     // Get.lazyPut<FortuneController>(() => FortuneController());
+    //   //   },
+    //   // ),
+    // ),
     GetPage(
-      name: _Paths.ZODIAC_DETAIL,
-      page: () => ZodiacDetailView(
-        zodiacModel: Get.arguments,
-      ),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
-      // ),
-    ),
-    GetPage(
-      name: _Paths.ZODIAC_SIGN, page: () => ZodiacSignsView(),
+      name: _Paths.ZODIAC_SIGN, page: () => const ZodiacSignsView(),
       // binding: BindingsBuilder(
       //   () {
       //     // Get.lazyPut<FortuneController>(() => FortuneController());
