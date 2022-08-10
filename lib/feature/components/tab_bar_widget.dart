@@ -64,40 +64,52 @@ class ExpandedItem extends StatelessWidget {
           onTap: () => onTap(),
           child: Obx(
             () {
-              return Column(
-                children: [
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    style: TextStyle(
-                      color: clickedNumber == tabControler.getIndex
-                          ? Colors.white
-                          : null,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 134, 20, 255),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: clickedNumber == tabControler.getIndex
+                            ? Colors.white
+                            : null,
                       ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(200)),
+                    ),
+                    SizedBox(height: 5),
+                    Container(
                       color: clickedNumber == tabControler.getIndex
                           ? const Color.fromARGB(255, 134, 20, 255)
                               .withOpacity(0.5)
                           : Colors.transparent,
+                      height: 10,
+                      width: 10,
                     ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: context.width(0.02),
-                      vertical: context.width(0.02),
-                    ),
-                    child: Icon(
-                      iconData,
-                      size: 30,
-                    ),
-                  ),
-                ],
+                    /*  Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 134, 20, 255),
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(200)),
+                        color: clickedNumber == tabControler.getIndex
+                            ? const Color.fromARGB(255, 134, 20, 255)
+                                .withOpacity(0.5)
+                            : Colors.transparent,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.width(0.02),
+                        vertical: context.width(0.02),
+                      ),
+                      child: Icon(
+                        iconData,
+                        size: 30,
+                      ),
+                    ), */
+                  ],
+                ),
               );
             },
           ),
