@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/view/personal/controller/tab_controller.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../core/extension/context_extension.dart';
@@ -134,7 +133,6 @@ class ExpandedItem2 extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border: Border(
-                
                 bottom: BorderSide(
                   width: context.width(0.004),
                   color: clickedNumber == tabBarController.getIndex
@@ -144,7 +142,6 @@ class ExpandedItem2 extends StatelessWidget {
               ),
             ),
             padding: EdgeInsets.symmetric(
-              
               vertical: context.width(0.006),
             ),
             child: Text(

@@ -7,7 +7,6 @@ class Data {
   static final instance = Data._();
 
   static final List<ZodiacModel> zodiacs = [
-    ZodiacModel(KFortune.yay, KAsset.yay),
     ZodiacModel(KFortune.aslan, KAsset.aslan),
     ZodiacModel(KFortune.akrep, KAsset.akrep),
     ZodiacModel(KFortune.ikizler, KAsset.ikizler),
@@ -19,5 +18,6 @@ class Data {
     ZodiacModel(KFortune.terazi, KAsset.terazi),
     ZodiacModel(KFortune.basak, KAsset.basak),
     ZodiacModel(KFortune.yengec, KAsset.yengec),
+    ZodiacModel(KFortune.yay, KAsset.yay),
   ];
 }

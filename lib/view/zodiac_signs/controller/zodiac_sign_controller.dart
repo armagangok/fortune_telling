@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';
@@ -13,19 +14,19 @@ class ZodiacSignController extends GetxController {
   static final ZodiacSignController instance = ZodiacSignController._();
   ZodiacSignController._();
 
-  @override
-  void onClose() {
-    cleanUp();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   cleanUp();
+  //   super.onClose();
+  // }
 
   final FortuneController _fortuneController = FortuneController.instance;
 
-  final Rx<String> choosenSign = Rx("Yay");
+  final Rx<String> choosenSign = Rx("Boğa");
   final Rx<DailyFortuneModel?> dailyFortune = Rx(null);
-  final Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
-  final Rx<DailyFortuneModel?> weaklyFortune = Rx(null);
-  final Rx<DailyFortuneModel?> yearlyFortune = Rx(null);
+  final Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
+  final Rx<WeeklyFortuneModel?> weaklyFortune = Rx(null);
+  final Rx<YearlyFortuneModel?> yearlyFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
@@ -45,6 +46,8 @@ class ZodiacSignController extends GetxController {
       time: KNetwork.weekly,
       responseType: WeeklyFortuneModel(),
     );
+
+
   }
 
   Future<void> getMonthlyFortune(String sign) async {
