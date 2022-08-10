@@ -30,6 +30,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           child: RotatedBox(
               quarterTurns: 1,
               child: CupertinoPicker(
+                selectionOverlay: const CupertinoPickerDefaultSelectionOverlay(
+                    background: Colors.transparent),
                 scrollController: FixedExtentScrollController(initialItem: 0),
                 useMagnifier: true,
                 magnification: 1.3,
