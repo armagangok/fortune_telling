@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/view/zodiac_signs/controller/zodiac_picker_controller.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/constants/network_constant.dart';
@@ -22,10 +24,13 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   Widget build(BuildContext context) {
     final TabBarController tabBarController =
         Get.put(TabBarController.instance);
+    final ZodiacPickerController zodiacPickerController =
+        Get.put(ZodiacPickerController.instance);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Obx(() =>
+              Text(Data.zodiacs[zodiacPickerController.getValue].zodiacName)),
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
@@ -48,9 +53,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                   offAxisFraction: 0.2,
                   itemExtent: context.width(0.2),
                   onSelectedItemChanged: (value) {
-                    setState(() {
-                      title = Data.zodiacs[value].zodiacName;
-                    });
+                    zodiacPickerController.setValue = value;
                   },
                   children:
                       Data.zodiacs.map((item) => signPicker(item)).toList(),
