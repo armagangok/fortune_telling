@@ -113,7 +113,7 @@ class ExpandedItem extends StatelessWidget {
 class ExpandedItem2 extends StatelessWidget {
   final int clickedNumber;
   final String text;
-  final TabBarController tabBarController;
+  final BaseTabControler tabBarController;
   final Function onTap;
   const ExpandedItem2({
     Key? key,

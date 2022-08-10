@@ -10,12 +10,8 @@ import '../../../feature/models/weekly_fortune_model.dart';
 import '../../../feature/models/yearly_fortune_model.dart';
 
 class ZodiacSignController extends GetxController {
-  static final ZodiacSignController _instance = ZodiacSignController._();
+  static final ZodiacSignController instance = ZodiacSignController._();
   ZodiacSignController._();
-  factory ZodiacSignController({String newSign = ""}) {
-    _instance.sign = newSign;
-    return _instance;
-  }
 
   @override
   void onClose() {
@@ -25,15 +21,14 @@ class ZodiacSignController extends GetxController {
 
   final FortuneController _fortuneController = FortuneController.instance;
 
-  String? sign;
-
-  Rx<DailyFortuneModel?> dailyFortune = Rx(null);
-  Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
-  Rx<DailyFortuneModel?> weaklyFortune = Rx(null);
-  Rx<DailyFortuneModel?> yearlyFortune = Rx(null);
-  Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
-  Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
-  Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
+  final Rx<String> choosenSign = Rx("Yay");
+  final Rx<DailyFortuneModel?> dailyFortune = Rx(null);
+  final Rx<DailyFortuneModel?> monthlyFortune = Rx(null);
+  final Rx<DailyFortuneModel?> weaklyFortune = Rx(null);
+  final Rx<DailyFortuneModel?> yearlyFortune = Rx(null);
+  final Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
+  final Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
+  final Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
   Future<void> getDailyFortune(String sign) async {
     dailyFortune.value = null;
@@ -53,7 +48,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getMonthlyFortune(String sign) async {
-    weaklyFortune.value = await _fortuneController.getFortune(
+    monthlyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: KNetwork.monthly,
       responseType: MonthlyFortuneModel(),

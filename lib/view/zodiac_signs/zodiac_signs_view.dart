@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/controllers/tab_controller.dart';
 import 'package:fortune_telling/view/zodiac_signs/controller/zodiac_picker_controller.dart';
+import 'package:fortune_telling/view/zodiac_signs/controller/zodiac_sign_controller.dart';
+import 'package:fortune_telling/view/zodiac_signs/controller/zodiac_tab_controller.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
@@ -22,15 +25,16 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   String title = "yay";
   @override
   Widget build(BuildContext context) {
-    final TabBarController tabBarController =
-        Get.put(TabBarController.instance);
+    final ZodiacTabController tabBarController =
+        Get.put(ZodiacTabController.instance);
     final ZodiacPickerController zodiacPickerController =
         Get.put(ZodiacPickerController.instance);
+    final ZodiacSignController zodiacSignController =
+        Get.put(ZodiacSignController.instance);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Obx(() =>
-              Text(Data.zodiacs[zodiacPickerController.getValue].zodiacName)),
+          title: Obx(() => Text(zodiacSignController.choosenSign.value)),
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
@@ -53,6 +57,9 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                   offAxisFraction: 0.2,
                   itemExtent: context.width(0.2),
                   onSelectedItemChanged: (value) {
+                    zodiacSignController.choosenSign.value =
+                        Data.zodiacs[value].zodiacName;
+                    ZodiacTabController.instance.setIndex = -1;
                     zodiacPickerController.setValue = value;
                   },
                   children:
@@ -60,7 +67,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 ),
               ),
             ),
-            buildTabBar(tabBarController),
+            buildTabBar(tabBarController, zodiacSignController,
+                Data.zodiacs[zodiacPickerController.getValue].zodiacName),
           ],
         ),
       ),
@@ -89,14 +97,16 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     );
   }
 
-  TabBarWidget buildTabBar(TabBarController tabBarController) {
+  TabBarWidget buildTabBar(ZodiacTabController tabBarController,
+      ZodiacSignController zodiacSignController, String sign) {
     return TabBarWidget(
       widgetList: [
         ExpandedItem2(
           text: "Günlük",
           clickedNumber: 0,
           tabBarController: tabBarController,
-          onTap: () {
+          onTap: () async {
+            await zodiacSignController.getDailyFortune(sign);
             tabBarController.setIndex = 0;
           },
         ),
@@ -104,7 +114,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           text: "Haftalık",
           clickedNumber: 1,
           tabBarController: tabBarController,
-          onTap: () {
+          onTap: () async {
+            await zodiacSignController.getWeeklyFortune(sign);
             tabBarController.setIndex = 1;
           },
         ),
@@ -112,7 +123,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           text: "Aylık",
           tabBarController: tabBarController,
           clickedNumber: 2,
-          onTap: () {
+          onTap: () async {
+            await zodiacSignController.getMonthlyFortune(sign);
             tabBarController.setIndex = 2;
           },
         ),
@@ -120,7 +132,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           text: "Yıllık",
           clickedNumber: 3,
           tabBarController: tabBarController,
-          onTap: () {
+          onTap: () async {
+            await zodiacSignController.getWeeklyFortune(sign);
             tabBarController.setIndex = 3;
           },
         ),
