@@ -32,13 +32,14 @@ class WeeklyFortuneModel extends BaseNetworkModel implements BaseFortuneModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
+    
     return WeeklyFortuneModel(
       burc: json['Burc'],
-      zaman: json['Zaman'] ?? "",
+      zaman: json['Zaman'],
       mottosu: json['Mottosu'],
       gezegeni: json['Gezegeni'],
       elementi: json['Elementi'],
-      fortune: json['GunlukYorum'],
+      fortune: json['Yorum'],
     );
   }
 }

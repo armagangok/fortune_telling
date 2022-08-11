@@ -14,25 +14,27 @@ class ZodiacSignController extends GetxController {
   static final ZodiacSignController instance = ZodiacSignController._();
   ZodiacSignController._();
 
-  // @override
-  // void onClose() {
-  //   cleanUp();
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    cleanUp();
+    super.onClose();
+  }
 
   final FortuneController _fortuneController = FortuneController.instance;
 
-  final Rx<String> choosenSign = Rx("Boğa");
+  final Rx<String> _choosenSign = Rx("Boğa");
   final Rx<DailyFortuneModel?> dailyFortune = Rx(null);
   final Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
-  final Rx<WeeklyFortuneModel?> weaklyFortune = Rx(null);
+  final Rx<WeeklyFortuneModel?> weeklyFortune = Rx(null);
   final Rx<YearlyFortuneModel?> yearlyFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
+  String get getChoosenSign => _choosenSign.value;
+  set setSign(String sign) => _choosenSign.value = sign;
+
   Future<void> getDailyFortune(String sign) async {
-    dailyFortune.value = null;
     dailyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: "",
@@ -41,13 +43,11 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getWeeklyFortune(String sign) async {
-    weaklyFortune.value = await _fortuneController.getFortune(
+    weeklyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: KNetwork.weekly,
       responseType: WeeklyFortuneModel(),
     );
-
-
   }
 
   Future<void> getMonthlyFortune(String sign) async {
@@ -93,7 +93,7 @@ class ZodiacSignController extends GetxController {
   void cleanUp() {
     dailyFortune.value = null;
     monthlyFortune.value = null;
-    weaklyFortune.value = null;
+    weeklyFortune.value = null;
     yearlyFortune.value = null;
     loveFortune.value = null;
     healthFortune.value = null;

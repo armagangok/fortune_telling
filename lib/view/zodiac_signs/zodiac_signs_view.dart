@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -8,6 +9,7 @@ import '../../core/extension/context_extension.dart';
 import '../../feature/components/tab_bar_widget.dart';
 import '../../feature/data/data.dart';
 import '../../feature/models/zodiac_model.dart';
+import 'components/fortune_widget.dart';
 import 'controller/zodiac_picker_controller.dart';
 import 'controller/zodiac_sign_controller.dart';
 import 'controller/zodiac_tab_controller.dart';
@@ -52,24 +54,9 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                   physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    Obx(() => Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(CupertinoIcons.dot_square),
-                            zodiacSignController.dailyFortune.value != null
-                                ? Text(zodiacSignController
-                                    .dailyFortune.value!.elementi!)
-                                :  skeleton15Line(),
-                            SizedBox(width: context.width(0.025)),
-                            const Icon(CupertinoIcons.dot_square),
-                            zodiacSignController.dailyFortune.value != null
-                                ? Text(zodiacSignController
-                                    .dailyFortune.value!.gezegeni!)
-                                : skeleton15Line(),
-                          ],
-                        )),
-                    function(),
+                    Obx(
+                      () => fortunes(),
+                    ),
                   ],
                 ),
               ),
@@ -80,10 +67,10 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     );
   }
 
-  Widget skeleton15Line() {
+  Widget get skeleton15Line {
     return Builder(builder: (context) {
       return SizedBox(
-        width: context.width(0.094),
+        width: context.width(0.3),
         child: const SkeletonLine(),
       );
     });
@@ -101,8 +88,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
         offAxisFraction: 0.1,
         itemExtent: context.width(0.18),
         onSelectedItemChanged: (value) {
-          zodiacSignController.choosenSign.value =
-              Data.zodiacs[value].zodiacName;
+          zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
           ZodiacTabController.instance.setIndex = -1;
           zodiacPickerController.setValue = value;
         },
@@ -111,28 +97,60 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     });
   }
 
-  Widget function() {
+  Widget fortunes() {
     switch (tabBarController.getIndex) {
       case 0:
-        return const Text("data");
+        return zodiacSignController.dailyFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.dailyFortune.value!.fortune!,
+                motto: zodiacSignController.dailyFortune.value!.mottosu!,
+                element: zodiacSignController.dailyFortune.value!.elementi!,
+                planet: zodiacSignController.dailyFortune.value!.gezegeni!,
+              )
+            : const Text("Burç verileri getiriliyor...");
 
       case 1:
-        return const Text("data");
+        return zodiacSignController.weeklyFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.weeklyFortune.value!.fortune!,
+                motto: zodiacSignController.weeklyFortune.value!.mottosu!,
+                element: zodiacSignController.weeklyFortune.value!.elementi!,
+                planet: zodiacSignController.weeklyFortune.value!.gezegeni!,
+              )
+            : const Text("Burç verileri getiriliyor...");
 
       case 2:
-        return const Text("data");
+        return zodiacSignController.monthlyFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.monthlyFortune.value!.fortune!,
+                motto: zodiacSignController.monthlyFortune.value!.mottosu!,
+                element: zodiacSignController.monthlyFortune.value!.elementi!,
+                planet: zodiacSignController.monthlyFortune.value!.gezegeni!,
+              )
+            : const Text("Burç verileri getiriliyor...");
 
       case 3:
-        return const Text("data");
+        return zodiacSignController.yearlyFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.yearlyFortune.value!.fortune!,
+                motto: zodiacSignController.yearlyFortune.value!.mottosu!,
+                element: zodiacSignController.yearlyFortune.value!.elementi!,
+                planet: zodiacSignController.yearlyFortune.value!.gezegeni!,
+              )
+            : const Text("Burç verileri getiriliyor...");
 
       default:
-        return const Text("data");
+        return const Center(
+            child: AutoSizeText(
+          "Sonuçları görmek için lütfen zaman dilimi seçiniz.",
+          maxLines: 1,
+        ));
     }
   }
 
   AppBar appBar() {
     return AppBar(
-      title: Obx(() => Text(zodiacSignController.choosenSign.value)),
+      title: Obx(() => Text(zodiacSignController.getChoosenSign)),
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
@@ -162,8 +180,6 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   }
 
   TabBarWidget buildTabBar() {
-    final String sign = zodiacSignController.choosenSign.value;
-
     return TabBarWidget(
       widgetList: [
         ExpandedItem2(
@@ -172,7 +188,9 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           tabBarController: tabBarController,
           onTap: () async {
             tabBarController.setIndex = 0;
-            await zodiacSignController.getDailyFortune(sign);
+
+            await zodiacSignController
+                .getDailyFortune(zodiacSignController.getChoosenSign);
           },
         ),
         ExpandedItem2(
@@ -181,7 +199,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           tabBarController: tabBarController,
           onTap: () async {
             tabBarController.setIndex = 1;
-            await zodiacSignController.getWeeklyFortune(sign);
+            await zodiacSignController
+                .getWeeklyFortune(zodiacSignController.getChoosenSign);
           },
         ),
         ExpandedItem2(
@@ -190,7 +209,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           clickedNumber: 2,
           onTap: () async {
             tabBarController.setIndex = 2;
-            await zodiacSignController.getMonthlyFortune(sign);
+            await zodiacSignController
+                .getMonthlyFortune(zodiacSignController.getChoosenSign);
           },
         ),
         ExpandedItem2(
@@ -199,7 +219,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           tabBarController: tabBarController,
           onTap: () async {
             tabBarController.setIndex = 3;
-            await zodiacSignController.getWeeklyFortune(sign);
+            await zodiacSignController
+                .getYearlyFortune(zodiacSignController.getChoosenSign);
           },
         ),
       ],
