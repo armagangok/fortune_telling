@@ -1,6 +1,5 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/database/local/my_storage.dart';
 import 'package:fortune_telling/view/find/controller/find_zodiac_controller.dart';
 import 'package:fortune_telling/view/login/controller/zodiac_controller.dart';
 import 'package:get/get.dart';
@@ -10,15 +9,12 @@ class FindZodiacView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ZodiacController zodiacController =
-        Get.put(ZodiacController.instance);
     final FindZodiacController findZodiacController =
         Get.put(FindZodiacController.instance);
-    RxString _val = "".obs;
-    RxString _val1 = "".obs;
+
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -36,15 +32,18 @@ class FindZodiacView extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    _val.value = ZodiacController.instance.getZodicaSign(
-                        DateTime.parse(findZodiacController.getBirthday));
-                    _val1.value = ZodiacController.instance
-                        .getZodiacSignImagePath(_val.value);
+                    findZodiacController.val.value = ZodiacController.instance
+                        .getZodicaSign(
+                            DateTime.parse(findZodiacController.getBirthday));
+                    findZodiacController.val1.value = ZodiacController.instance
+                        .getZodiacSignImagePath(findZodiacController.val.value);
                   },
-                  child: Text("Burcumu Bul")),
-              SizedBox(height: 10),
-              Obx(() => Text(_val.value)),
-              Obx(() => _val1.value != "" ? Image.asset(_val1.value) : Center())
+                  child: const Text("Burcumu Bul")),
+              const SizedBox(height: 10),
+              Obx(() => Text(findZodiacController.val.value)),
+              Obx(() => findZodiacController.val1.value != ""
+                  ? Image.asset(findZodiacController.val1.value)
+                  : const Center())
             ]),
       ),
     );
