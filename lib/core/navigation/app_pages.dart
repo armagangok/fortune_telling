@@ -1,3 +1,4 @@
+import 'package:fortune_telling/view/home/home_view.dart';
 import 'package:get/get.dart';
 
 import '../../view/login/view/login_view.dart';
@@ -9,7 +10,7 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  static const initial = Routes.SPLASH;
+  static const initial = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -21,6 +22,17 @@ class AppPages {
       //   },
       // ),
     ),
+
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      // binding: BindingsBuilder(
+      //   () {
+      //     Get.lazyPut<SplashController>(() => SplashController());
+      //   },
+      // ),
+    ),
+
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),

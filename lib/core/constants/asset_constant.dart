@@ -14,4 +14,5 @@ class KAsset {
   static const akrep = "assets/zodiac_icons/Scorpio.png";
   static const boga = "assets/zodiac_icons/Taurus.png";
   static const basak = "assets/zodiac_icons/Virgo.png";
+  static const planet = "assets/planet.png";
 }
