@@ -1,3 +1,4 @@
+import 'package:fortune_telling/view/find/view/find_zodiac_view.dart';
 import 'package:fortune_telling/view/home/home_view.dart';
 import 'package:get/get.dart';
 
@@ -45,6 +46,15 @@ class AppPages {
     GetPage(
       name: _Paths.PERSONAL,
       page: () => PersonalView(),
+      // binding: BindingsBuilder(
+      //   () {
+      //     // Get.lazyPut<FortuneController>(() => FortuneController());
+      //   },
+      // ),
+    ),
+    GetPage(
+      name: _Paths.FIND,
+      page: () => FindZodiacView(),
       // binding: BindingsBuilder(
       //   () {
       //     // Get.lazyPut<FortuneController>(() => FortuneController());

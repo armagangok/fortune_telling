@@ -23,20 +23,20 @@ class PersonalView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: _drawer,
         body: Container(
           decoration: decoration,
           child: Obx(
             () => _personalController.dailyFortune.value != null
                 ? ListView(
                     padding: context.symmetric(
-                      horizontal: 0.03,
+                      horizontal: 0.07,
                       vertical: 0.025,
                     ),
                     children: [
                       appBar,
                       userNametext,
-                      heigth015,
+                      heigth025,
+                      heigth025,
                       zoidacImage,
                       zodiacSignText,
                       heigth025,
@@ -74,7 +74,7 @@ class PersonalView extends StatelessWidget {
         ],
       );
 
-  Drawer get _drawer => Drawer(
+  /*  Drawer get _drawer => Drawer(
         child: Column(
           children: [
             TextButton(
@@ -89,7 +89,7 @@ class PersonalView extends StatelessWidget {
             ),
           ],
         ),
-      );
+      ); */
 
   Widget get loadingWidget => const Center(
         child: Text(
@@ -159,9 +159,9 @@ class PersonalView extends StatelessWidget {
   Widget get userNametext => Builder(
         builder: (context) {
           return AutoSizeText(
-            "Merhaba ${_personalController.userName.value!} senin için çok özel bir burç yorumu hazırladık!",
+            "Merhaba ${_personalController.userName.value!.toUpperCase()} senin için çok özel bir burç yorumu hazırladık!",
             style: context.textTheme.bodyMedium,
-            maxLines: 2,
+            maxLines: 1,
           );
         },
       );
@@ -211,7 +211,7 @@ class PersonalView extends StatelessWidget {
         ExpandedItem(
           text: "Sağlık",
           clickedNumber: 2,
-          iconData: CupertinoIcons.scissors,
+          iconData: Icons.monitor_heart_outlined,
           tabControler: _tabBarController,
           onTap: () => _tabBarController.setIndex = 2,
         ),

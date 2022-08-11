@@ -9,6 +9,6 @@ class FindZodiacController extends GetxController {
   String get getBirthday => birtthDay.string;
   set setBirthdayValue(String value) => birtthDay.value = value;
 
-      RxString val = "".obs;
+    RxString val = "".obs;
     RxString val1 = "".obs;
 }

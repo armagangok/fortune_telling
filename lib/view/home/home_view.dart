@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:fortune_telling/core/extension/context_extension.dart';
+import 'package:fortune_telling/core/navigation/app_pages.dart';
+import 'package:get/route_manager.dart';
 import '../../core/constants/asset_constant.dart';
-import '../../core/extension/context_extension.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -32,15 +33,21 @@ class HomeView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.PERSONAL);
+                          },
                           child: text("Bana Özel"),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.FIND);
+                          },
                           child: text("Burcumu Bul"),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.ZODIAC_SIGN);
+                          },
                           child: text("Tüm Burçlar"),
                         ),
                       ],
