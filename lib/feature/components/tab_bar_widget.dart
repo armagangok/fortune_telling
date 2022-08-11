@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import '../../core/constants/app_color.dart';
 import '../../core/extension/context_extension.dart';
 import '../controllers/tab_controller.dart';
 
@@ -127,16 +128,14 @@ class ExpandedItem2 extends StatelessWidget {
       () => GestureDetector(
         onTap: () => onTap(),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.width(0.01),
-          ),
+          padding: EdgeInsets.symmetric(horizontal: context.width(0.02)),
           child: Container(
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  width: context.width(0.004),
+                  width: context.width(0.005),
                   color: clickedNumber == tabBarController.getIndex
-                      ? Colors.white
+                      ? AppColor.purple
                       : Colors.transparent,
                 ),
               ),

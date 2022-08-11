@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
-import 'package:skeletons/skeletons.dart';
 
 import '../../core/extension/context_extension.dart';
 import '../../feature/components/tab_bar_widget.dart';
@@ -67,15 +66,6 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     );
   }
 
-  Widget get skeleton15Line {
-    return Builder(builder: (context) {
-      return SizedBox(
-        width: context.width(0.3),
-        child: const SkeletonLine(),
-      );
-    });
-  }
-
   Widget buildCupertinoPicker() {
     return Builder(builder: (context) {
       return CupertinoPicker(
@@ -102,40 +92,80 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
       case 0:
         return zodiacSignController.dailyFortune.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.dailyFortune.value!.fortune!,
-                motto: zodiacSignController.dailyFortune.value!.mottosu!,
-                element: zodiacSignController.dailyFortune.value!.elementi!,
-                planet: zodiacSignController.dailyFortune.value!.gezegeni!,
+                fortune: zodiacSignController.dailyFortune.value!.fortune ?? "",
+                motto: zodiacSignController.dailyFortune.value!.mottosu ?? "",
+                element:
+                    zodiacSignController.dailyFortune.value!.elementi ?? "",
+                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
               )
             : const Text("Burç verileri getiriliyor...");
 
       case 1:
         return zodiacSignController.weeklyFortune.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.weeklyFortune.value!.fortune!,
-                motto: zodiacSignController.weeklyFortune.value!.mottosu!,
-                element: zodiacSignController.weeklyFortune.value!.elementi!,
-                planet: zodiacSignController.weeklyFortune.value!.gezegeni!,
+                fortune:
+                    zodiacSignController.weeklyFortune.value!.fortune ?? "",
+                motto: zodiacSignController.weeklyFortune.value!.mottosu ?? "",
+                element:
+                    zodiacSignController.weeklyFortune.value!.elementi ?? "",
+                planet:
+                    zodiacSignController.weeklyFortune.value!.gezegeni ?? "",
               )
             : const Text("Burç verileri getiriliyor...");
 
       case 2:
         return zodiacSignController.monthlyFortune.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.monthlyFortune.value!.fortune!,
-                motto: zodiacSignController.monthlyFortune.value!.mottosu!,
-                element: zodiacSignController.monthlyFortune.value!.elementi!,
-                planet: zodiacSignController.monthlyFortune.value!.gezegeni!,
+                fortune:
+                    zodiacSignController.monthlyFortune.value!.fortune ?? "",
+                motto: zodiacSignController.monthlyFortune.value!.mottosu ?? "",
+                element:
+                    zodiacSignController.monthlyFortune.value!.elementi ?? "",
+                planet:
+                    zodiacSignController.monthlyFortune.value!.gezegeni ?? "",
               )
             : const Text("Burç verileri getiriliyor...");
 
       case 3:
         return zodiacSignController.yearlyFortune.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.yearlyFortune.value!.fortune!,
-                motto: zodiacSignController.yearlyFortune.value!.mottosu!,
-                element: zodiacSignController.yearlyFortune.value!.elementi!,
-                planet: zodiacSignController.yearlyFortune.value!.gezegeni!,
+                fortune:
+                    zodiacSignController.yearlyFortune.value!.fortune ?? "",
+                motto: zodiacSignController.yearlyFortune.value!.mottosu ?? "",
+                element:
+                    zodiacSignController.yearlyFortune.value!.elementi ?? "",
+                planet:
+                    zodiacSignController.yearlyFortune.value!.gezegeni ?? "",
+              )
+            : const Text("Burç verileri getiriliyor...");
+      case 4:
+        return zodiacSignController.loveFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.loveFortune.value!.yorum ?? "",
+                motto: zodiacSignController.loveFortune.value!.baslik ?? "",
+                element:
+                    zodiacSignController.dailyFortune.value!.elementi ?? "",
+                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+              )
+            : const Text("Burç verileri getiriliyor...");
+      case 5:
+        return zodiacSignController.careerFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.careerFortune.value!.yorum ?? "",
+                motto: zodiacSignController.careerFortune.value!.baslik ?? "",
+                element:
+                    zodiacSignController.dailyFortune.value!.elementi ?? "",
+                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+              )
+            : const Text("Burç verileri getiriliyor...");
+      case 6:
+        return zodiacSignController.healthFortune.value != null
+            ? FortuneWidget(
+                fortune: zodiacSignController.healthFortune.value!.yorum ?? "",
+                motto: zodiacSignController.healthFortune.value!.baslik ?? "",
+                element:
+                    zodiacSignController.dailyFortune.value!.elementi ?? "",
+                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
               )
             : const Text("Burç verileri getiriliyor...");
 
@@ -221,6 +251,36 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             tabBarController.setIndex = 3;
             await zodiacSignController
                 .getYearlyFortune(zodiacSignController.getChoosenSign);
+          },
+        ),
+        ExpandedItem2(
+          text: "Aşk",
+          clickedNumber: 4,
+          tabBarController: tabBarController,
+          onTap: () async {
+            tabBarController.setIndex = 4;
+            await zodiacSignController
+                .getLoveFortune(zodiacSignController.getChoosenSign);
+          },
+        ),
+        ExpandedItem2(
+          text: "Kariyer",
+          clickedNumber: 5,
+          tabBarController: tabBarController,
+          onTap: () async {
+            tabBarController.setIndex = 5;
+            await zodiacSignController
+                .getCareerFortune(zodiacSignController.getChoosenSign);
+          },
+        ),
+        ExpandedItem2(
+          text: "Sağlık",
+          clickedNumber: 6,
+          tabBarController: tabBarController,
+          onTap: () async {
+            tabBarController.setIndex = 6;
+            await zodiacSignController
+                .getHealthFortune(zodiacSignController.getChoosenSign);
           },
         ),
       ],

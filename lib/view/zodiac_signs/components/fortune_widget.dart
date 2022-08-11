@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fortune_telling/core/constants/app_color.dart';
+import 'package:fortune_telling/core/extension/context_extension.dart';
 
 class FortuneWidget extends StatelessWidget {
   final String fortune;
@@ -19,14 +21,45 @@ class FortuneWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            planetText,
-            elementText,
-          ],
+        Padding(
+          padding: EdgeInsets.only(bottom: context.height(0.02)),
+          child: Row(
+            children: [
+              planetText,
+              SizedBox(width: context.width(0.025)),
+              elementText,
+            ],
+          ),
         ),
-        Text(motto),
-        Text(fortune),
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "Motto: ",
+                style: context.textTheme.bodyMedium!.copyWith(
+                  color: AppColor.purple,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              TextSpan(text: motto),
+            ],
+          ),
+        ),
+        SizedBox(height: context.height(0.01)),
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: "Yorum: ",
+                style: context.textTheme.bodyMedium!.copyWith(
+                  color: AppColor.purple,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              TextSpan(text: fortune),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -34,7 +67,10 @@ class FortuneWidget extends StatelessWidget {
   Row get planetText {
     return Row(
       children: [
-        const Icon(CupertinoIcons.dot_square),
+        const Icon(
+          CupertinoIcons.globe,
+          color: AppColor.purple,
+        ),
         Text(planet),
       ],
     );
@@ -43,7 +79,10 @@ class FortuneWidget extends StatelessWidget {
   Row get elementText {
     return Row(
       children: [
-        const Icon(CupertinoIcons.dot_square),
+        const Icon(
+          CupertinoIcons.suit_diamond_fill,
+          color: AppColor.purple,
+        ),
         Text(element),
       ],
     );

@@ -35,6 +35,7 @@ class ZodiacSignController extends GetxController {
   set setSign(String sign) => _choosenSign.value = sign;
 
   Future<void> getDailyFortune(String sign) async {
+    dailyFortune.value = null;
     dailyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: "",
@@ -43,6 +44,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getWeeklyFortune(String sign) async {
+    weeklyFortune.value = null;
     weeklyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: KNetwork.weekly,
@@ -51,6 +53,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getMonthlyFortune(String sign) async {
+    monthlyFortune.value = null;
     monthlyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: KNetwork.monthly,
@@ -59,6 +62,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getYearlyFortune(String sign) async {
+    yearlyFortune.value = null;
     yearlyFortune.value = await _fortuneController.getFortune(
       sign: sign,
       time: KNetwork.yearly,
@@ -67,6 +71,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getLoveFortune(String sign) async {
+    loveFortune.value = null;
     loveFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
@@ -75,6 +80,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getHealthFortune(String sign) async {
+    healthFortune.value = null;
     healthFortune.value = await _fortuneController.getFortuneFeature(
       responseType: LoveFortuneModel(),
       sign: sign,
@@ -83,6 +89,7 @@ class ZodiacSignController extends GetxController {
   }
 
   Future<void> getCareerFortune(String sign) async {
+    careerFortune.value = null;
     careerFortune.value = await _fortuneController.getFortuneFeature(
       responseType: CareerFortuneModel(),
       sign: sign,
