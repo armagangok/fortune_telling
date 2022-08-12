@@ -68,18 +68,18 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   Widget get buildCupertinoPicker {
     return Builder(builder: (context) {
       return SizedBox(
-        height: context.height(0.12),
+        height: context.height(0.13),
         child: RotatedBox(
           quarterTurns: 1,
           child: CupertinoPicker(
+            diameterRatio: 2,
             selectionOverlay: const CupertinoPickerDefaultSelectionOverlay(
               background: Colors.transparent,
             ),
             scrollController: FixedExtentScrollController(initialItem: 3),
             useMagnifier: true,
-            magnification: 1.5,
-            // offAxisFraction: 0.3,
-            itemExtent: context.width(0.18),
+            magnification: 1,
+            itemExtent: context.width(0.27),
             onSelectedItemChanged: (value) {
               zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
               ZodiacTabController.instance.setIndex = -1;

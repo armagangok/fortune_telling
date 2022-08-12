@@ -39,7 +39,7 @@ class ZodiacController {
     }
   }
 
-  String getZodiacSignImagePath(String zodiacSign) {
+  String getSignImagePath(String zodiacSign) {
     switch (zodiacSign) {
       case "Yay":
         return KAsset.yay;
