@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(flex: 2),
-              Image.asset(KAsset.planet),
+              Image.asset(KAsset.saturn, scale: 5),
               Card(
                 color: Colors.grey.withOpacity(0.2),
                 shape: shape(),
