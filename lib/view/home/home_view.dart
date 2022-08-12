@@ -27,21 +27,15 @@ class HomeView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomElevetedButton(
-                        onTap: () {
-                          Get.toNamed(Routes.PERSONAL);
-                        },
+                        onTap: () => Get.toNamed(Routes.PERSONAL),
                         text: "Bana Özel"),
                     SizedBox(height: context.height(0.025)),
                     CustomElevetedButton(
-                        onTap: () {
-                          Get.toNamed(Routes.FIND);
-                        },
+                        onTap: () => Get.toNamed(Routes.FIND),
                         text: "Burcumu Bul"),
                     SizedBox(height: context.height(0.025)),
                     CustomElevetedButton(
-                        onTap: () {
-                          Get.toNamed(Routes.ZODIAC_SIGN);
-                        },
+                        onTap: () => Get.toNamed(Routes.ZODIAC_SIGN),
                         text: "Tüm Burçlar"),
                     const Spacer(),
                   ],

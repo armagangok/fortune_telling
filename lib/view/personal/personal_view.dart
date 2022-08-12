@@ -34,12 +34,13 @@ class PersonalView extends StatelessWidget {
                   children: [
                     userNametext,
                     heigth025,
-                    heigth025,
                     zoidacImage,
                     zodiacSignText,
                     heigth025,
                     Center(
-                      child: TabBarWidget(widgetList: widgetList),
+                      child: TabBarWidget(
+                        widgetList: widgetList,
+                      ),
                     ),
                     heigth015,
                     fortunes,
@@ -66,6 +67,11 @@ class PersonalView extends StatelessWidget {
           _tabBarController.getIndex == 2
               ? cardWidget(
                   _personalController.healthFortune.value?.yorum ?? "",
+                )
+              : const Center(),
+          _tabBarController.getIndex == 3
+              ? cardWidget(
+                  _personalController.careerFortune.value?.yorum ?? "",
                 )
               : const Center(),
         ],
@@ -186,6 +192,13 @@ class PersonalView extends StatelessWidget {
           iconData: Icons.monitor_heart_outlined,
           tabControler: _tabBarController,
           onTap: () => _tabBarController.setIndex = 2,
+        ),
+        ExpandedItem(
+          text: "Kariyer",
+          clickedNumber: 3,
+          iconData: CupertinoIcons.money_dollar,
+          tabControler: _tabBarController,
+          onTap: () => _tabBarController.setIndex = 3,
         ),
       ];
 }
