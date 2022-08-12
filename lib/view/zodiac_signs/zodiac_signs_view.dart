@@ -41,9 +41,9 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             padding: context.symmetric(horizontal: 0.025, vertical: 0.025),
             child: Column(
               children: [
-                appBar(),
-                buildCupertinoPicker(),
-                buildTabBar(),
+                appBar,
+                buildCupertinoPicker,
+                buildTabBar,
                 SizedBox(height: context.height(0.025)),
                 SizedBox(
                   height: context.height(0.6),
@@ -52,7 +52,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                     shrinkWrap: true,
                     children: [
                       Obx(
-                        () => fortunes(),
+                        () => fortunes,
                       ),
                     ],
                   ),
@@ -65,7 +65,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     );
   }
 
-  Widget buildCupertinoPicker() {
+  Widget get buildCupertinoPicker {
     return Builder(builder: (context) {
       return SizedBox(
         height: context.height(0.12),
@@ -92,7 +92,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     });
   }
 
-  Widget fortunes() {
+  Widget get fortunes {
     switch (tabBarController.getIndex) {
       case 0:
         return zodiacSignController.dailyFortune.value != null
@@ -183,7 +183,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     }
   }
 
-  AppBar appBar() {
+  AppBar get appBar {
     return AppBar(
       title: Obx(() => Text(zodiacSignController.getChoosenSign)),
       backgroundColor: Colors.transparent,
@@ -214,7 +214,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     );
   }
 
-  TabBarWidget buildTabBar() {
+  TabBarWidget get buildTabBar {
     return TabBarWidget(
       widgetList: [
         ExpandedItem2(
