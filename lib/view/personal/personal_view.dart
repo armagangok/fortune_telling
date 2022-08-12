@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/padding/project_padding.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
@@ -26,10 +27,7 @@ class PersonalView extends StatelessWidget {
           child: Obx(
             () => _personalController.dailyFortune.value != null
                 ? ListView(
-                    padding: context.symmetric(
-                      horizontal: 0.07,
-                      vertical: 0.025,
-                    ),
+                    padding: const ListviewPadding.all(),
                     children: [
                       appBar,
                       userNametext,
@@ -56,17 +54,17 @@ class PersonalView extends StatelessWidget {
         children: [
           _tabBarController.getIndex == 0
               ? cardWidget(
-                  _personalController.dailyFortune.value!.fortune,
+                  _personalController.dailyFortune.value!.fortune ?? "",
                 )
               : const Center(),
           _tabBarController.getIndex == 1
               ? cardWidget(
-                  _personalController.loveFortune.value!.yorum!,
+                  _personalController.loveFortune.value!.yorum ?? "",
                 )
               : const Center(),
           _tabBarController.getIndex == 2
               ? cardWidget(
-                  _personalController.healthFortune.value!.yorum!,
+                  _personalController.healthFortune.value!.yorum ?? "",
                 )
               : const Center(),
         ],
@@ -111,7 +109,7 @@ class PersonalView extends StatelessWidget {
       return Card(
         color: const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
         child: Padding(
-          padding: context.all(0.04),
+          padding: const NormalPadding.all(),
           child: Text(
             text,
           ),

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/padding/project_padding.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
@@ -38,7 +39,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
               image: DecorationImage(
                   image: AssetImage(KAsset.backgroundImage), fit: BoxFit.fill)),
           child: Padding(
-            padding: context.symmetric(horizontal: 0.025, vertical: 0.025),
+            padding: const ZodiacSignPadding.all(),
             child: Column(
               children: [
                 appBar,

@@ -31,8 +31,7 @@ class LoginView extends StatelessWidget {
                   controller: textController.usernameController,
                   decoration:
                       const InputDecoration(hintText: "İsminizi Giriniz")),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               DateTimePicker(
                 initialValue: '',
                 firstDate: DateTime(1960),

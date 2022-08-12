@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/padding/project_padding.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 
@@ -24,7 +25,7 @@ class FindZodiacView extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(context.width(0.05)),
+        padding: const HighPadding.all(),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: appbar(),
