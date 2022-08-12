@@ -6,6 +6,11 @@ class ZodiacTabController extends GetxController with BaseTabControler {
   static final instance = ZodiacTabController._();
 
   @override
+  void onClose() {
+    setIndex = -1;
+    super.onClose();
+  }
+
   final RxInt _currentIndex = RxInt(-1);
 
   @override

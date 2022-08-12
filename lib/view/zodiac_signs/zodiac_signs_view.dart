@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
+import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
 import '../../feature/components/tab_bar_widget.dart';
 import '../../feature/data/data.dart';
@@ -32,34 +33,32 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(),
-        body: Padding(
-          padding: context.symmetric(horizontal: 0.025),
-          child: Column(
-            children: [
-              SizedBox(
-                width: context.width(1),
-                height: context.height(0.16),
-                child: RotatedBox(
-                  quarterTurns: 1,
-                  child: buildCupertinoPicker(),
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(KAsset.backgroundImage), fit: BoxFit.fill)),
+          child: Padding(
+            padding: context.symmetric(horizontal: 0.025, vertical: 0.025),
+            child: Column(
+              children: [
+                appBar(),
+                buildCupertinoPicker(),
+                buildTabBar(),
+                SizedBox(height: context.height(0.025)),
+                SizedBox(
+                  height: context.height(0.6),
+                  child: ListView(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    children: [
+                      Obx(
+                        () => fortunes(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              buildTabBar(),
-              SizedBox(height: context.height(0.025)),
-              SizedBox(
-                height: context.height(0.63),
-                child: ListView(
-                  physics: const ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [
-                    Obx(
-                      () => fortunes(),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -68,21 +67,27 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
 
   Widget buildCupertinoPicker() {
     return Builder(builder: (context) {
-      return CupertinoPicker(
-        selectionOverlay: const CupertinoPickerDefaultSelectionOverlay(
-          background: Colors.transparent,
+      return SizedBox(
+        height: context.height(0.12),
+        child: RotatedBox(
+          quarterTurns: 1,
+          child: CupertinoPicker(
+            selectionOverlay: const CupertinoPickerDefaultSelectionOverlay(
+              background: Colors.transparent,
+            ),
+            scrollController: FixedExtentScrollController(initialItem: 3),
+            useMagnifier: true,
+            magnification: 1.5,
+            // offAxisFraction: 0.3,
+            itemExtent: context.width(0.18),
+            onSelectedItemChanged: (value) {
+              zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
+              ZodiacTabController.instance.setIndex = -1;
+              zodiacPickerController.setValue = value;
+            },
+            children: Data.zodiacs.map((item) => signPicker(item)).toList(),
+          ),
         ),
-        scrollController: FixedExtentScrollController(initialItem: 3),
-        useMagnifier: true,
-        magnification: 1.2,
-        offAxisFraction: 0.1,
-        itemExtent: context.width(0.18),
-        onSelectedItemChanged: (value) {
-          zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
-          ZodiacTabController.instance.setIndex = -1;
-          zodiacPickerController.setValue = value;
-        },
-        children: Data.zodiacs.map((item) => signPicker(item)).toList(),
       );
     });
   }
