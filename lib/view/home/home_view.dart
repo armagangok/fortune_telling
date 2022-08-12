@@ -20,39 +20,41 @@ class HomeView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(flex: 2),
+              const Spacer(flex: 3),
               Image.asset(KAsset.saturn, scale: 5),
-              Card(
-                color: Colors.grey.withOpacity(0.2),
-                shape: shape(),
-                child: SizedBox(
-                  height: context.height(0.4),
-                  child: Padding(
-                    padding: padding(context),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.PERSONAL);
-                          },
-                          child: text("Bana Özel"),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.FIND);
-                          },
-                          child: text("Burcumu Bul"),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.ZODIAC_SIGN);
-                          },
-                          child: text("Tüm Burçlar"),
-                        ),
-                      ],
+              SizedBox(
+                height: context.height(0.4),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _container(
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.PERSONAL);
+                        },
+                        child: text("Bana Özel"),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: context.height(0.025)),
+                    _container(
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.FIND);
+                        },
+                        child: text("Burcumu Bul"),
+                      ),
+                    ),
+                    SizedBox(height: context.height(0.025)),
+                    _container(
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.ZODIAC_SIGN);
+                        },
+                        child: text("Tüm Burçlar"),
+                      ),
+                    ),
+                    Spacer(),
+                  ],
                 ),
               ),
               const Spacer(flex: 3)
@@ -61,6 +63,19 @@ class HomeView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _container(TextButton textButton) {
+    return Builder(builder: (context) {
+      return Container(
+        decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(30)),
+        height: context.height(0.1),
+        width: context.width(0.65),
+        child: textButton,
+      );
+    });
   }
 
   EdgeInsets padding(BuildContext context) {
