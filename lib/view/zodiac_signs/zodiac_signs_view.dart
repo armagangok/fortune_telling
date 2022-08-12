@@ -1,12 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/padding/project_padding.dart';
+import 'package:fortune_telling/feature/components/custom_appbar.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
-import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
+import '../../core/padding/project_padding.dart';
+import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
 import '../../feature/data/data.dart';
 import '../../feature/models/zodiac_model.dart';
@@ -32,33 +33,34 @@ final ZodiacSignController zodiacSignController =
 class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Container(
+      decoration: CustomDecoration.scaffoldDecoration,
       child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(KAsset.backgroundImage), fit: BoxFit.fill)),
-          child: Padding(
-            padding: const ZodiacSignPadding.all(),
-            child: Column(
-              children: [
-                appBar,
-                buildCupertinoPicker,
-                buildTabBar,
-                SizedBox(height: context.height(0.025)),
-                Expanded(
-                  child: ListView(
-                    physics: const ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    children: [
-                      Obx(
-                        () => fortunes,
-                      ),
-                    ],
-                  ),
+        backgroundColor: Colors.transparent,
+        appBar: CustomAppBar(
+          textWidget: Obx(
+            () => Text(zodiacSignController.getChoosenSign),
+          ),
+        ),
+        body: Padding(
+          padding: const ZodiacSignPadding.all(),
+          child: Column(
+            children: [
+              buildCupertinoPicker,
+              buildTabBar,
+              SizedBox(height: context.height(0.025)),
+              Expanded(
+                child: ListView(
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  children: [
+                    Obx(
+                      () => fortunes,
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -183,14 +185,14 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     }
   }
 
-  AppBar get appBar {
-    return AppBar(
-      title: Obx(() => Text(zodiacSignController.getChoosenSign)),
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      centerTitle: true,
-    );
-  }
+  // AppBar get appBar {
+  //   return AppBar(
+  //     title: Obx(() => Text(zodiacSignController.getChoosenSign)),
+  //     backgroundColor: Colors.transparent,
+  //     elevation: 0,
+  //     centerTitle: true,
+  //   );
+  // }
 
   Center signPicker(ZodiacModel item) {
     return Center(

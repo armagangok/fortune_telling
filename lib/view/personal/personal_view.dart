@@ -1,12 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/padding/project_padding.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
+import '../../core/padding/project_padding.dart';
+import '../../feature/components/custom_appbar.dart';
+import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
 import '../login/controller/zodiac_controller.dart';
 import 'controller/sign_controller.dart';
@@ -20,31 +22,30 @@ class PersonalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Container(
+      decoration: CustomDecoration.scaffoldDecoration,
       child: Scaffold(
-        body: Container(
-          decoration: decoration,
-          child: Obx(
-            () => _personalController.dailyFortune.value != null
-                ? ListView(
-                    padding: const ListviewPadding.all(),
-                    children: [
-                      appBar,
-                      userNametext,
-                      heigth025,
-                      heigth025,
-                      zoidacImage,
-                      zodiacSignText,
-                      heigth025,
-                      Center(
-                        child: TabBarWidget(widgetList: widgetList),
-                      ),
-                      heigth015,
-                      fortunes,
-                    ],
-                  )
-                : loadingWidget,
-          ),
+        backgroundColor: Colors.transparent,
+        appBar: const CustomAppBar(),
+        body: Obx(
+          () => _personalController.dailyFortune.value != null
+              ? ListView(
+                  padding: const ListviewPadding.all(),
+                  children: [
+                    userNametext,
+                    heigth025,
+                    heigth025,
+                    zoidacImage,
+                    zodiacSignText,
+                    heigth025,
+                    Center(
+                      child: TabBarWidget(widgetList: widgetList),
+                    ),
+                    heigth015,
+                    fortunes,
+                  ],
+                )
+              : loadingWidget,
         ),
       ),
     );
@@ -70,36 +71,10 @@ class PersonalView extends StatelessWidget {
         ],
       );
 
-  /*  Drawer get _drawer => Drawer(
-        child: Column(
-          children: [
-            TextButton(
-              child: const Text("Burcum ne?"),
-              onPressed: () {},
-            ),
-            TextButton(
-              child: const Text("Diğer Burçlar"),
-              onPressed: () {
-                Get.toNamed(Routes.ZODIAC_SIGN);
-              },
-            ),
-          ],
-        ),
-      ); */
-
   Widget get loadingWidget => const Center(
         child: Text(
           "Burç verileriniz yükleniyor. Lütfen bekleyiniz...",
         ),
-      );
-
-  //
-
-  AppBar get appBar => AppBar(
-        backgroundColor: Colors.transparent,
-        // title: userNametext,
-
-        centerTitle: true,
       );
 
   //
@@ -110,9 +85,7 @@ class PersonalView extends StatelessWidget {
         color: const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
         child: Padding(
           padding: const NormalPadding.all(),
-          child: Text(
-            text,
-          ),
+          child: Text(text),
         ),
       );
     });
@@ -155,9 +128,10 @@ class PersonalView extends StatelessWidget {
   Widget get userNametext => Builder(
         builder: (context) {
           return AutoSizeText(
-            "Merhaba ${_personalController.userName.value!.toUpperCase()} senin için çok özel bir burç yorumu hazırladık!",
+            "Merhaba ${_personalController.userName.value!.toUpperCase()} senin için özel bir yorum hazırladık!",
             style: context.textTheme.bodyMedium,
             maxLines: 1,
+            minFontSize: 10,
           );
         },
       );
@@ -188,6 +162,8 @@ class PersonalView extends StatelessWidget {
           );
         },
       );
+
+  //
 
   List<Widget> get widgetList => [
         ExpandedItem(

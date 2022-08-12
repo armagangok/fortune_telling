@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/constants/app_color.dart';
 
+import '../../core/constants/asset_constant.dart';
+
 class CustomDecoration {
   CustomDecoration._();
 
@@ -17,5 +19,13 @@ class CustomDecoration {
       hintText: hinttext,
     );
   }
-}
 
+  static BoxDecoration get scaffoldDecoration {
+    return const BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(KAsset.backgroundImage),
+        fit: BoxFit.fill,
+      ),
+    );
+  }
+}

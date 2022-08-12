@@ -18,7 +18,10 @@ class SplashView extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: context.height(1),
-            child: Image.asset(KAsset.backgroundImage, fit: BoxFit.fill),
+            child: Image.asset(
+              KAsset.backgroundImage,
+              fit: BoxFit.fill,
+            ),
           ),
           Center(child: Image.asset(KAsset.solar)),
         ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/extension/context_extension.dart';
 import 'package:fortune_telling/core/navigation/app_pages.dart';
+import 'package:fortune_telling/feature/components/custom_decoration.dart';
 import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
 import 'package:get/route_manager.dart';
+
 import '../../core/constants/asset_constant.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,12 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(KAsset.backgroundImage),
-            fit: BoxFit.fill,
-          ),
-        ),
+        decoration: CustomDecoration.scaffoldDecoration,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +43,7 @@ class HomeView extends StatelessWidget {
                           Get.toNamed(Routes.ZODIAC_SIGN);
                         },
                         text: "Tüm Burçlar"),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),

@@ -1,16 +1,14 @@
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/constants/app_color.dart';
-import 'package:fortune_telling/core/constants/asset_constant.dart';
 import 'package:fortune_telling/core/navigation/app_pages.dart';
 import 'package:fortune_telling/core/padding/project_padding.dart';
 import 'package:fortune_telling/feature/components/custom_decoration.dart';
 import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
-import '../../../core/extension/context_extension.dart';
+
 import '../../../core/database/local/my_storage.dart';
+import '../../../core/extension/context_extension.dart';
 import '../controller/text_controller.dart';
 import '../controller/zodiac_controller.dart';
 
@@ -28,9 +26,7 @@ class LoginView extends StatelessWidget {
       onTap: () => context.dismissKeyboard(),
       child: Container(
         padding: const HighPadding.all(),
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(KAsset.backgroundImage), fit: BoxFit.fill)),
+        decoration: CustomDecoration.scaffoldDecoration,
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -56,11 +52,12 @@ class LoginView extends StatelessWidget {
                       height: context.height(0.1), child: _dateTimePicker()),
                   SizedBox(height: context.height(0.02)),
                   SizedBox(
-                      height: context.height(0.09),
-                      child: CustomElevetedButton(
-                        text: "Devam Et",
-                        onTap: _continuneButton,
-                      )),
+                    height: context.height(0.09),
+                    child: CustomElevetedButton(
+                      text: "Devam Et",
+                      onTap: _continuneButton,
+                    ),
+                  ),
                 ],
               ),
             ),
