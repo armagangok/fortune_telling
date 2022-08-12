@@ -15,6 +15,7 @@ class LoginView extends StatelessWidget {
   final MyStorage _myStorage = MyStorage.instance;
   final TextController textController = Get.put(TextController.instance);
   final ZodiacController zodiacController = Get.put(ZodiacController.instance);
+  String _val = "";
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +27,19 @@ class LoginView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("name"),
-              TextField(controller: textController.usernameController),
+              TextField(
+                  controller: textController.usernameController,
+                  decoration:
+                      const InputDecoration(hintText: "İsminizi Giriniz")),
               const SizedBox(height: 10),
-              const Text("surname"),
-              TextField(controller: textController.passwordController),
               const SizedBox(height: 10),
               DateTimePicker(
                 initialValue: '',
                 firstDate: DateTime(1960),
                 lastDate: DateTime(2023),
-                dateLabelText: 'Date',
+                dateLabelText: 'Doğum Tarihiniz',
                 onChanged: (val) async {
+                  _val = val;
                   await _myStorage.storage.write(
                     "birthDay",
                     val,
@@ -47,25 +49,20 @@ class LoginView extends StatelessWidget {
               ElevatedButton(
                   onPressed: () async {
                     final String isim = textController.usernameController.text;
-                    final String soyisim =
-                        textController.passwordController.text;
-
-                    if (isim.isNotEmpty || soyisim.isNotEmpty) {
+                    if (isim.isNotEmpty && _val.isNotEmpty) {
                       await _myStorage.storage.write('isim', isim);
                       await _myStorage.storage.write('isLogged', true);
-                      Get.toNamed(Routes.PERSONAL);
-
-                      // Get.offAll(HomeView());
+                      print(_myStorage.storage.read("isLogged"));
+                      Get.toNamed(Routes.HOME);
                     } else {
                       Get.snackbar(
-                        "Warning",
-                        "Please Enter Username & Password",
+                        "Hata",
+                        "İsminizi ve Doğum Tarihinizi Giriniz",
                         snackPosition: SnackPosition.BOTTOM,
                       );
                     }
-                    print(_myStorage.storage.read("isLogged"));
                   },
-                  child: const Text("Send")),
+                  child: const Text("Giriş Yap")),
               const SizedBox(height: 10),
             ],
           ),
