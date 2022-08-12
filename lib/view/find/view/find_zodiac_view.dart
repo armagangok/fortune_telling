@@ -1,9 +1,12 @@
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/padding/project_padding.dart';
+import 'package:fortune_telling/feature/components/custom_decoration.dart';
+import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../../core/constants/asset_constant.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../login/controller/zodiac_controller.dart';
@@ -28,32 +31,21 @@ class FindZodiacView extends StatelessWidget {
         padding: const HighPadding.all(),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: appbar(),
+          appBar: _appBar(),
           body: Obx(() => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   findZodiacController.val1.value == ""
-                      ? birthdayPicker()
-                      : zoidacSignText(),
-                  SizedBox(
-                    height: context.height(0.02),
-                  ),
+                      ? _dateTimePicker()
+                      : _zodiacText(context),
+                  SizedBox(height: context.height(0.02)),
                   findZodiacController.val1.value == ""
-                      ? _findZodiacButton()
-                      : zodiacSingImage(),
+                      ? _findButton()
+                      : _zodiacImage(),
                   findZodiacController.val1.value != ""
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              findZodiacController.val1.value = "";
-                            },
-                            child: const Text("Başka Bul"),
-                          ),
-                        )
+                      ? _findAnotherZodiacButton()
                       : const SizedBox(),
-                  const SizedBox(height: 10),
                 ],
               )),
         ),
@@ -61,34 +53,50 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  Obx zodiacSingImage() {
+  CustomElevetedButton _findAnotherZodiacButton() {
+    return CustomElevetedButton(
+      text: "Başka Burç Ara",
+      onTap: () {
+        findZodiacController.setBirthdayValue = "";
+        findZodiacController.val1.value = "";
+      },
+    );
+  }
+
+  Obx _zodiacImage() {
     return Obx(() => findZodiacController.val1.value != ""
         ? Image.asset(findZodiacController.val1.value)
         : const Center());
   }
 
-  Widget zoidacSignText() => Builder(
-        builder: (context) {
-          return Obx(
-            () => Text(
-              findZodiacController.val.value,
-              style: context.textTheme.headline2!.copyWith(
-                color: Colors.white,
-              ),
-            ),
-          );
+  CustomElevetedButton _findButton() {
+    return CustomElevetedButton(
+        onTap: () {
+          if (findZodiacController.getBirthday == "") {
+            Get.snackbar("Uyarı", "Lütfen tarih giriniz");
+          }
+          findZodiacController.val.value = ZodiacController.instance
+              .getZodicaSign(DateTime.parse(findZodiacController.getBirthday));
+          findZodiacController.val1.value = ZodiacController.instance
+              .getSignImagePath(findZodiacController.val.value);
         },
-      );
+        text: "Burcumu Bul");
+  }
 
-  AppBar appbar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
+  Obx _zodiacText(BuildContext context) {
+    return Obx(
+      () => Text(
+        findZodiacController.val.value,
+        style: context.textTheme.headline2!.copyWith(
+          color: Colors.white,
+        ),
+      ),
     );
   }
 
-  DateTimePicker birthdayPicker() {
+  DateTimePicker _dateTimePicker() {
     return DateTimePicker(
+      decoration: CustomDecoration.decoration("Doğum Tarihiniz"),
       initialValue: '',
       firstDate: DateTime(1960),
       lastDate: DateTime(2023),
@@ -99,21 +107,16 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  Widget _findZodiacButton() {
-    return Builder(builder: (context) {
-      return SizedBox(
-        width: context.width(1),
-        child: ElevatedButton(
-          onPressed: () async {
-            findZodiacController.val.value = ZodiacController.instance
-                .getZodicaSign(
-                    DateTime.parse(findZodiacController.getBirthday));
-            findZodiacController.val1.value = ZodiacController.instance
-                .getSignImagePath(findZodiacController.val.value);
+  AppBar _appBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: GestureDetector(
+          onTap: () {
+            findZodiacController.val1.value = "";
+            Get.back();
           },
-          child: const Text("Burcumu Bul"),
-        ),
-      );
-    });
+          child: Icon(CupertinoIcons.back)),
+    );
   }
 }

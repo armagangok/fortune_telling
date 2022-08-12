@@ -46,8 +46,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 buildCupertinoPicker,
                 buildTabBar,
                 SizedBox(height: context.height(0.025)),
-                SizedBox(
-                  height: context.height(0.6),
+                Expanded(
                   child: ListView(
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,

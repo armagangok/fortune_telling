@@ -1,7 +1,7 @@
 class KAsset {
   KAsset._();
 
-  static const backgroundImage = "assets/bg.jpg";
+  static const backgroundImage = "assets/splash2.gif";
   static const kova = "assets/zodiac_icons/aquarium.png";
   static const koc = "assets/zodiac_icons/aries.png";
   static const yengec = "assets/zodiac_icons/cancer.png";
@@ -16,4 +16,5 @@ class KAsset {
   static const basak = "assets/zodiac_icons/virgo.png";
   static const planet = "assets/planet.png";
   static const saturn = "assets/zodiac_icons/saturn.png";
+  static const solar = "assets/zodiac_icons/solar.png";
 }

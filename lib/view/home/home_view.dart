@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/extension/context_extension.dart';
 import 'package:fortune_telling/core/navigation/app_pages.dart';
+import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
 import 'package:get/route_manager.dart';
 import '../../core/constants/asset_constant.dart';
 
@@ -23,36 +24,28 @@ class HomeView extends StatelessWidget {
               const Spacer(flex: 3),
               Image.asset(KAsset.saturn, scale: 5),
               SizedBox(
+                width: context.width(0.7),
                 height: context.height(0.4),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _container(
-                      TextButton(
-                        onPressed: () {
+                    CustomElevetedButton(
+                        onTap: () {
                           Get.toNamed(Routes.PERSONAL);
                         },
-                        child: text("Bana Özel"),
-                      ),
-                    ),
+                        text: "Bana Özel"),
                     SizedBox(height: context.height(0.025)),
-                    _container(
-                      TextButton(
-                        onPressed: () {
+                    CustomElevetedButton(
+                        onTap: () {
                           Get.toNamed(Routes.FIND);
                         },
-                        child: text("Burcumu Bul"),
-                      ),
-                    ),
+                        text: "Burcumu Bul"),
                     SizedBox(height: context.height(0.025)),
-                    _container(
-                      TextButton(
-                        onPressed: () {
+                    CustomElevetedButton(
+                        onTap: () {
                           Get.toNamed(Routes.ZODIAC_SIGN);
                         },
-                        child: text("Tüm Burçlar"),
-                      ),
-                    ),
+                        text: "Tüm Burçlar"),
                     Spacer(),
                   ],
                 ),

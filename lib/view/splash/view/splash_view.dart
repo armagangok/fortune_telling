@@ -18,18 +18,9 @@ class SplashView extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: context.height(1),
-            child: Image.asset(
-              KAsset.backgroundImage,
-              fit: BoxFit.fill,
-            ),
+            child: Image.asset(KAsset.backgroundImage, fit: BoxFit.fill),
           ),
-          Center(
-            child: Text(
-              "FORTUNE TELLING",
-              textAlign: TextAlign.center,
-              style: context.textTheme.headline2,
-            ),
-          ),
+          Center(child: Image.asset(KAsset.solar)),
         ],
       ),
     );

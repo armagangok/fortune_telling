@@ -54,17 +54,17 @@ class PersonalView extends StatelessWidget {
         children: [
           _tabBarController.getIndex == 0
               ? cardWidget(
-                  _personalController.dailyFortune.value!.fortune ?? "",
+                  _personalController.dailyFortune.value?.fortune ?? "",
                 )
               : const Center(),
           _tabBarController.getIndex == 1
               ? cardWidget(
-                  _personalController.loveFortune.value!.yorum ?? "",
+                  _personalController.loveFortune.value?.yorum ?? "",
                 )
               : const Center(),
           _tabBarController.getIndex == 2
               ? cardWidget(
-                  _personalController.healthFortune.value!.yorum ?? "",
+                  _personalController.healthFortune.value?.yorum ?? "",
                 )
               : const Center(),
         ],
