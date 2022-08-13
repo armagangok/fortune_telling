@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/constants/app_color.dart';
-import 'package:fortune_telling/core/extension/context_extension.dart';
-import 'package:fortune_telling/feature/components/custom_decoration.dart';
+
+import '../../core/constants/app_color.dart';
+import '../../core/extension/context_extension.dart';
+import 'custom_decoration.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({Key? key, required this.onTap, required this.text})
@@ -18,10 +19,12 @@ class CustomButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppColor.purple.withOpacity(0.4),
-          border: Border.all(color: AppColor.purple, width: 1.7),
+          border: Border.all(
+            color: AppColor.purple,
+          ),
           borderRadius: AppDecoration.border(),
         ),
-        height: context.height(0.1),
+        height: context.height(0.089),
         width: double.infinity,
         child: Stack(
           children: [
@@ -30,10 +33,11 @@ class CustomButton extends StatelessWidget {
               child: Center(child: Text(text)),
             ),
             Padding(
-              padding: EdgeInsets.only(right: context.width(0.025)),
+              padding: EdgeInsets.only(right: context.normalWidth),
               child: const Align(
-                  alignment: Alignment.centerRight,
-                  child: Icon(CupertinoIcons.forward)),
+                alignment: Alignment.centerRight,
+                child: Icon(CupertinoIcons.forward),
+              ),
             )
           ],
         ),

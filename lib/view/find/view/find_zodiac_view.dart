@@ -21,17 +21,17 @@ class FindZodiacView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppDecoration.scaffoldDecoration,
-      child: Padding(
-        padding: context.symmetricPadding(horizontal: 0.025),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: CustomAppBar(
-            onTap: () {
-              findZodiacController.val1.value = "";
-              Get.back();
-            },
-          ),
-          body: Obx(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: CustomAppBar(
+          onTap: () {
+            findZodiacController.val1.value = "";
+            Get.back();
+          },
+        ),
+        body: Padding(
+          padding: context.bigPadding,
+          child: Obx(
             () => Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,7 +39,7 @@ class FindZodiacView extends StatelessWidget {
                 findZodiacController.val1.value == ""
                     ? _dateTimePicker()
                     : _zodiacText(context),
-                SizedBox(height: context.height(0.02)),
+                SizedBox(height: context.normalHeight),
                 findZodiacController.val1.value == ""
                     ? _findButton()
                     : _zodiacImage(),
@@ -65,21 +65,25 @@ class FindZodiacView extends StatelessWidget {
   }
 
   Obx _zodiacImage() {
-    return Obx(() => findZodiacController.val1.value != ""
-        ? Image.asset(findZodiacController.val1.value)
-        : const Center());
+    return Obx(
+      () => findZodiacController.val1.value != ""
+          ? Image.asset(findZodiacController.val1.value)
+          : const Center(),
+    );
   }
 
   CustomButton _findButton() {
     return CustomButton(
         onTap: () {
-          if (findZodiacController.getBirthday == "") {
-            Get.snackbar("Uyarı", "Lütfen tarih giriniz");
-          }
-          findZodiacController.val.value = ZodiacController.instance
-              .getZodicaSign(DateTime.parse(findZodiacController.getBirthday));
-          findZodiacController.val1.value = ZodiacController.instance
-              .getSignImagePath(findZodiacController.val.value);
+          findZodiacController.getBirthday == ""
+              ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")
+              : {
+                  findZodiacController.val.value = ZodiacController.instance
+                      .getZodicaSign(
+                          DateTime.parse(findZodiacController.getBirthday)),
+                  findZodiacController.val1.value = ZodiacController.instance
+                      .getSignImagePath(findZodiacController.val.value),
+                };
         },
         text: "Burcumu Bul");
   }

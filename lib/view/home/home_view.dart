@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/extension/context_extension.dart';
-import 'package:fortune_telling/core/navigation/app_pages.dart';
-import 'package:fortune_telling/feature/components/custom_button.dart';
-import 'package:fortune_telling/feature/components/custom_decoration.dart';
+import '../../core/extension/context_extension.dart';
+import '../../core/navigation/app_pages.dart';
+import '../../feature/components/custom_button.dart';
+import '../../feature/components/custom_decoration.dart';
 import 'package:get/route_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
                     CustomButton(
                         onTap: () => Get.toNamed(Routes.PERSONAL),
                         text: "Bana Özel"),
-                    SizedBox(height: context.height(0.025)),
+                    SizedBox(height: context.normalHeight),
                     CustomButton(
                         onTap: () => Get.toNamed(Routes.FIND),
                         text: "Burcumu Bul"),
@@ -46,39 +46,6 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _container(TextButton textButton) {
-    return Builder(builder: (context) {
-      return Container(
-        decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(30)),
-        height: context.height(0.1),
-        width: context.width(0.65),
-        child: textButton,
-      );
-    });
-  }
-
-  EdgeInsets padding(BuildContext context) {
-    return EdgeInsets.all(context.width(0.05));
-  }
-
-  RoundedRectangleBorder shape() =>
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(16));
-
-  Widget text(String text) {
-    return Builder(
-      builder: (context) {
-        return Text(
-          text,
-          style: context.textTheme.headline4!.copyWith(
-            color: Colors.white,
-          ),
-        );
-      },
     );
   }
 }

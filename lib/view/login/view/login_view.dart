@@ -1,14 +1,13 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/navigation/app_pages.dart';
-import 'package:fortune_telling/core/padding/project_padding.dart';
-import 'package:fortune_telling/feature/components/custom_button.dart';
-import 'package:fortune_telling/feature/components/custom_decoration.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
+import '../../../core/navigation/app_pages.dart';
+import '../../../feature/components/custom_button.dart';
+import '../../../feature/components/custom_decoration.dart';
 import '../controller/text_controller.dart';
 import '../controller/zodiac_controller.dart';
 
@@ -25,41 +24,32 @@ class LoginView extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.dismissKeyboard(),
       child: Container(
-        padding: const HighPadding.all(),
+        padding: context.bigPadding,
         decoration: AppDecoration.scaffoldDecoration,
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
           body: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: context.height(0.1),
-                    child: TextField(
-                      controller: textController.usernameController,
-                      decoration: AppDecoration.decoration("Devam Et"),
-                    ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: context.height(0.1),
+                  child: TextField(
+                    controller: textController.usernameController,
+                    decoration: AppDecoration.decoration("İsminiz"),
                   ),
-                  SizedBox(height: context.height(0.03)),
-                  SizedBox(
-                      height: context.height(0.1), child: _dateTimePicker()),
-                  SizedBox(height: context.height(0.02)),
-                  SizedBox(
-                    height: context.height(0.09),
-                    child: CustomButton(
-                      text: "Devam Et",
-                      onTap: _continuneButton,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: context.normalHeight),
+                SizedBox(
+                  height: context.height(0.1),
+                  child: _dateTimePicker(),
+                ),
+                SizedBox(height: context.normalHeight),
+                CustomButton(
+                  text: "Devam Et",
+                  onTap: _continuneButton,
+                ),
+              ],
             ),
           ),
         ),

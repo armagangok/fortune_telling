@@ -17,7 +17,7 @@ class SplashView extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: context.height(1),
+            height: context.dynamicHeight,
             child: Image.asset(
               KAsset.backgroundImage,
               fit: BoxFit.fill,

@@ -18,10 +18,15 @@ extension EasySize on BuildContext {
   double height(double value) => dynamicHeight * value;
   double width(double value) => dynamicWidth * value;
 
-  double get lowValue => dynamicWidth * 0.015;
-  double get normalValue => dynamicWidth * 0.025;
-  double get mediumValue => dynamicWidth * 0.035;
-  double get highValue => dynamicWidth * 0.05;
+  double get lowWidth => dynamicWidth * 0.015;
+  double get normalWidth => dynamicWidth * 0.025;
+  double get mediumWidth => dynamicWidth * 0.035;
+  double get bigWidth => dynamicWidth * 0.05;
+
+  double get lowHeight => dynamicWidth * 0.015;
+  double get normalHeight => dynamicHeight * 0.025;
+  double get mediumHeight => dynamicHeight * 0.035;
+  double get bigHeight => dynamicWidth * 0.05;
 }
 
 extension EasyTheme on BuildContext {
@@ -32,10 +37,10 @@ extension EasyTheme on BuildContext {
 }
 
 extension EasyPadding on BuildContext {
-  EdgeInsets get lowPadding => EdgeInsets.all(lowValue);
-  EdgeInsets get normalPadding => EdgeInsets.all(normalValue);
-  EdgeInsets get mediumPadding => EdgeInsets.all(mediumValue);
-  EdgeInsets get highPadding => EdgeInsets.all(highValue);
+  EdgeInsets get lowPadding => EdgeInsets.all(lowWidth);
+  EdgeInsets get normalPadding => EdgeInsets.all(normalWidth);
+  EdgeInsets get mediumPadding => EdgeInsets.all(mediumWidth);
+  EdgeInsets get bigPadding => EdgeInsets.all(bigWidth);
 
   EdgeInsets symmetricPadding({
     double horizontal = 0.0,

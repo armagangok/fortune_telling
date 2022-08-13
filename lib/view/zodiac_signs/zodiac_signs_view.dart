@@ -47,8 +47,11 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           child: Column(
             children: [
               buildCupertinoPicker,
+              SizedBox(
+                height: context.mediumHeight,
+              ),
               buildTabBar,
-              SizedBox(height: context.height(0.025)),
+              SizedBox(height: context.normalHeight),
               Expanded(
                 child: ListView(
                   physics: const ClampingScrollPhysics(),
@@ -79,7 +82,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             scrollController: FixedExtentScrollController(initialItem: 3),
             useMagnifier: true,
             magnification: 1,
-            itemExtent: context.width(0.27),
+            itemExtent: context.width(0.38),
             onSelectedItemChanged: (value) {
               zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
               ZodiacTabController.instance.setIndex = -1;
@@ -180,30 +183,20 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
     }
   }
 
-  // AppBar get appBar {
-  //   return AppBar(
-  //     title: Obx(() => Text(zodiacSignController.getChoosenSign)),
-  //     backgroundColor: Colors.transparent,
-  //     elevation: 0,
-  //     centerTitle: true,
-  //   );
-  // }
-
   Center signPicker(ZodiacModel item) {
     return Center(
       child: RotatedBox(
         quarterTurns: 3,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black.withOpacity(0.4),
-            ),
-            padding: const EdgeInsets.all(12),
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.black.withOpacity(0.4),
+          ),
+          child: Padding(
+            padding: context.lowPadding,
             child: Image.asset(
               item.path,
-              scale: 1,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ),

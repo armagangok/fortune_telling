@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/constants/app_color.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
@@ -26,7 +27,7 @@ class PersonalView extends StatelessWidget {
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar:  const CustomAppBar(),
+        appBar: const CustomAppBar(),
         body: Obx(
           () => _personalController.dailyFortune.value != null
               ? ListView(
@@ -88,7 +89,7 @@ class PersonalView extends StatelessWidget {
   Widget cardWidget(text) {
     return Builder(builder: (context) {
       return Card(
-        color: const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
+        color: AppColor.cardColor.withOpacity(0.5),
         child: Padding(
           padding: const NormalPadding.all(),
           child: Text(text),
@@ -102,7 +103,7 @@ class PersonalView extends StatelessWidget {
   Widget get heigth025 => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.height(0.025),
+            height: context.normalHeight,
           );
         },
       );
@@ -111,7 +112,7 @@ class PersonalView extends StatelessWidget {
   Widget get heigth015 => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.height(0.015),
+            height: context.lowHeight,
           );
         },
       );
@@ -159,7 +160,7 @@ class PersonalView extends StatelessWidget {
   Widget get zoidacImage => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.height(0.15),
+            height: context.lowHeight,
             child: Image.asset(
               ZodiacController.instance.getSignImagePath(
                 _personalController.dailyFortune.value!.burc!,
