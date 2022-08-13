@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/extension/context_extension.dart';
 import 'package:fortune_telling/core/navigation/app_pages.dart';
+import 'package:fortune_telling/feature/components/custom_button.dart';
 import 'package:fortune_telling/feature/components/custom_decoration.dart';
-import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
 import 'package:get/route_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: CustomDecoration.scaffoldDecoration,
+        decoration: AppDecoration.scaffoldDecoration,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -26,15 +26,15 @@ class HomeView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomElevetedButton(
+                    CustomButton(
                         onTap: () => Get.toNamed(Routes.PERSONAL),
                         text: "Bana Özel"),
                     SizedBox(height: context.height(0.025)),
-                    CustomElevetedButton(
+                    CustomButton(
                         onTap: () => Get.toNamed(Routes.FIND),
                         text: "Burcumu Bul"),
                     SizedBox(height: context.height(0.025)),
-                    CustomElevetedButton(
+                    CustomButton(
                         onTap: () => Get.toNamed(Routes.ZODIAC_SIGN),
                         text: "Tüm Burçlar"),
                     const Spacer(),

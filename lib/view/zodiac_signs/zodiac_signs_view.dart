@@ -34,7 +34,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: CustomDecoration.scaffoldDecoration,
+      decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: CustomAppBar(
@@ -54,9 +54,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                   physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
                   children: [
-                    Obx(
-                      () => fortunes,
-                    ),
+                    Obx(() => fortunes),
                   ],
                 ),
               ),

@@ -23,10 +23,10 @@ class PersonalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: CustomDecoration.scaffoldDecoration,
+      decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar:  CustomAppBar(),
+        appBar:  const CustomAppBar(),
         body: Obx(
           () => _personalController.dailyFortune.value != null
               ? ListView(

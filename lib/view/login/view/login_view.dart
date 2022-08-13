@@ -2,8 +2,8 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/navigation/app_pages.dart';
 import 'package:fortune_telling/core/padding/project_padding.dart';
+import 'package:fortune_telling/feature/components/custom_button.dart';
 import 'package:fortune_telling/feature/components/custom_decoration.dart';
-import 'package:fortune_telling/feature/components/custom_eleveted_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
 
@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
       onTap: () => context.dismissKeyboard(),
       child: Container(
         padding: const HighPadding.all(),
-        decoration: CustomDecoration.scaffoldDecoration,
+        decoration: AppDecoration.scaffoldDecoration,
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -44,7 +44,7 @@ class LoginView extends StatelessWidget {
                     height: context.height(0.1),
                     child: TextField(
                       controller: textController.usernameController,
-                      decoration: CustomDecoration.decoration("Devam Et"),
+                      decoration: AppDecoration.decoration("Devam Et"),
                     ),
                   ),
                   SizedBox(height: context.height(0.03)),
@@ -53,7 +53,7 @@ class LoginView extends StatelessWidget {
                   SizedBox(height: context.height(0.02)),
                   SizedBox(
                     height: context.height(0.09),
-                    child: CustomElevetedButton(
+                    child: CustomButton(
                       text: "Devam Et",
                       onTap: _continuneButton,
                     ),
@@ -84,7 +84,7 @@ class LoginView extends StatelessWidget {
 
   Widget _dateTimePicker() {
     return DateTimePicker(
-      decoration: CustomDecoration.decoration("Doğum Tarihiniz"),
+      decoration: AppDecoration.decoration("Doğum Tarihiniz"),
       initialValue: '',
       firstDate: DateTime(1960),
       lastDate: DateTime(2023),

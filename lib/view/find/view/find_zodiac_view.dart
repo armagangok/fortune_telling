@@ -6,8 +6,8 @@ import 'package:get/instance_manager.dart';
 
 import '../../../core/extension/context_extension.dart';
 import '../../../feature/components/custom_appbar.dart';
+import '../../../feature/components/custom_button.dart';
 import '../../../feature/components/custom_decoration.dart';
-import '../../../feature/components/custom_eleveted_button.dart';
 import '../../login/controller/zodiac_controller.dart';
 import '../controller/find_zodiac_controller.dart';
 
@@ -20,7 +20,7 @@ class FindZodiacView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: CustomDecoration.scaffoldDecoration,
+      decoration: AppDecoration.scaffoldDecoration,
       child: Padding(
         padding: context.symmetric(horizontal: 0.025),
         child: Scaffold(
@@ -54,8 +54,8 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  CustomElevetedButton _findAnotherZodiacButton() {
-    return CustomElevetedButton(
+  CustomButton _findAnotherZodiacButton() {
+    return CustomButton(
       text: "Başka Burç Ara",
       onTap: () {
         findZodiacController.setBirthdayValue = "";
@@ -70,8 +70,8 @@ class FindZodiacView extends StatelessWidget {
         : const Center());
   }
 
-  CustomElevetedButton _findButton() {
-    return CustomElevetedButton(
+  CustomButton _findButton() {
+    return CustomButton(
         onTap: () {
           if (findZodiacController.getBirthday == "") {
             Get.snackbar("Uyarı", "Lütfen tarih giriniz");
@@ -97,7 +97,7 @@ class FindZodiacView extends StatelessWidget {
 
   DateTimePicker _dateTimePicker() {
     return DateTimePicker(
-      decoration: CustomDecoration.decoration("Doğum Tarihiniz"),
+      decoration: AppDecoration.decoration("Doğum Tarihiniz"),
       initialValue: '',
       firstDate: DateTime(1960),
       lastDate: DateTime(2023),

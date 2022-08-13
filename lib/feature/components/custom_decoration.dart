@@ -3,8 +3,8 @@ import 'package:fortune_telling/core/constants/app_color.dart';
 
 import '../../core/constants/asset_constant.dart';
 
-class CustomDecoration {
-  CustomDecoration._();
+class AppDecoration {
+  AppDecoration._();
 
   static InputDecoration decoration(String hinttext) {
     return InputDecoration(
@@ -28,4 +28,7 @@ class CustomDecoration {
       ),
     );
   }
+
+  static BorderRadius border({double? radius}) =>
+      BorderRadius.all(Radius.circular(radius ?? 13));
 }
