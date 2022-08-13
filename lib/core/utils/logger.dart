@@ -4,7 +4,6 @@ class LogHelper {
   LogHelper._();
 
   static var shared = LogHelper._();
-
   final _logger = Logger();
 
   final debugMode = true;

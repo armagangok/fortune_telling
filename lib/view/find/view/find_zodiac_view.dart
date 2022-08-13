@@ -22,7 +22,7 @@ class FindZodiacView extends StatelessWidget {
     return Container(
       decoration: AppDecoration.scaffoldDecoration,
       child: Padding(
-        padding: context.symmetric(horizontal: 0.025),
+        padding: context.symmetricPadding(horizontal: 0.025),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: CustomAppBar(
