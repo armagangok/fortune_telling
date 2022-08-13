@@ -150,9 +150,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             ? FortuneWidget(
                 fortune: zodiacSignController.loveFortune.value!.yorum ?? "",
                 motto: zodiacSignController.loveFortune.value!.baslik ?? "",
-                element:
-                    zodiacSignController.dailyFortune.value!.elementi ?? "",
-                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+                element: "",
+                planet: "",
               )
             : const Text("Burç verileri getiriliyor...");
       case 5:
@@ -160,9 +159,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             ? FortuneWidget(
                 fortune: zodiacSignController.careerFortune.value!.yorum ?? "",
                 motto: zodiacSignController.careerFortune.value!.baslik ?? "",
-                element:
-                    zodiacSignController.dailyFortune.value!.elementi ?? "",
-                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+                element: "",
+                planet: "",
               )
             : const Text("Burç verileri getiriliyor...");
       case 6:
@@ -170,9 +168,8 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
             ? FortuneWidget(
                 fortune: zodiacSignController.healthFortune.value!.yorum ?? "",
                 motto: zodiacSignController.healthFortune.value!.baslik ?? "",
-                element:
-                    zodiacSignController.dailyFortune.value!.elementi ?? "",
-                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+                element: "",
+                planet: "",
               )
             : const Text("Burç verileri getiriliyor...");
 
