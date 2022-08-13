@@ -38,7 +38,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: CustomAppBar(
-          textWidget: Obx(
+          title: Obx(
             () => Text(zodiacSignController.getChoosenSign),
           ),
         ),

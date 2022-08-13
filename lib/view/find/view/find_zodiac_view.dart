@@ -1,12 +1,11 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/components/custom_appbar.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../../core/extension/context_extension.dart';
-import '../../../core/padding/project_padding.dart';
+import '../../../feature/components/custom_appbar.dart';
 import '../../../feature/components/custom_decoration.dart';
 import '../../../feature/components/custom_eleveted_button.dart';
 import '../../login/controller/zodiac_controller.dart';
@@ -23,10 +22,15 @@ class FindZodiacView extends StatelessWidget {
     return Container(
       decoration: CustomDecoration.scaffoldDecoration,
       child: Padding(
-        padding: const HighPadding.all(),
+        padding: context.symmetric(horizontal: 0.025),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: const CustomAppBar(),
+          appBar: CustomAppBar(
+            onTap: () {
+              findZodiacController.val1.value = "";
+              Get.back();
+            },
+          ),
           body: Obx(
             () => Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,18 +107,4 @@ class FindZodiacView extends StatelessWidget {
       },
     );
   }
-
-  // AppBar _appBar() {
-  //   return AppBar(
-  //     backgroundColor: Colors.transparent,
-  //     elevation: 0,
-  //     leading: GestureDetector(
-  //       onTap: () {
-  //         findZodiacController.val1.value = "";
-  //         Get.back();
-  //       },
-  //       child: const Icon(CupertinoIcons.back),
-  //     ),
-  //   );
-  // }
 }
