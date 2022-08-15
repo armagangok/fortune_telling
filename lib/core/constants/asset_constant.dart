@@ -16,5 +16,6 @@ class KAsset {
   static const basak = "assets/zodiac_icons/virgo.png";
   static const planet = "assets/planet.png";
   static const saturn = "assets/zodiac_icons/saturn.png";
+  static const splashImage = "assets/zodiac_icons/splashh.gif";
   static const solar = "assets/zodiac_icons/solar.png";
 }

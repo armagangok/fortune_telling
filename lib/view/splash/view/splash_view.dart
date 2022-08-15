@@ -23,7 +23,7 @@ class SplashView extends StatelessWidget {
               fit: BoxFit.fill,
             ),
           ),
-          Center(child: Image.asset(KAsset.solar)),
+          Center(child: Image.asset(KAsset.splashImage)),
         ],
       ),
     );
