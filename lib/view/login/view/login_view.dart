@@ -21,35 +21,38 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.dismissKeyboard(),
-      child: Container(
-        padding: context.bigPadding,
-        decoration: AppDecoration.scaffoldDecoration,
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: context.height(0.1),
-                  child: TextField(
-                    controller: textController.usernameController,
-                    decoration: AppDecoration.decoration("İsminiz"),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: GestureDetector(
+        onTap: () => context.dismissKeyboard(),
+        child: Container(
+          padding: context.bigPadding,
+          decoration: AppDecoration.scaffoldDecoration,
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: context.height(0.1),
+                    child: TextField(
+                      controller: textController.usernameController,
+                      decoration: AppDecoration.decoration(hinttext: "İsminiz"),
+                    ),
                   ),
-                ),
-                SizedBox(height: context.normalHeight),
-                SizedBox(
-                  height: context.height(0.1),
-                  child: _dateTimePicker(),
-                ),
-                SizedBox(height: context.normalHeight),
-                CustomButton(
-                  text: "Devam Et",
-                  onTap: _continuneButton,
-                ),
-              ],
+                  SizedBox(height: context.normalHeight),
+                  SizedBox(
+                    height: context.height(0.1),
+                    child: _dateTimePicker(),
+                  ),
+                  SizedBox(height: context.normalHeight),
+                  CustomButton(
+                    text: "Devam Et",
+                    onTap: _continuneButton,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -74,7 +77,7 @@ class LoginView extends StatelessWidget {
 
   Widget _dateTimePicker() {
     return DateTimePicker(
-      decoration: AppDecoration.decoration("Doğum Tarihiniz"),
+      decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
       initialValue: '',
       firstDate: DateTime(1960),
       lastDate: DateTime(2023),

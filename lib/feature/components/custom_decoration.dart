@@ -6,7 +6,7 @@ import '../../core/constants/asset_constant.dart';
 class AppDecoration {
   AppDecoration._();
 
-  static InputDecoration decoration(String hinttext) {
+  static InputDecoration decoration({String? hinttext}) {
     return InputDecoration(
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: AppColor.purple),

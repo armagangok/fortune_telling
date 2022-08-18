@@ -3,9 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../core/extension/context_extension.dart';
-
 import '../../feature/components/custom_appbar.dart';
 import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
@@ -37,22 +35,18 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: const CustomAppBar(
-          title: Text("Tüm Burçlar"),
+        appBar: CustomAppBar(
+          title: Obx(
+            () => Text(
+              zodiacSignController.getChoosenSign,
+              style: context.textTheme.headline4!.copyWith(color: Colors.white),
+            ),
+          ),
         ),
         body: Padding(
           padding: context.normalPadding,
           child: Column(
             children: [
-              Container(
-                color: Colors.white.withOpacity(0.1),
-                height: context.height(0.2),
-                child: Obx(() => Center(
-                      child: Text(zodiacSignController.getChoosenSign,
-                          style: context.textTheme.headline3!
-                              .copyWith(color: Colors.white)),
-                    )),
-              ),
               buildCupertinoPicker,
               SizedBox(
                 height: context.mediumHeight,
@@ -184,7 +178,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
       default:
         return const Center(
             child: AutoSizeText(
-          "Sonuçları görmek için lütfen zaman dilimi seçiniz.",
+          "Sonuçları görmek için lütfen kategori seçiniz.",
           maxLines: 1,
         ));
     }

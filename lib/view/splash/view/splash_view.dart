@@ -12,19 +12,22 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: context.dynamicHeight,
-            child: Image.asset(
-              KAsset.backgroundImage,
-              fit: BoxFit.fill,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: context.dynamicHeight,
+              child: Image.asset(
+                KAsset.backgroundImage,
+                fit: BoxFit.fill,
+              ),
             ),
-          ),
-          Center(child: Image.asset(KAsset.splashImage)),
-        ],
+            Center(child: Image.asset(KAsset.splashImage)),
+          ],
+        ),
       ),
     );
   }

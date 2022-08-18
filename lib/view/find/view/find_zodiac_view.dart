@@ -102,7 +102,7 @@ class FindZodiacView extends StatelessWidget {
 
   DateTimePicker _dateTimePicker() {
     return DateTimePicker(
-      decoration: AppDecoration.decoration("Doğum Tarihiniz"),
+      decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
       initialValue: '',
       firstDate: DateTime(1960),
       lastDate: DateTime(2023),

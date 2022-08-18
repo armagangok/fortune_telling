@@ -23,34 +23,37 @@ class PersonalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: AppDecoration.scaffoldDecoration,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: const CustomAppBar(
-          title: Text("Bana Özel"),
-        ),
-        body: Obx(
-          () => _personalController.dailyFortune.value != null
-              ? ListView(
-                  padding: context.symmetricPadding(horizontal: 0.025),
-                  physics: const ClampingScrollPhysics(),
-                  children: [
-                    userNametext,
-                    heigth025,
-                    zoidacImage,
-                    zodiacSignText,
-                    heigth025,
-                    Center(
-                      child: TabBarWidget(
-                        widgetList: widgetList,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Container(
+        decoration: AppDecoration.scaffoldDecoration,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: const CustomAppBar(
+            title: Text("Bana Özel"),
+          ),
+          body: Obx(
+            () => _personalController.dailyFortune.value != null
+                ? ListView(
+                    padding: context.symmetricPadding(horizontal: 0.025),
+                    physics: const ClampingScrollPhysics(),
+                    children: [
+                      userNametext,
+                      heigth025,
+                      zoidacImage,
+                      zodiacSignText,
+                      heigth025,
+                      Center(
+                        child: TabBarWidget(
+                          widgetList: widgetList,
+                        ),
                       ),
-                    ),
-                    heigth015,
-                    fortunes,
-                  ],
-                )
-              : loadingWidget,
+                      heigth015,
+                      fortunes,
+                    ],
+                  )
+                : loadingWidget,
+          ),
         ),
       ),
     );
@@ -60,26 +63,31 @@ class PersonalView extends StatelessWidget {
         children: [
           _tabBarController.getIndex == 0
               ? cardWidget(
-                  _personalController.dailyFortune.value?.fortune ?? "",
+                  _personalController.dailyFortune.value?.fortune ??
+                      _loadingText,
                 )
               : const Center(),
           _tabBarController.getIndex == 1
               ? cardWidget(
-                  _personalController.loveFortune.value?.yorum ?? "",
+                  _personalController.loveFortune.value?.yorum ?? _loadingText,
                 )
               : const Center(),
           _tabBarController.getIndex == 2
               ? cardWidget(
-                  _personalController.healthFortune.value?.yorum ?? "",
+                  _personalController.healthFortune.value?.yorum ??
+                      _loadingText,
                 )
               : const Center(),
           _tabBarController.getIndex == 3
               ? cardWidget(
-                  _personalController.careerFortune.value?.yorum ?? "",
+                  _personalController.careerFortune.value?.yorum ??
+                      _loadingText,
                 )
               : const Center(),
         ],
       );
+
+  String get _loadingText => "Verileriniz getiriliyor...";
 
   Widget get loadingWidget => const Center(
         child: Text(
@@ -137,11 +145,13 @@ class PersonalView extends StatelessWidget {
 
   Widget get userNametext => Builder(
         builder: (context) {
-          return AutoSizeText(
-            "Merhaba ${_personalController.userName.value!.toUpperCase()} senin için özel bir yorum hazırladık!",
-            style: context.textTheme.bodyMedium,
-            maxLines: 1,
-            minFontSize: 10,
+          return Center(
+            child: AutoSizeText(
+              "Merhaba ${_personalController.userName.value!.toUpperCase()} senin için özel bir yorum hazırladık!",
+              style: context.textTheme.bodyMedium,
+              maxLines: 1,
+              minFontSize: 10,
+            ),
           );
         },
       );
@@ -153,7 +163,8 @@ class PersonalView extends StatelessWidget {
           return Text(
             _personalController.dailyFortune.value!.burc!,
             textAlign: TextAlign.center,
-            style: context.textTheme.headline3,
+            style: context.textTheme.headline3!
+                .copyWith(color: context.primaryColor),
           );
         },
       );
