@@ -107,7 +107,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                     zodiacSignController.dailyFortune.value!.elementi ?? "",
                 planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
 
       case 1:
         return zodiacSignController.weeklyFortune.value != null
@@ -120,7 +120,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 planet:
                     zodiacSignController.weeklyFortune.value!.gezegeni ?? "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
 
       case 2:
         return zodiacSignController.monthlyFortune.value != null
@@ -133,7 +133,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 planet:
                     zodiacSignController.monthlyFortune.value!.gezegeni ?? "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
 
       case 3:
         return zodiacSignController.yearlyFortune.value != null
@@ -146,7 +146,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 planet:
                     zodiacSignController.yearlyFortune.value!.gezegeni ?? "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
       case 4:
         return zodiacSignController.loveFortune.value != null
             ? FortuneWidget(
@@ -155,7 +155,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 element: "",
                 planet: "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
       case 5:
         return zodiacSignController.careerFortune.value != null
             ? FortuneWidget(
@@ -164,7 +164,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 element: "",
                 planet: "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
       case 6:
         return zodiacSignController.healthFortune.value != null
             ? FortuneWidget(
@@ -173,7 +173,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
                 element: "",
                 planet: "",
               )
-            : const Text("Burç verileri getiriliyor...");
+            : _loadingText();
 
       default:
         return const Center(
@@ -183,6 +183,9 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
         ));
     }
   }
+
+  Widget _loadingText() =>
+      const Center(child: Text("Burç verileri getiriliyor..."));
 
   Center signPicker(ZodiacModel item) {
     return Center(

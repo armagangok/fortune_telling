@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../../core/extension/context_extension.dart';
 import '../../../feature/components/custom_appbar.dart';
 import '../../../feature/components/custom_button.dart';
