@@ -24,6 +24,7 @@ class FindZodiacView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: CustomAppBar(
+          title: const Text("Burcumu Bul"),
           onTap: () {
             findZodiacController.val1.value = "";
             Get.back();

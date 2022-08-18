@@ -37,15 +37,22 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: CustomAppBar(
-          title: Obx(
-            () => Text(zodiacSignController.getChoosenSign),
-          ),
+        appBar: const CustomAppBar(
+          title: Text("Tüm Burçlar"),
         ),
         body: Padding(
           padding: const ZodiacSignPadding.all(),
           child: Column(
             children: [
+              Container(
+                color: Colors.white.withOpacity(0.1),
+                height: context.height(0.2),
+                child: Obx(() => Center(
+                      child: Text(zodiacSignController.getChoosenSign,
+                          style: context.textTheme.headline3!
+                              .copyWith(color: Colors.white)),
+                    )),
+              ),
               buildCupertinoPicker,
               SizedBox(
                 height: context.mediumHeight,

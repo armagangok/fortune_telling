@@ -19,7 +19,7 @@ class SplashController extends GetxController {
 
   Future<void> loading() async {
     Timer(
-      const Duration(seconds: 10),
+      const Duration(seconds: 3),
       () {
         userdata.read('isLogged') == true
             ? Get.offAndToNamed(Routes.HOME)

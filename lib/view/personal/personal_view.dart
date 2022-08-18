@@ -27,7 +27,9 @@ class PersonalView extends StatelessWidget {
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: const CustomAppBar(),
+        appBar: const CustomAppBar(
+          title: Text("Bana Özel"),
+        ),
         body: Obx(
           () => _personalController.dailyFortune.value != null
               ? ListView(
@@ -160,7 +162,7 @@ class PersonalView extends StatelessWidget {
   Widget get zoidacImage => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.lowHeight,
+            height: context.height(0.25),
             child: Image.asset(
               ZodiacController.instance.getSignImagePath(
                 _personalController.dailyFortune.value!.burc!,
