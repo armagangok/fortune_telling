@@ -7,7 +7,7 @@ import 'package:get/instance_manager.dart';
 
 import '../../core/constants/asset_constant.dart';
 import '../../core/extension/context_extension.dart';
-import '../../core/padding/project_padding.dart';
+
 import '../../feature/components/custom_appbar.dart';
 import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
@@ -33,7 +33,8 @@ class PersonalView extends StatelessWidget {
         body: Obx(
           () => _personalController.dailyFortune.value != null
               ? ListView(
-                  padding: const ListviewPadding.all(),
+                  padding: context.symmetricPadding(horizontal: 0.025),
+                  physics: const ClampingScrollPhysics(),
                   children: [
                     userNametext,
                     heigth025,
@@ -93,7 +94,7 @@ class PersonalView extends StatelessWidget {
       return Card(
         color: AppColor.cardColor.withOpacity(0.5),
         child: Padding(
-          padding: const NormalPadding.all(),
+          padding: context.normalPadding,
           child: Text(text),
         ),
       );
