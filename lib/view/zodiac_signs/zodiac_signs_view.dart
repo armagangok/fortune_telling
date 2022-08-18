@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/extension/context_extension.dart';
-import '../../core/padding/project_padding.dart';
+
 import '../../feature/components/custom_appbar.dart';
 import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
@@ -43,7 +43,7 @@ class _ZodiacSignsViewState extends State<ZodiacSignsView> {
           ),
         ),
         body: Padding(
-          padding: const ZodiacSignPadding.all(),
+          padding: context.normalPadding,
           child: Column(
             children: [
               buildCupertinoPicker,
