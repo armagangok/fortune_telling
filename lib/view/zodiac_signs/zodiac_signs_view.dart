@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/components/custom_appbar.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../core/extension/context_extension.dart';
 import '../../core/padding/project_padding.dart';
+import '../../feature/components/custom_appbar.dart';
 import '../../feature/components/custom_decoration.dart';
 import '../../feature/components/tab_bar_widget.dart';
 import '../../feature/data/data.dart';

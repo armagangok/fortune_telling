@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/constants/app_color.dart';
 
+import '../../core/constants/app_color.dart';
 import '../../core/constants/asset_constant.dart';
 
 class AppDecoration {
@@ -10,10 +10,10 @@ class AppDecoration {
     return InputDecoration(
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: AppColor.purple),
-        borderRadius: BorderRadius.all(Radius.circular(13.0)),
+        borderRadius: BorderRadius.all(Radius.circular(90.0)),
       ),
       enabledBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(13.0)),
+        borderRadius: BorderRadius.all(Radius.circular(90.0)),
         borderSide: BorderSide(color: AppColor.purple),
       ),
       hintText: hinttext,
@@ -30,5 +30,5 @@ class AppDecoration {
   }
 
   static BorderRadius border({double? radius}) =>
-      BorderRadius.all(Radius.circular(radius ?? 13));
+      BorderRadius.all(Radius.circular(radius ?? 90));
 }

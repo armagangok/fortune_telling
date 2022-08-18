@@ -8,7 +8,7 @@ import 'network_requestor.dart';
 
 class NetworkExecuter {
   NetworkExecuter._();
-  
+
   static Future<K?> request<T extends BaseNetworkModel, K>({
     required RequestOptions options,
     required T responseType,

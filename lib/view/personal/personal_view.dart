@@ -31,7 +31,8 @@ class PersonalView extends StatelessWidget {
         body: Obx(
           () => _personalController.dailyFortune.value != null
               ? ListView(
-                  padding: const ListviewPadding.all(),
+                  padding: context.symmetricPadding(horizontal: 0.025),
+                  physics: const ClampingScrollPhysics(),
                   children: [
                     userNametext,
                     heigth025,
@@ -160,7 +161,7 @@ class PersonalView extends StatelessWidget {
   Widget get zoidacImage => Builder(
         builder: (context) {
           return SizedBox(
-            height: context.lowHeight,
+            height: context.height(0.25),
             child: Image.asset(
               ZodiacController.instance.getSignImagePath(
                 _personalController.dailyFortune.value!.burc!,
