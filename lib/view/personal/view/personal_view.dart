@@ -5,15 +5,15 @@ import 'package:fortune_telling/core/constants/app_color.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 
-import '../../core/constants/asset_constant.dart';
-import '../../core/extension/context_extension.dart';
+import '../../../core/constants/asset_constant.dart';
+import '../../../core/extension/context_extension.dart';
 
-import '../../feature/components/custom_appbar.dart';
-import '../../feature/components/custom_decoration.dart';
-import '../../feature/components/tab_bar_widget.dart';
-import '../login/controller/zodiac_controller.dart';
-import 'controller/sign_controller.dart';
-import 'controller/tab_controller.dart';
+import '../../../feature/components/custom_appbar.dart';
+import '../../../feature/components/custom_decoration.dart';
+import '../../../feature/components/tab_bar_widget.dart';
+import '../../login/controller/zodiac_controller.dart';
+import '../controller/sign_controller.dart';
+import '../controller/tab_controller.dart';
 
 class PersonalView extends StatelessWidget {
   PersonalView({Key? key}) : super(key: key);

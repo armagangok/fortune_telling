@@ -1,11 +1,16 @@
+import 'package:fortune_telling/view/find/bindings/find_bindings.dart';
 import 'package:fortune_telling/view/find/view/find_zodiac_view.dart';
-import 'package:fortune_telling/view/home/home_view.dart';
+import 'package:fortune_telling/view/home/view/home_view.dart';
+import 'package:fortune_telling/view/login/bindings/login_bindings.dart';
+import 'package:fortune_telling/view/personal/bindings/personel_bindings.dart';
+import 'package:fortune_telling/view/splash/bindings/splash_screen_bindings.dart';
+import 'package:fortune_telling/view/zodiac_signs/bindings/zodiac_signs_bindings.dart';
 import 'package:get/get.dart';
 
 import '../../view/login/view/login_view.dart';
-import '../../view/personal/personal_view.dart';
+import '../../view/personal/view/personal_view.dart';
 import '../../view/splash/view/splash_view.dart';
-import '../../view/zodiac_signs/zodiac_signs_view.dart';
+import '../../view/zodiac_signs/view/zodiac_signs_view.dart';
 
 part 'app_routes.dart';
 
@@ -17,68 +22,32 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => SplashView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     Get.lazyPut<SplashController>(() => SplashController());
-      //   },
-      // ),
+      binding: SplashBinding(),
     ),
-
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     Get.lazyPut<SplashController>(() => SplashController());
-      //   },
-      // ),
     ),
-
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
-      // ),
+      binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.PERSONAL,
       page: () => PersonalView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
+      binding: PersonelBinding(),
       // ),
     ),
     GetPage(
       name: _Paths.FIND,
       page: () => FindZodiacView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
-      // ),
+      binding: FindZodiacBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.ZODIAC_DETAIL,
-    //   page: () => ZodiacDetailView(
-    //     zodiacModel: Get.arguments,
-    //   ),
-    //   // binding: BindingsBuilder(
-    //   //   () {
-    //   //     // Get.lazyPut<FortuneController>(() => FortuneController());
-    //   //   },
-    //   // ),
-    // ),
     GetPage(
-      name: _Paths.ZODIAC_SIGN, page: () => const ZodiacSignsView(),
-      // binding: BindingsBuilder(
-      //   () {
-      //     // Get.lazyPut<FortuneController>(() => FortuneController());
-      //   },
-      // ),
+      name: _Paths.ZODIAC_SIGN,
+      page: () => const ZodiacSignsView(),
+      binding: ZodiacSignsBinding(),
     ),
   ];
 }

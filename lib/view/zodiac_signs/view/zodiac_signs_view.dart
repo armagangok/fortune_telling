@@ -3,16 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
-import '../../core/extension/context_extension.dart';
-import '../../feature/components/custom_appbar.dart';
-import '../../feature/components/custom_decoration.dart';
-import '../../feature/components/tab_bar_widget.dart';
-import '../../feature/data/data.dart';
-import '../../feature/models/zodiac_model.dart';
-import 'components/fortune_widget.dart';
-import 'controller/zodiac_picker_controller.dart';
-import 'controller/zodiac_sign_controller.dart';
-import 'controller/zodiac_tab_controller.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../feature/components/custom_appbar.dart';
+import '../../../feature/components/custom_decoration.dart';
+import '../../../feature/components/tab_bar_widget.dart';
+import '../../../feature/data/data.dart';
+import '../../../feature/models/zodiac_model.dart';
+import '../components/fortune_widget.dart';
+import '../controller/zodiac_picker_controller.dart';
+import '../controller/zodiac_sign_controller.dart';
+import '../controller/zodiac_tab_controller.dart';
 
 class ZodiacSignsView extends StatefulWidget {
   const ZodiacSignsView({Key? key}) : super(key: key);
