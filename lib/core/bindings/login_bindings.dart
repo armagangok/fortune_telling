@@ -5,8 +5,7 @@ import 'package:get/instance_manager.dart';
 class LoginBinding extends Bindings {
   @override
   void dependencies() {
-    final ZodiacController splashController =
-        Get.put(ZodiacController.instance);
-    final TextController textController = Get.put(TextController.instance);
+    Get.lazyPut<ZodiacController>(() => ZodiacController.instance); 
+    Get.lazyPut<TextController>(() => TextController.instance); 
   }
 }

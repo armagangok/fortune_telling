@@ -4,7 +4,6 @@ import 'package:get/instance_manager.dart';
 class SplashBinding extends Bindings {
   @override
   void dependencies() {
-    final SplashController splashController =
-        Get.put(SplashController.instance);
+    Get.lazyPut<SplashController>(() => SplashController.instance);
   }
 }

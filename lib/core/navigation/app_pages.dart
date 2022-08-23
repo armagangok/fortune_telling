@@ -1,12 +1,11 @@
-import 'package:fortune_telling/view/find/bindings/find_bindings.dart';
+import 'package:fortune_telling/core/bindings/find_bindings.dart';
+import 'package:fortune_telling/core/bindings/login_bindings.dart';
+import 'package:fortune_telling/core/bindings/personel_bindings.dart';
+import 'package:fortune_telling/core/bindings/splash_screen_bindings.dart';
+import 'package:fortune_telling/core/bindings/zodiac_signs_bindings.dart';
 import 'package:fortune_telling/view/find/view/find_zodiac_view.dart';
 import 'package:fortune_telling/view/home/view/home_view.dart';
-import 'package:fortune_telling/view/login/bindings/login_bindings.dart';
-import 'package:fortune_telling/view/personal/bindings/personel_bindings.dart';
-import 'package:fortune_telling/view/splash/bindings/splash_screen_bindings.dart';
-import 'package:fortune_telling/view/zodiac_signs/bindings/zodiac_signs_bindings.dart';
 import 'package:get/get.dart';
-
 import '../../view/login/view/login_view.dart';
 import '../../view/personal/view/personal_view.dart';
 import '../../view/splash/view/splash_view.dart';

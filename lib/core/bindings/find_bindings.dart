@@ -4,7 +4,6 @@ import 'package:get/instance_manager.dart';
 class FindZodiacBinding extends Bindings {
   @override
   void dependencies() {
-    final FindZodiacController splashController =
-        Get.put(FindZodiacController.instance);
+    Get.lazyPut<FindZodiacController>(() => FindZodiacController.instance); 
   }
 }
