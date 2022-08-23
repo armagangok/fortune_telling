@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                           text: "Bana Özel"),
                       SizedBox(height: context.normalHeight),
                       CustomButton(
-                          onTap: () => Get.toNamed(Routes.FIND),
+                          onTap: () => Get.toNamed( Routes.FIND),
                           text: "Burcumu Bul"),
                       SizedBox(height: context.height(0.025)),
                       CustomButton(

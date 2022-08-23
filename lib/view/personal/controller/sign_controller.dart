@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 import '../../../core/constants/network_constant.dart';
 import '../../../core/database/local/my_storage.dart';
@@ -10,12 +9,9 @@ import '../../../feature/models/love_fortune_model.dart';
 import '../../login/controller/zodiac_controller.dart';
 
 class SignController extends GetxController {
-  SignController._();
-  static final instance = SignController._();
-
-  final FortuneController _fortuneController = FortuneController.instance;
-  final MyStorage _myStorage = MyStorage.instance;
-  final ZodiacController _zodiacController = ZodiacController.instance;
+  final _fortuneController = Get.find<FortuneController>();
+  final _myStorage = Get.find<MyStorage>();
+  final _zodiacController = Get.find<ZodiacController>();
 
   final Rx<String?> userName = Rx(null);
   final Rx<String?> birtthDay = Rx(null);

@@ -1,8 +1,12 @@
+import 'package:fortune_telling/view/login/controller/zodiac_controller.dart';
 import 'package:get/get.dart';
 
 class FindZodiacController extends GetxController {
-  FindZodiacController._();
-  static final instance = FindZodiacController._();
+  @override
+  void onClose() {
+    Get.delete<ZodiacController>();
+    super.onClose();
+  }
 
   RxString birtthDay = "".obs; // tarih
   RxString birtthDayPath = "".obs; // path

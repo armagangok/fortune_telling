@@ -16,6 +16,8 @@ class FindZodiacView extends StatelessWidget {
 
   final FindZodiacController findZodiacController = Get.find();
 
+  final zodiacController = Get.find<ZodiacController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,10 +81,9 @@ class FindZodiacView extends StatelessWidget {
               ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")
               : {
                   findZodiacController.birtthDay.value =
-                      ZodiacController.instance.getZodicaSign(
+                      zodiacController.getZodicaSign(
                           DateTime.parse(findZodiacController.birtthDay.value)),
-                  findZodiacController.birtthDayPath.value = ZodiacController
-                      .instance
+                  findZodiacController.birtthDayPath.value = zodiacController
                       .getSignImagePath(findZodiacController.birtthDay.value),
                 };
         },

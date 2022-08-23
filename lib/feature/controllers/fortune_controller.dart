@@ -6,8 +6,7 @@ import '../models/base_fortune_feature_model.dart';
 import '../models/base_fortune_model.dart';
 
 class FortuneController extends GetxController {
-  FortuneController._();
-  static final instance = FortuneController._();
+
 
   Future<dynamic> getFortune({
     String? sign,

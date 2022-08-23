@@ -14,9 +14,9 @@ import '../controller/zodiac_controller.dart';
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
-  final MyStorage _myStorage = MyStorage.instance;
-  final TextController textController = Get.put(TextController.instance);
-  final ZodiacController zodiacController = Get.put(ZodiacController.instance);
+  final _myStorage = Get.find<MyStorage>();
+  final  textController = Get.find<TextController>();
+  final zodiacController = Get.find<ZodiacController>();
   String _val = "";
 
   @override

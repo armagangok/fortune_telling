@@ -2,8 +2,7 @@ import '../../../core/constants/asset_constant.dart';
 import '../../../core/constants/fortune_constant.dart';
 
 class ZodiacController {
-  ZodiacController._();
-  static final instance = ZodiacController._();
+
 
   String getZodicaSign(DateTime date) {
     var days = date.day;

@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ZODIAC_SIGN,
-      page: () => const ZodiacSignsView(),
+      page: () =>  ZodiacSignsView(),
       binding: ZodiacSignsBinding(),
     ),
   ];
