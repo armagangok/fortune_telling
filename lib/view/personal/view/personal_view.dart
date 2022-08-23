@@ -18,7 +18,7 @@ import '../controller/tab_controller.dart';
 class PersonalView extends StatelessWidget {
   PersonalView({Key? key}) : super(key: key);
 
-  final SignController _personalController = Get.put(SignController.instance);
+  final SignController _personalController = Get.find();
   final TabBarController _tabBarController = Get.put(TabBarController.instance);
 
   @override

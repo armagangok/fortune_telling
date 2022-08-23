@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
+
 import '../../../core/extension/context_extension.dart';
 import '../../../feature/components/custom_appbar.dart';
 import '../../../feature/components/custom_decoration.dart';
@@ -21,12 +22,9 @@ class ZodiacSignsView extends StatefulWidget {
   State<ZodiacSignsView> createState() => _ZodiacSignsViewState();
 }
 
-final ZodiacTabController tabBarController =
-    Get.put(ZodiacTabController.instance);
-final ZodiacPickerController zodiacPickerController =
-    Get.put(ZodiacPickerController.instance);
-final ZodiacSignController zodiacSignController =
-    Get.put(ZodiacSignController.instance);
+final ZodiacTabController tabBarController = Get.put(ZodiacTabController.instance);
+final ZodiacPickerController zodiacPickerController = Get.find();
+final ZodiacSignController zodiacSignController = Get.find();
 
 class _ZodiacSignsViewState extends State<ZodiacSignsView> {
   @override
