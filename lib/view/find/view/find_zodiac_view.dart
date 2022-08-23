@@ -25,7 +25,7 @@ class FindZodiacView extends StatelessWidget {
         appBar: CustomAppBar(
           title: const Text("Burcumu Bul"),
           onTap: () {
-            findZodiacController.val1.value = "";
+            findZodiacController.birtthDay.value = "";
             Get.back();
           },
         ),
@@ -36,14 +36,14 @@ class FindZodiacView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                findZodiacController.val1.value == ""
+                findZodiacController.birtthDayPath.value == ""
                     ? _dateTimePicker()
                     : _zodiacText(context),
                 SizedBox(height: context.normalHeight),
-                findZodiacController.val1.value == ""
+                findZodiacController.birtthDayPath.value == ""
                     ? _findButton()
                     : _zodiacImage(),
-                findZodiacController.val1.value != ""
+                findZodiacController.birtthDayPath.value != ""
                     ? _findAnotherZodiacButton()
                     : const SizedBox(),
               ],
@@ -58,16 +58,16 @@ class FindZodiacView extends StatelessWidget {
     return CustomButton(
       text: "Başka Burç Ara",
       onTap: () {
-        findZodiacController.setBirthdayValue = "";
-        findZodiacController.val1.value = "";
+        findZodiacController.birtthDay.value = "";
+        findZodiacController.birtthDayPath.value = "";
       },
     );
   }
 
   Obx _zodiacImage() {
     return Obx(
-      () => findZodiacController.val1.value != ""
-          ? Image.asset(findZodiacController.val1.value)
+      () => findZodiacController.birtthDayPath.value != ""
+          ? Image.asset(findZodiacController.birtthDayPath.value)
           : const Center(),
     );
   }
@@ -75,14 +75,15 @@ class FindZodiacView extends StatelessWidget {
   CustomButton _findButton() {
     return CustomButton(
         onTap: () {
-          findZodiacController.getBirthday == ""
+          findZodiacController.birtthDay.value == ""
               ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")
               : {
-                  findZodiacController.val.value = ZodiacController.instance
-                      .getZodicaSign(
-                          DateTime.parse(findZodiacController.getBirthday)),
-                  findZodiacController.val1.value = ZodiacController.instance
-                      .getSignImagePath(findZodiacController.val.value),
+                  findZodiacController.birtthDay.value =
+                      ZodiacController.instance.getZodicaSign(
+                          DateTime.parse(findZodiacController.birtthDay.value)),
+                  findZodiacController.birtthDayPath.value = ZodiacController
+                      .instance
+                      .getSignImagePath(findZodiacController.birtthDay.value),
                 };
         },
         text: "Burcumu Bul");
@@ -91,7 +92,7 @@ class FindZodiacView extends StatelessWidget {
   Obx _zodiacText(BuildContext context) {
     return Obx(
       () => Text(
-        findZodiacController.val.value,
+        findZodiacController.birtthDay.value,
         style: context.textTheme.headline2!.copyWith(
           color: Colors.white,
         ),
@@ -107,7 +108,7 @@ class FindZodiacView extends StatelessWidget {
       lastDate: DateTime(2023),
       dateLabelText: 'Date',
       onChanged: (val) {
-        findZodiacController.setBirthdayValue = val;
+        findZodiacController.birtthDay.value = val;
       },
     );
   }
