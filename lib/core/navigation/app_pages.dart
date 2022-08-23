@@ -1,15 +1,16 @@
-import 'package:fortune_telling/core/bindings/find_bindings.dart';
-import 'package:fortune_telling/core/bindings/login_bindings.dart';
-import 'package:fortune_telling/core/bindings/personel_bindings.dart';
-import 'package:fortune_telling/core/bindings/splash_screen_bindings.dart';
-import 'package:fortune_telling/core/bindings/zodiac_signs_bindings.dart';
-import 'package:fortune_telling/view/find/view/find_zodiac_view.dart';
-import 'package:fortune_telling/view/home/view/home_view.dart';
 import 'package:get/get.dart';
+
+import '../../view/find/view/find_zodiac_view.dart';
+import '../../view/home/view/home_view.dart';
 import '../../view/login/view/login_view.dart';
 import '../../view/personal/view/personal_view.dart';
 import '../../view/splash/view/splash_view.dart';
 import '../../view/zodiac_signs/view/zodiac_signs_view.dart';
+import '../bindings/find_bindings.dart';
+import '../bindings/login_bindings.dart';
+import '../bindings/personel_bindings.dart';
+import '../bindings/splash_screen_bindings.dart';
+import '../bindings/zodiac_signs_bindings.dart';
 
 part 'app_routes.dart';
 
