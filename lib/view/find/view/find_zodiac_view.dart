@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
@@ -56,8 +57,8 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  CustomButton _findAnotherZodiacButton() {
-    return CustomButton(
+  MyBlinkingButton _findAnotherZodiacButton() {
+    return MyBlinkingButton(
       text: "Başka Burç Ara",
       onTap: () {
         findZodiacController.birtthDay.value = "";
@@ -74,8 +75,8 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  CustomButton _findButton() {
-    return CustomButton(
+  MyBlinkingButton _findButton() {
+    return MyBlinkingButton(
         onTap: () {
           findZodiacController.birtthDay.value == ""
               ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")

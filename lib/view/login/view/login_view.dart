@@ -1,12 +1,11 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/navigation/app_pages.dart';
-import '../../../feature/components/custom_button.dart';
 import '../../../feature/components/custom_decoration.dart';
 import '../controller/text_controller.dart';
 import '../controller/zodiac_controller.dart';
@@ -15,7 +14,7 @@ class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
   final _myStorage = Get.find<MyStorage>();
-  final  textController = Get.find<TextController>();
+  final textController = Get.find<TextController>();
   final zodiacController = Get.find<ZodiacController>();
   String _val = "";
 
@@ -47,7 +46,7 @@ class LoginView extends StatelessWidget {
                     child: _dateTimePicker(),
                   ),
                   SizedBox(height: context.normalHeight),
-                  CustomButton(
+                  MyBlinkingButton(
                     text: "Devam Et",
                     onTap: _continuneButton,
                   ),

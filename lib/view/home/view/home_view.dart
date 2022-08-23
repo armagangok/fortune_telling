@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/route_manager.dart';
 
 import '../../../core/constants/asset_constant.dart';
@@ -28,15 +29,15 @@ class HomeView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomButton(
+                      MyBlinkingButton(
                           onTap: () => Get.toNamed(Routes.PERSONAL),
                           text: "Bana Özel"),
                       SizedBox(height: context.normalHeight),
-                      CustomButton(
-                          onTap: () => Get.toNamed( Routes.FIND),
+                      MyBlinkingButton(
+                          onTap: () => Get.toNamed(Routes.FIND),
                           text: "Burcumu Bul"),
                       SizedBox(height: context.height(0.025)),
-                      CustomButton(
+                      MyBlinkingButton(
                           onTap: () => Get.toNamed(Routes.ZODIAC_SIGN),
                           text: "Tüm Burçlar"),
                       const Spacer(),
