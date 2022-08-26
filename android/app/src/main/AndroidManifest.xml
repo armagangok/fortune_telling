@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fortune_telling">
+    package="com.EyupArmagan.fortune_telling">
    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="fortune_telling"
+        android:label="Burç Yorumları"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

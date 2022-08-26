@@ -1,4 +1,4 @@
-package com.example.fortune_telling
+package com.EyupArmagan.fortune_telling
 
 import io.flutter.embedding.android.FlutterActivity
 
