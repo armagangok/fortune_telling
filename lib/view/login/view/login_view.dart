@@ -1,4 +1,3 @@
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -9,6 +8,7 @@ import '../../../core/navigation/app_pages.dart';
 import '../../../feature/components/custom_decoration.dart';
 import '../controller/text_controller.dart';
 import '../controller/zodiac_controller.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
@@ -75,19 +75,22 @@ class LoginView extends StatelessWidget {
   }
 
   Widget _dateTimePicker() {
-    return DateTimePicker(
-      decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
-      initialValue: '',
-      firstDate: DateTime(1960),
-      lastDate: DateTime(2023),
-      dateLabelText: 'Doğum Tarihiniz',
-      onChanged: (val) async {
-        _val = val;
-        await _myStorage.storage.write(
-          "birthDay",
-          val,
-        );
-      },
-    );
+    return Builder(builder: (context) {
+      return DateTimePicker(
+        style: TextStyle(height: context.height(0.0020)),
+        decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
+        initialValue: '',
+        firstDate: DateTime(1960),
+        lastDate: DateTime(2023),
+        dateLabelText: 'Doğum Tarihiniz',
+        onChanged: (val) async {
+          _val = val;
+          await _myStorage.storage.write(
+            "birthDay",
+            val,
+          );
+        },
+      );
+    });
   }
 }

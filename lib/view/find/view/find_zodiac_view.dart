@@ -1,13 +1,11 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-
 import '../../../core/extension/context_extension.dart';
+import '../../../feature/components/blinking_button.dart';
 import '../../../feature/components/custom_appbar.dart';
-import '../../../feature/components/custom_button.dart';
 import '../../../feature/components/custom_decoration.dart';
 import '../../login/controller/zodiac_controller.dart';
 import '../controller/find_zodiac_controller.dart';
@@ -102,16 +100,19 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  DateTimePicker _dateTimePicker() {
-    return DateTimePicker(
-      decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
-      initialValue: '',
-      firstDate: DateTime(1960),
-      lastDate: DateTime(2023),
-      dateLabelText: 'Date',
-      onChanged: (val) {
-        findZodiacController.birtthDay.value = val;
-      },
-    );
+  Widget _dateTimePicker() {
+    return Builder(builder: (context) {
+      return DateTimePicker(
+        style: TextStyle(height: context.height(0.0020)),
+        decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
+        initialValue: '',
+        firstDate: DateTime(1960),
+        lastDate: DateTime(2023),
+        dateLabelText: 'Date',
+        onChanged: (val) {
+          findZodiacController.birtthDay.value = val;
+        },
+      );
+    });
   }
 }

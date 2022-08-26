@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/route_manager.dart';
-
 import '../../../core/constants/asset_constant.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/navigation/app_pages.dart';
-import '../../../feature/components/custom_button.dart';
 import '../../../feature/components/custom_decoration.dart';
 
 class HomeView extends StatelessWidget {

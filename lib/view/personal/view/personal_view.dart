@@ -20,41 +20,37 @@ class PersonalView extends StatelessWidget {
   final _personalController = Get.find<SignController>();
   final _tabBarController = Get.find<TabBarController>();
   final _zodiacController = Get.find<ZodiacController>();
-  
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Container(
-        decoration: AppDecoration.scaffoldDecoration,
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: const CustomAppBar(
-            title: Text("Bana Özel"),
-          ),
-          body: Obx(
-            () => _personalController.dailyFortune.value != null
-                ? ListView(
-                    padding: context.symmetricPadding(horizontal: 0.025),
-                    physics: const ClampingScrollPhysics(),
-                    children: [
-                      userNametext,
-                      heigth025,
-                      zoidacImage,
-                      zodiacSignText,
-                      heigth025,
-                      Center(
-                        child: TabBarWidget(
-                          widgetList: widgetList,
-                        ),
+    return Container(
+      decoration: AppDecoration.scaffoldDecoration,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: const CustomAppBar(
+          title: Text("Bana Özel"),
+        ),
+        body: Obx(
+          () => _personalController.dailyFortune.value != null
+              ? ListView(
+                  padding: context.symmetricPadding(horizontal: 0.025),
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    userNametext,
+                    heigth025,
+                    zoidacImage,
+                    zodiacSignText,
+                    heigth025,
+                    Center(
+                      child: TabBarWidget(
+                        widgetList: widgetList,
                       ),
-                      heigth015,
-                      fortunes,
-                    ],
-                  )
-                : loadingWidget,
-          ),
+                    ),
+                    heigth015,
+                    fortunes,
+                  ],
+                )
+              : loadingWidget,
         ),
       ),
     );

@@ -7,7 +7,7 @@ class AppDecoration {
   AppDecoration._();
 
   static InputDecoration decoration({String? hinttext}) {
-    return InputDecoration(
+    return InputDecoration(     
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: AppColor.purple),
         borderRadius: BorderRadius.all(Radius.circular(90.0)),
