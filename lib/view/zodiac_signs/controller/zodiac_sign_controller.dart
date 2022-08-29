@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../../core/constants/network_constant.dart';
 import '../../../feature/controllers/fortune_controller.dart';
 import '../../../feature/models/base_fortune_feature_model.dart';
@@ -23,7 +22,6 @@ class ZodiacSignController extends GetxController {
   final Rx<BaseFortuneFeatureModel?> loveFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
-
 
   Future<void> getDailyFortune(String sign) async {
     dailyFortune.value = null;
