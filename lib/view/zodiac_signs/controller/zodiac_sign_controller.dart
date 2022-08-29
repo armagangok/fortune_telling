@@ -11,9 +11,11 @@ import '../../../feature/models/weekly_fortune_model.dart';
 import '../../../feature/models/yearly_fortune_model.dart';
 
 class ZodiacSignController extends GetxController {
+  ZodiacSignController._();
+  static final instance = ZodiacSignController._();
+
   final _fortuneController = Get.find<FortuneController>();
 
-  final Rx<String> choosenSign = Rx("Boğa");
   final Rx<DailyFortuneModel?> dailyFortune = Rx(null);
   final Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);
   final Rx<WeeklyFortuneModel?> weeklyFortune = Rx(null);
@@ -22,7 +24,6 @@ class ZodiacSignController extends GetxController {
   final Rx<BaseFortuneFeatureModel?> healthFortune = Rx(null);
   final Rx<BaseFortuneFeatureModel?> careerFortune = Rx(null);
 
-  set setSign(String sign) => choosenSign.value = sign;
 
   Future<void> getDailyFortune(String sign) async {
     dailyFortune.value = null;

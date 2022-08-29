@@ -23,7 +23,7 @@ class ZodiacSignsView extends StatelessWidget {
   final zodiacSignController = Get.find<ZodiacSignController>();
   @override
   Widget build(BuildContext context) {
-    print(zodiacSignController.choosenSign.value);
+    print(zodiacPickerController.choosenSign.value);
     return Container(
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
@@ -31,7 +31,7 @@ class ZodiacSignsView extends StatelessWidget {
         appBar: CustomAppBar(
           title: Obx(
             () => Text(
-              zodiacSignController.choosenSign.value,
+              zodiacPickerController.choosenSign.value,
               style: context.textTheme.headline4!.copyWith(color: Colors.white),
             ),
           ),
@@ -78,7 +78,7 @@ class ZodiacSignsView extends StatelessWidget {
             magnification: 1,
             itemExtent: context.width(0.38),
             onSelectedItemChanged: (value) {
-              zodiacSignController.setSign = Data.zodiacs[value].zodiacName;
+              zodiacPickerController.setSign = Data.zodiacs[value].zodiacName;
               zodiacTabController.setIndex = -1;
               zodiacPickerController.setValue = value;
             },
@@ -214,7 +214,7 @@ class ZodiacSignsView extends StatelessWidget {
             zodiacTabController.setIndex = 0;
 
             await zodiacSignController
-                .getDailyFortune(zodiacSignController.choosenSign.value);
+                .getDailyFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -224,7 +224,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 1;
             await zodiacSignController
-                .getWeeklyFortune(zodiacSignController.choosenSign.value);
+                .getWeeklyFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -234,7 +234,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 2;
             await zodiacSignController
-                .getMonthlyFortune(zodiacSignController.choosenSign.value);
+                .getMonthlyFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -244,7 +244,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 3;
             await zodiacSignController
-                .getYearlyFortune(zodiacSignController.choosenSign.value);
+                .getYearlyFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -254,7 +254,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 4;
             await zodiacSignController
-                .getLoveFortune(zodiacSignController.choosenSign.value);
+                .getLoveFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -264,7 +264,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 5;
             await zodiacSignController
-                .getCareerFortune(zodiacSignController.choosenSign.value);
+                .getCareerFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -274,7 +274,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 6;
             await zodiacSignController
-                .getHealthFortune(zodiacSignController.choosenSign.value);
+                .getHealthFortune(zodiacPickerController.choosenSign.value);
           },
         ),
       ],

@@ -9,7 +9,7 @@ import '../database/local/my_storage.dart';
 class PersonelBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SignController>(() => SignController());
+    Get.lazyPut<SignController>(() => SignController.instance);
     Get.lazyPut<FortuneController>(() => FortuneController());
     Get.lazyPut<MyStorage>(() => MyStorage());
     Get.lazyPut<ZodiacController>(() => ZodiacController());

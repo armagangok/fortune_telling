@@ -8,7 +8,7 @@ import '../../feature/controllers/fortune_controller.dart';
 class ZodiacSignsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ZodiacSignController>(() => ZodiacSignController());
+    Get.lazyPut<ZodiacSignController>(() => ZodiacSignController.instance);
     Get.lazyPut<ZodiacPickerController>(() => ZodiacPickerController());
     Get.lazyPut<ZodiacTabController>(() => ZodiacTabController());
     Get.lazyPut<FortuneController>(() => FortuneController());

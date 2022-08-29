@@ -9,6 +9,9 @@ import '../../../feature/models/love_fortune_model.dart';
 import '../../login/controller/zodiac_controller.dart';
 
 class SignController extends GetxController {
+  SignController._();
+  static final instance = SignController._();
+
   final _fortuneController = Get.find<FortuneController>();
   final _myStorage = Get.find<MyStorage>();
   final _zodiacController = Get.find<ZodiacController>();
