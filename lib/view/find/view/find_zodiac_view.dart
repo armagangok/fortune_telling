@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
+
 import '../../../core/extension/context_extension.dart';
 import '../../../feature/components/blinking_button.dart';
 import '../../../feature/components/custom_appbar.dart';
@@ -38,14 +39,14 @@ class FindZodiacView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 findZodiacController.birtthDayPath.value == ""
-                    ? _dateTimePicker()
-                    : _zodiacText(context),
+                    ? _dateTimePicker
+                    : _zodiacText,
                 SizedBox(height: context.normalHeight),
                 findZodiacController.birtthDayPath.value == ""
-                    ? _findButton()
-                    : _zodiacImage(),
+                    ? _findButton
+                    : _zodiacImage,
                 findZodiacController.birtthDayPath.value != ""
-                    ? _findAnotherZodiacButton()
+                    ? _findAnotherZodiacButton
                     : const SizedBox(),
               ],
             ),
@@ -55,64 +56,60 @@ class FindZodiacView extends StatelessWidget {
     );
   }
 
-  MyBlinkingButton _findAnotherZodiacButton() {
-    return MyBlinkingButton(
-      text: "Başka Burç Ara",
-      onTap: () {
-        findZodiacController.birtthDay.value = "";
-        findZodiacController.birtthDayPath.value = "";
-      },
-    );
-  }
-
-  Obx _zodiacImage() {
-    return Obx(
-      () => findZodiacController.birtthDayPath.value != ""
-          ? Image.asset(findZodiacController.birtthDayPath.value)
-          : const Center(),
-    );
-  }
-
-  MyBlinkingButton _findButton() {
-    return MyBlinkingButton(
+  MyBlinkingButton get _findAnotherZodiacButton => MyBlinkingButton(
+        text: "Başka Burç Ara",
         onTap: () {
-          findZodiacController.birtthDay.value == ""
-              ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")
-              : {
-                  findZodiacController.birtthDay.value =
-                      zodiacController.getZodicaSign(
-                          DateTime.parse(findZodiacController.birtthDay.value)),
-                  findZodiacController.birtthDayPath.value = zodiacController
-                      .getSignImagePath(findZodiacController.birtthDay.value),
-                };
-        },
-        text: "Burcumu Bul");
-  }
-
-  Obx _zodiacText(BuildContext context) {
-    return Obx(
-      () => Text(
-        findZodiacController.birtthDay.value,
-        style: context.textTheme.headline2!.copyWith(
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  Widget _dateTimePicker() {
-    return Builder(builder: (context) {
-      return DateTimePicker(
-        style: TextStyle(height: context.height(0.0020)),
-        decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
-        initialValue: '',
-        firstDate: DateTime(1960),
-        lastDate: DateTime(2023),
-        dateLabelText: 'Date',
-        onChanged: (val) {
-          findZodiacController.birtthDay.value = val;
+          findZodiacController.birtthDay.value = "";
+          findZodiacController.birtthDayPath.value = "";
         },
       );
-    });
-  }
+
+  Obx get _zodiacImage => Obx(
+        () => findZodiacController.birtthDayPath.value != ""
+            ? Image.asset(findZodiacController.birtthDayPath.value)
+            : const Center(),
+      );
+
+  MyBlinkingButton get _findButton => MyBlinkingButton(
+      onTap: () {
+        findZodiacController.birtthDay.value == ""
+            ? Get.snackbar("Uyarı", "Lütfen tarih giriniz")
+            : {
+                findZodiacController.birtthDay.value =
+                    zodiacController.getZodicaSign(
+                        DateTime.parse(findZodiacController.birtthDay.value)),
+                findZodiacController.birtthDayPath.value = zodiacController
+                    .getSignImagePath(findZodiacController.birtthDay.value),
+              };
+      },
+      text: "Burcumu Bul");
+
+  Widget get _zodiacText => Obx(
+        () => Builder(builder: (context) {
+          return Text(
+            findZodiacController.birtthDay.value,
+            style: context.textTheme.headline2!.copyWith(
+              color: Colors.white,
+            ),
+          );
+        }),
+      );
+
+  Widget get _dateTimePicker => Builder(
+      builder: (context) => SizedBox(
+            height: context.height(0.09),
+            child: DateTimePicker(
+              decoration: AppDecoration.decoration(
+                hinttext: "Doğum Tarihiniz",
+                height: context.height(0.09),
+              ),
+              initialValue: '',
+              firstDate: DateTime(1960),
+              lastDate: DateTime(2023),
+              dateLabelText: 'Doğum Tarihiniz',
+              onChanged: (val) async {
+                findZodiacController.birtthDay.value = val;
+              },
+            ),
+          ));
 }

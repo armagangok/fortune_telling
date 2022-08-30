@@ -6,8 +6,10 @@ import '../../core/constants/asset_constant.dart';
 class AppDecoration {
   AppDecoration._();
 
-  static InputDecoration decoration({String? hinttext}) {
-    return InputDecoration(     
+  static InputDecoration decoration({String? hinttext, double? height}) {
+    return InputDecoration(
+      contentPadding:
+          EdgeInsets.only(top: height ?? 0) + EdgeInsets.only(left: 20),
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: AppColor.purple),
         borderRadius: BorderRadius.all(Radius.circular(90.0)),

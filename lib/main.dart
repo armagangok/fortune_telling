@@ -9,7 +9,8 @@ import 'core/theme/dark_theme.dart';
 import 'view/splash/view/splash_view.dart';
 
 void main() async {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await GetStorage.init();
   SplashBinding().dependencies();
   runApp(const MyApp());

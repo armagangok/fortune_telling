@@ -1,14 +1,15 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/feature/components/blinking_button.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
+
 import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/navigation/app_pages.dart';
+import '../../../feature/components/blinking_button.dart';
 import '../../../feature/components/custom_decoration.dart';
 import '../controller/text_controller.dart';
 import '../controller/zodiac_controller.dart';
-import 'package:date_time_picker/date_time_picker.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
@@ -33,23 +34,11 @@ class LoginView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: context.height(0.1),
-                    child: TextField(
-                      controller: textController.usernameController,
-                      decoration: AppDecoration.decoration(hinttext: "İsminiz"),
-                    ),
-                  ),
+                  _nameTextField,
                   SizedBox(height: context.normalHeight),
-                  SizedBox(
-                    height: context.height(0.1),
-                    child: _dateTimePicker(),
-                  ),
+                  _dateTimePicker,
                   SizedBox(height: context.normalHeight),
-                  MyBlinkingButton(
-                    text: "Devam Et",
-                    onTap: _continuneButton,
-                  ),
+                  _continueButton,
                 ],
               ),
             ),
@@ -59,38 +48,55 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  _continuneButton() async {
-    final String isim = textController.usernameController.text;
-    if (isim.isNotEmpty && _val.isNotEmpty) {
-      await _myStorage.storage.write('isim', isim);
-      await _myStorage.storage.write('isLogged', true);
-      Get.toNamed(Routes.HOME);
-    } else {
-      Get.snackbar(
-        "Hata",
-        "İsminizi ve Doğum Tarihinizi Giriniz",
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
-
-  Widget _dateTimePicker() {
-    return Builder(builder: (context) {
-      return DateTimePicker(
-        style: TextStyle(height: context.height(0.0020)),
-        decoration: AppDecoration.decoration(hinttext: "Doğum Tarihiniz"),
-        initialValue: '',
-        firstDate: DateTime(1960),
-        lastDate: DateTime(2023),
-        dateLabelText: 'Doğum Tarihiniz',
-        onChanged: (val) async {
-          _val = val;
-          await _myStorage.storage.write(
-            "birthDay",
-            val,
+  MyBlinkingButton get _continueButton => MyBlinkingButton(
+      text: "Devam Et",
+      onTap: () async {
+        final String isim = textController.usernameController.text;
+        if (isim.isNotEmpty && _val.isNotEmpty) {
+          await _myStorage.storage.write('isim', isim);
+          await _myStorage.storage.write('isLogged', true);
+          Get.toNamed(Routes.HOME);
+        } else {
+          Get.snackbar(
+            "Hata",
+            "İsminizi ve Doğum Tarihinizi Giriniz",
+            snackPosition: SnackPosition.BOTTOM,
           );
-        },
-      );
-    });
-  }
+        }
+      });
+
+  Widget get _nameTextField => Builder(
+      builder: (context) => SizedBox(
+            height: context.height(0.09),
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              controller: textController.usernameController,
+              decoration: AppDecoration.decoration(
+                hinttext: "İsminiz",
+                height: context.height(0.09),
+              ),
+            ),
+          ));
+
+  Widget get _dateTimePicker => Builder(
+      builder: (context) => SizedBox(
+            height: context.height(0.09),
+            child: DateTimePicker(
+              decoration: AppDecoration.decoration(
+                hinttext: "Doğum Tarihiniz",
+                height: context.height(0.09),
+              ),
+              initialValue: '',
+              firstDate: DateTime(1960),
+              lastDate: DateTime(2023),
+              dateLabelText: 'Doğum Tarihiniz',
+              onChanged: (val) async {
+                _val = val;
+                await _myStorage.storage.write(
+                  "birthDay",
+                  val,
+                );
+              },
+            ),
+          ));
 }

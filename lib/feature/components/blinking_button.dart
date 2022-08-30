@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_telling/core/constants/app_color.dart';
 import 'package:fortune_telling/feature/components/custom_decoration.dart';
+
 import '../../core/extension/context_extension.dart';
 
 class MyBlinkingButton extends StatefulWidget {
@@ -45,7 +46,7 @@ class _MyBlinkingButtonState extends State<MyBlinkingButton>
               ),
               borderRadius: AppDecoration.border(),
             ),
-            height: context.height(0.089),
+            height: context.height(0.09),
             width: double.infinity,
             child: Stack(
               children: [
