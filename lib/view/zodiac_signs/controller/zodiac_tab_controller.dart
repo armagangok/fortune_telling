@@ -3,14 +3,6 @@ import 'package:get/get.dart';
 
 class ZodiacTabController extends GetxController with BaseTabControler {
 
-
-  @override
-  void onClose() {
-    Get.delete<ZodiacTabController>();
-    super.onClose();
-  }
-
-
   final RxInt _currentIndex = RxInt(-1);
 
   @override

@@ -40,8 +40,6 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   auto_size_text: ^3.0.0
-  skeletons: ^0.0.3
-  flutter_launcher_icons: ^0.10.0
   date_time_picker: ^2.1.0
 
 dev_dependencies:
