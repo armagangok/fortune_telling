@@ -23,7 +23,7 @@ class ZodiacSignsView extends StatelessWidget {
   final zodiacSignController = Get.find<ZodiacSignController>();
   @override
   Widget build(BuildContext context) {
-    print(zodiacPickerController.choosenSign.value);
+    
     return Container(
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
