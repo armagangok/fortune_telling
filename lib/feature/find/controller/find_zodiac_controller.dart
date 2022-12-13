@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 
 import '../../login/controller/zodiac_controller.dart';
