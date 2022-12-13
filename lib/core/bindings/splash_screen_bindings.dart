@@ -1,5 +1,7 @@
-import 'package:fortune_telling/view/splash/controller/splash_controller.dart';
+
 import 'package:get/instance_manager.dart';
+
+import '../../feature/splash/controller/splash_controller.dart';
 
 class SplashBinding extends Bindings {
   @override

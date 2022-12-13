@@ -1,9 +1,10 @@
-import 'package:fortune_telling/view/login/controller/zodiac_controller.dart';
-import 'package:fortune_telling/view/personal/controller/sign_controller.dart';
+
 import 'package:get/instance_manager.dart';
 
-import '../../feature/controllers/fortune_controller.dart';
-import '../../view/personal/controller/tab_controller.dart';
+import '../../data/controllers/fortune_controller.dart';
+import '../../feature/login/controller/zodiac_controller.dart';
+import '../../feature/personal/controller/sign_controller.dart';
+import '../../feature/personal/controller/tab_controller.dart';
 import '../database/local/my_storage.dart';
 
 class PersonelBinding extends Bindings {

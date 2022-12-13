@@ -1,6 +1,8 @@
-import 'package:fortune_telling/view/find/controller/find_zodiac_controller.dart';
-import 'package:fortune_telling/view/login/controller/zodiac_controller.dart';
+
 import 'package:get/instance_manager.dart';
+
+import '../../feature/find/controller/find_zodiac_controller.dart';
+import '../../feature/login/controller/zodiac_controller.dart';
 
 class FindZodiacBinding extends Bindings {
   @override

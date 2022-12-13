@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 
-import '../../view/find/view/find_zodiac_view.dart';
-import '../../view/home/view/home_view.dart';
-import '../../view/login/view/login_view.dart';
-import '../../view/personal/view/personal_view.dart';
-import '../../view/splash/view/splash_view.dart';
-import '../../view/zodiac_signs/view/zodiac_signs_view.dart';
+
+import '../../feature/find/view/find_zodiac_view.dart';
+import '../../feature/home/view/home_view.dart';
+import '../../feature/login/view/login_view.dart';
+import '../../feature/personal/view/personal_view.dart';
+import '../../feature/splash/view/splash_view.dart';
+import '../../feature/zodiac_signs/view/zodiac_signs_view.dart';
 import '../bindings/find_bindings.dart';
 import '../bindings/login_bindings.dart';
 import '../bindings/personel_bindings.dart';
