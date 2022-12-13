@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../../data/controllers/tab_controller.dart';
+import '../../data/contracts/tab_controller.dart';
 import '../constants/app_color.dart';
 import '../extension/context_extension.dart';
 

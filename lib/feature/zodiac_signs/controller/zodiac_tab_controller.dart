@@ -1,7 +1,7 @@
 
 import 'package:get/get.dart';
 
-import '../../../data/controllers/tab_controller.dart';
+import '../../../data/contracts/tab_controller.dart';
 
 class ZodiacTabController extends GetxController with BaseTabControler {
 

@@ -9,7 +9,7 @@ import '../../../core/components/custom_appbar.dart';
 import '../../../core/components/custom_decoration.dart';
 import '../../../core/components/tab_bar_widget.dart';
 
-import '../../../data/data/data.dart';
+import '../../../data/fortune_data.dart';
 import '../../../feature/models/zodiac_model.dart';
 import '../components/fortune_widget.dart';
 import '../controller/zodiac_picker_controller.dart';
@@ -24,7 +24,6 @@ class ZodiacSignsView extends StatelessWidget {
   final zodiacSignController = Get.find<ZodiacSignController>();
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
@@ -79,11 +78,13 @@ class ZodiacSignsView extends StatelessWidget {
             magnification: 1,
             itemExtent: context.width(0.38),
             onSelectedItemChanged: (value) {
-              zodiacPickerController.setSign = Data.zodiacs[value].zodiacName;
+              zodiacPickerController.setSign =
+                  FortuneData.zodiacs[value].zodiacName;
               zodiacTabController.setIndex = -1;
               zodiacPickerController.setValue = value;
             },
-            children: Data.zodiacs.map((item) => signPicker(item)).toList(),
+            children:
+                FortuneData.zodiacs.map((item) => signPicker(item)).toList(),
           ),
         ),
       );

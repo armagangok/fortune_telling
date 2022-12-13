@@ -1,10 +1,10 @@
-import '../../core/constants/asset_constant.dart';
-import '../../core/constants/fortune_constant.dart';
-import '../../feature/models/zodiac_model.dart';
+import '../core/constants/asset_constant.dart';
+import '../core/constants/fortune_constant.dart';
+import '../feature/models/zodiac_model.dart';
 
-class Data {
-  Data._();
-  static final instance = Data._();
+class FortuneData {
+  FortuneData._();
+  static final instance = FortuneData._();
 
   static final List<ZodiacModel> zodiacs = [
     ZodiacModel(KFortune.aslan, KAsset.aslan),

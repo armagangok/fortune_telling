@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../data/controllers/tab_controller.dart';
+import '../../../data/contracts/tab_controller.dart';
 
 class TabBarController extends GetxController with BaseTabControler {
 
