@@ -1,5 +1,6 @@
 import '../../core/network/contracts/base_network_model.dart';
-abstract class BaseFortuneModel extends BaseNetworkModel{
+
+abstract class BaseFortuneModel extends BaseNetworkModel {
   String? burc;
 
   String? zaman;
@@ -12,11 +13,3 @@ abstract class BaseFortuneModel extends BaseNetworkModel{
 
   String? fortune;
 }
-
-
-// "Burc": 
-// "Zaman": 
-// "Mottosu"
-// "Gezegeni": 
-// "Elementi": 
-// "Yorum": 

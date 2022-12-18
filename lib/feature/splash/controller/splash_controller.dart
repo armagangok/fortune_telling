@@ -1,16 +1,17 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../../core/navigation/app_pages.dart';
+import '../../../core/navigation/constant/routes.dart';
+import '../../../core/navigation/contract/base_navigation_service.dart';
+import '../../../injection_container.dart';
 
-class SplashController extends GetxController {
-  @override
-  void onReady() async {
-    await loading();
-    super.onReady();
+class SplashController {
+  SplashController() {
+    loading();
   }
+
+  var _navigator = getIt<NavigationServiceContract>.call();
 
   final userdata = GetStorage();
 
@@ -19,8 +20,8 @@ class SplashController extends GetxController {
       const Duration(seconds: 3),
       () {
         userdata.read('isLogged') == true
-            ? Get.offAndToNamed(Routes.HOME)
-            : Get.offAndToNamed(Routes.LOGIN);
+            ? _navigator.navigateTo(path: KRoute.HOME)
+            : _navigator.navigateTo(path: KRoute.LOGIN_PAGE);
       },
     );
   }

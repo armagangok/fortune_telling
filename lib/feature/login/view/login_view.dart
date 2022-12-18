@@ -1,23 +1,26 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/core/database/local/contract/storage_contract.dart';
+import 'package:fortune_telling/core/navigation/constant/routes.dart';
+import 'package:fortune_telling/core/navigation/contract/base_navigation_service.dart';
+import 'package:fortune_telling/injection_container.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/instance_manager.dart';
 
-import '../../../core/database/local/my_storage.dart';
 import '../../../core/extension/context_extension.dart';
-import '../../../core/navigation/app_pages.dart';
+
 import '../../../core/components/blinking_button.dart';
 import '../../../core/components/custom_decoration.dart';
 import '../controller/text_controller.dart';
-import '../controller/zodiac_controller.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
-  final _myStorage = Get.find<MyStorage>();
-  final textController = Get.find<TextController>();
-  final zodiacController = Get.find<ZodiacController>();
   String _val = "";
+
+  final _storage = getIt.call<StorageContract>();
+  final _textController = getIt.call<TextController>();
+  final _navigator = getIt.call<NavigationServiceContract>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +54,11 @@ class LoginView extends StatelessWidget {
   MyBlinkingButton get _continueButton => MyBlinkingButton(
       text: "Devam Et",
       onTap: () async {
-        final String isim = textController.usernameController.text;
+        final String isim = _textController.usernameController.text;
         if (isim.isNotEmpty && _val.isNotEmpty) {
-          await _myStorage.storage.write('isim', isim);
-          await _myStorage.storage.write('isLogged', true);
-          Get.toNamed(Routes.HOME);
+          await _storage.write('isim', isim);
+          await _storage.write('isLogged', true);
+          _navigator.navigateTo(path: KRoute.HOME);
         } else {
           Get.snackbar(
             "Hata",
@@ -70,7 +73,7 @@ class LoginView extends StatelessWidget {
             height: context.height(0.09),
             child: TextField(
               textAlignVertical: TextAlignVertical.center,
-              controller: textController.usernameController,
+              controller: _textController.usernameController,
               decoration: AppDecoration.decoration(
                 hinttext: "İsminiz",
                 height: context.height(0.09),
@@ -79,24 +82,25 @@ class LoginView extends StatelessWidget {
           ));
 
   Widget get _dateTimePicker => Builder(
-      builder: (context) => SizedBox(
-            height: context.height(0.09),
-            child: DateTimePicker(
-              decoration: AppDecoration.decoration(
-                hinttext: "Doğum Tarihiniz",
-                height: context.height(0.09),
-              ),
-              initialValue: '',
-              firstDate: DateTime(1960),
-              lastDate: DateTime(2023),
-              dateLabelText: 'Doğum Tarihiniz',
-              onChanged: (val) async {
-                _val = val;
-                await _myStorage.storage.write(
-                  "birthDay",
-                  val,
-                );
-              },
+        builder: (context) => SizedBox(
+          height: context.height(0.09),
+          child: DateTimePicker(
+            decoration: AppDecoration.decoration(
+              hinttext: "Doğum Tarihiniz",
+              height: context.height(0.09),
             ),
-          ));
+            initialValue: '',
+            firstDate: DateTime(1960),
+            lastDate: DateTime(2023),
+            dateLabelText: 'Doğum Tarihiniz',
+            onChanged: (val) async {
+              _val = val;
+              await _storage.write(
+                "birthDay",
+                val,
+              );
+            },
+          ),
+        ),
+      );
 }

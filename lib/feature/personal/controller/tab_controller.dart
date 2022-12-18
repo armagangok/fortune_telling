@@ -3,9 +3,6 @@ import 'package:get/get.dart';
 import '../../../data/contracts/tab_controller.dart';
 
 class TabBarController extends GetxController with BaseTabControler {
-
-
-  @override
   final _currentIndex = RxInt(0);
 
   @override

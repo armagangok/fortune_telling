@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 
 import '../../../core/constants/asset_constant.dart';
 import '../../../core/extension/context_extension.dart';
+import '../../../injection_container.dart';
 import '../controller/splash_controller.dart';
 
 class SplashView extends StatelessWidget {
   SplashView({Key? key}) : super(key: key);
 
-  final  splashController = Get.find<SplashController>();
+  final splashController = getIt.call<SplashController>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,11 @@ class SplashView extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            Center(child: Image.asset(KAsset.splashImage)),
+            // Center(
+            //   child: Image.asset(
+            //     KAsset.splashImage,
+            //   ),
+            // ),
           ],
         ),
       ),

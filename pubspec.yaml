@@ -37,10 +37,13 @@ dependencies:
   connectivity_plus: ^2.3.6
   dio: ^4.0.6
   logger: ^1.1.0
-  get: ^4.6.5
-  get_storage: ^2.0.3
   auto_size_text: ^3.0.0
   date_time_picker: ^2.1.0
+  dartz: ^0.10.1
+  flutter_bloc: ^8.1.1
+  get_it: ^7.2.0
+  get_storage: ^2.0.3
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

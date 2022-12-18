@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fortune_telling/injection_container.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
@@ -14,9 +15,8 @@ import '../controller/find_zodiac_controller.dart';
 class FindZodiacView extends StatelessWidget {
   FindZodiacView({Key? key}) : super(key: key);
 
-  final FindZodiacController findZodiacController = Get.find();
-
-  final zodiacController = Get.find<ZodiacController>();
+  final findZodiacController = getIt.call<FindZodiacController>();
+  final zodiacController = getIt.call<ZodiacController>();
 
   @override
   Widget build(BuildContext context) {

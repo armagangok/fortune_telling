@@ -2,15 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/instance_manager.dart';
 
-import '../../../core/extension/context_extension.dart';
 import '../../../core/components/custom_appbar.dart';
 import '../../../core/components/custom_decoration.dart';
 import '../../../core/components/tab_bar_widget.dart';
-
+import '../../../core/extension/context_extension.dart';
 import '../../../data/fortune_data.dart';
 import '../../../feature/models/zodiac_model.dart';
+import '../../../injection_container.dart';
 import '../components/fortune_widget.dart';
 import '../controller/zodiac_picker_controller.dart';
 import '../controller/zodiac_sign_controller.dart';
@@ -19,9 +18,10 @@ import '../controller/zodiac_tab_controller.dart';
 class ZodiacSignsView extends StatelessWidget {
   ZodiacSignsView({Key? key}) : super(key: key);
 
-  final zodiacTabController = Get.find<ZodiacTabController>();
-  final zodiacPickerController = Get.find<ZodiacPickerController>();
-  final zodiacSignController = Get.find<ZodiacSignController>();
+  final zodiacTabController = getIt.call<ZodiacTabController>();
+  final zodiacPickerController = getIt.call<ZodiacPickerController>();
+  final zodiacSignController = getIt.call<ZodiacSignController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(

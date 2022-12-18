@@ -1,13 +1,9 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
-
 import '../../core/network/layers/network_executer.dart';
 import '../../core/network/request_options.dart/request_options.dart';
 import '../../feature/models/base_fortune_feature_model.dart';
 import '../../feature/models/base_fortune_model.dart';
 
-class FortuneController extends GetxController {
-
-
+class FortunesRepository {
   Future<dynamic> getFortune({
     String? sign,
     String? time,

@@ -1,15 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fortune_telling/core/constants/app_color.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/instance_manager.dart';
 
-import '../../../core/constants/asset_constant.dart';
-import '../../../core/extension/context_extension.dart';
 import '../../../core/components/custom_appbar.dart';
 import '../../../core/components/custom_decoration.dart';
 import '../../../core/components/tab_bar_widget.dart';
+import '../../../core/constants/app_color.dart';
+import '../../../core/constants/asset_constant.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../injection_container.dart';
 import '../../login/controller/zodiac_controller.dart';
 import '../controller/sign_controller.dart';
 import '../controller/tab_controller.dart';
@@ -17,9 +17,9 @@ import '../controller/tab_controller.dart';
 class PersonalView extends StatelessWidget {
   PersonalView({Key? key}) : super(key: key);
 
-  final _personalController = Get.find<SignController>();
-  final _tabBarController = Get.find<TabBarController>();
-  final _zodiacController = Get.find<ZodiacController>();
+  final _personalController = getIt.call<SignController>();
+  final _tabBarController = getIt.call<TabBarController>();
+  final _zodiacController = getIt.call<ZodiacController>();
 
   @override
   Widget build(BuildContext context) {

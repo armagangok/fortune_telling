@@ -1,6 +1,7 @@
+import 'package:fortune_telling/injection_container.dart';
 import 'package:get/get.dart';
 import '../../../core/constants/network_constant.dart';
-import '../../../data/controllers/fortune_controller.dart';
+import '../../../data/repository/fortune_controller.dart';
 
 import '../../../feature/models/base_fortune_feature_model.dart';
 import '../../../feature/models/career_fortune_model.dart';
@@ -14,7 +15,7 @@ class ZodiacSignController extends GetxController {
   ZodiacSignController._();
   static final instance = ZodiacSignController._();
 
-  final _fortuneController = Get.find<FortuneController>();
+  final _fortuneController = getIt.call<FortunesRepository>();
 
   final Rx<DailyFortuneModel?> dailyFortune = Rx(null);
   final Rx<MonthlyFortuneModel?> monthlyFortune = Rx(null);

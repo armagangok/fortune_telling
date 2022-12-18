@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -22,7 +20,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       leading: enableBackButton
           ? GestureDetector(
-              onTap: onTap != null ? () => onTap!() : () => alternativeOnTap,
+              onTap: onTap != null
+                  ? () => onTap!()
+                  : () => alternativeOnTap(context),
               child: const Icon(Icons.arrow_back_ios_new_rounded),
             )
           : const SizedBox(),
@@ -42,5 +42,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(height!);
 
-  void get alternativeOnTap => Get.back();
+  void alternativeOnTap(BuildContext context) => Navigator.pop(context);
 }
