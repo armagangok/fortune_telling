@@ -1,6 +1,6 @@
 import '../core/constants/asset_constant.dart';
 import '../core/constants/fortune_constant.dart';
-import '../feature/models/zodiac_model.dart';
+import 'models/zodiac_model.dart';
 
 class FortuneData {
   FortuneData._();

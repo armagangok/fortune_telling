@@ -4,7 +4,7 @@ import '../../../core/constants/network_constant.dart';
 import '../../../data/entitity/fortune_entity.dart';
 import '../../../data/repository/fortune_repository.dart';
 import '../../../injection_container.dart';
-import '../../models/base_fortune_feature_model.dart';
+import '../../../data/models/fortune_model.dart';
 
 class ZodiacSignController extends GetxController {
   ZodiacSignController._();

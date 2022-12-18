@@ -8,7 +8,7 @@ import '../../../core/components/custom_decoration.dart';
 import '../../../core/components/tab_bar_widget.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../data/fortune_data.dart';
-import '../../../feature/models/zodiac_model.dart';
+import '../../../data/models/zodiac_model.dart';
 import '../../../injection_container.dart';
 import '../components/fortune_widget.dart';
 import '../controller/zodiac_picker_controller.dart';

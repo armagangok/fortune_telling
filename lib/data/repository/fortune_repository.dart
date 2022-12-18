@@ -1,6 +1,6 @@
 import '../../core/network/layers/network_executer.dart';
 import '../../core/network/request_options.dart/request_options.dart';
-import '../../feature/models/base_fortune_feature_model.dart';
+import '../models/fortune_model.dart';
 
 class FortunesRepository {
   Future<dynamic> getFortune({

@@ -5,7 +5,7 @@ import '../../../data/entitity/fortune_entity.dart';
 import '../../../data/repository/fortune_repository.dart';
 import '../../../injection_container.dart';
 import '../../login/controller/zodiac_controller.dart';
-import '../../models/base_fortune_feature_model.dart';
+import '../../../data/models/fortune_model.dart';
 
 class SignController {
   SignController._() {

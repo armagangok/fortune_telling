@@ -1,8 +1,6 @@
-import 'package:fortune_telling/feature/login/view/login_view.dart';
-
-import 'core/database/local/contract/storage_contract.dart';
 import 'package:get_it/get_it.dart';
 
+import 'core/database/local/contract/storage_contract.dart';
 import 'core/database/local/my_storage.dart';
 import 'core/navigation/contract/base_navigation_service.dart';
 import 'core/navigation/navigation_service.dart';
@@ -10,6 +8,7 @@ import 'data/repository/fortune_repository.dart';
 import 'feature/find/controller/find_zodiac_controller.dart';
 import 'feature/login/controller/text_controller.dart';
 import 'feature/login/controller/zodiac_controller.dart';
+import 'feature/login/view/login_view.dart';
 import 'feature/personal/controller/sign_controller.dart';
 import 'feature/personal/controller/tab_controller.dart';
 import 'feature/splash/controller/splash_controller.dart';
@@ -68,12 +67,4 @@ void initDependencies() {
   getIt.registerLazySingleton<LoginView>(
     () => LoginView(),
   );
-
-  // final zodiacTabController = getIt.call<ZodiacTabController>();
-  // final zodiacPickerController = getIt.call<ZodiacPickerController>();
-  // final zodiacSignController = getIt.call<ZodiacSignController>();
-
-  // final _personalController = getIt.call<SignController>();
-  // final _tabBarController = getIt.call<TabBarController>();
-  // final _zodiacController = getIt.call<ZodiacController>();
 }
