@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../data/contracts/tab_controller.dart';
+import '../../../domain/contract/tab_controller.dart';
 
 class TabBarController extends GetxController with BaseTabControler {
   final _currentIndex = RxInt(0);

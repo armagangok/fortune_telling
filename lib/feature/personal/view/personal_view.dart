@@ -31,7 +31,7 @@ class PersonalView extends StatelessWidget {
           title: Text("Bana Özel"),
         ),
         body: Obx(
-          () => _personalController.dailyFortune.value != null
+          () => _personalController.fortuneModel.value != null
               ? ListView(
                   padding: context.symmetricPadding(horizontal: 0.025),
                   physics: const ClampingScrollPhysics(),
@@ -56,33 +56,33 @@ class PersonalView extends StatelessWidget {
     );
   }
 
-  Column get fortunes => Column(
-        children: [
-          _tabBarController.getIndex == 0
-              ? cardWidget(
-                  _personalController.dailyFortune.value?.fortune ??
-                      _loadingText,
-                )
-              : const Center(),
-          _tabBarController.getIndex == 1
-              ? cardWidget(
-                  _personalController.loveFortune.value?.yorum ?? _loadingText,
-                )
-              : const Center(),
-          _tabBarController.getIndex == 2
-              ? cardWidget(
-                  _personalController.healthFortune.value?.yorum ??
-                      _loadingText,
-                )
-              : const Center(),
-          _tabBarController.getIndex == 3
-              ? cardWidget(
-                  _personalController.careerFortune.value?.yorum ??
-                      _loadingText,
-                )
-              : const Center(),
-        ],
-      );
+  Column get fortunes {
+    var fortuneModel = _personalController.fortuneModel.value;
+    return Column(
+      children: [
+        _tabBarController.getIndex == 0
+            ? cardWidget(
+                _personalController.fortuneModel.value?.fortune ?? _loadingText,
+              )
+            : const Center(),
+        _tabBarController.getIndex == 1
+            ? cardWidget(
+                fortuneModel?.yorum ?? _loadingText,
+              )
+            : const Center(),
+        _tabBarController.getIndex == 2
+            ? cardWidget(
+                fortuneModel?.yorum ?? _loadingText,
+              )
+            : const Center(),
+        _tabBarController.getIndex == 3
+            ? cardWidget(
+                fortuneModel?.yorum ?? _loadingText,
+              )
+            : const Center(),
+      ],
+    );
+  }
 
   String get _loadingText => "Verileriniz getiriliyor...";
 
@@ -136,7 +136,7 @@ class PersonalView extends StatelessWidget {
   //
 
   Text get fortuneText =>
-      Text(_personalController.dailyFortune.value!.fortune!);
+      Text(_personalController.fortuneModel.value!.fortune!);
 
   //
 
@@ -158,7 +158,7 @@ class PersonalView extends StatelessWidget {
   Widget get zodiacSignText => Builder(
         builder: (context) {
           return Text(
-            _personalController.dailyFortune.value!.burc!,
+            _personalController.fortuneModel.value!.burc!,
             textAlign: TextAlign.center,
             style: context.textTheme.headline3!
                 .copyWith(color: context.primaryColor),
@@ -174,7 +174,7 @@ class PersonalView extends StatelessWidget {
             height: context.height(0.25),
             child: Image.asset(
               _zodiacController.getSignImagePath(
-                _personalController.dailyFortune.value!.burc!,
+                _personalController.fortuneModel.value!.burc!,
               ),
             ),
           );

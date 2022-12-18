@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'core/database/local/my_storage.dart';
 import 'core/navigation/contract/base_navigation_service.dart';
 import 'core/navigation/navigation_service.dart';
-import 'data/repository/fortune_controller.dart';
+import 'data/repository/fortune_repository.dart';
 import 'feature/find/controller/find_zodiac_controller.dart';
 import 'feature/login/controller/text_controller.dart';
 import 'feature/login/controller/zodiac_controller.dart';

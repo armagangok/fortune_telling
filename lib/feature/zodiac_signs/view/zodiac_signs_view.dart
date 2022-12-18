@@ -94,77 +94,71 @@ class ZodiacSignsView extends StatelessWidget {
   Widget get fortunes {
     switch (zodiacTabController.getIndex) {
       case 0:
-        return zodiacSignController.dailyFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.dailyFortune.value!.fortune ?? "",
-                motto: zodiacSignController.dailyFortune.value!.mottosu ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.fortune ?? "",
+                motto: zodiacSignController.fortuneModel.value!.mottosu ?? "",
                 element:
-                    zodiacSignController.dailyFortune.value!.elementi ?? "",
-                planet: zodiacSignController.dailyFortune.value!.gezegeni ?? "",
+                    zodiacSignController.fortuneModel.value!.elementi ?? "",
+                planet: zodiacSignController.fortuneModel.value!.gezegeni ?? "",
               )
             : _loadingText();
 
       case 1:
-        return zodiacSignController.weeklyFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune:
-                    zodiacSignController.weeklyFortune.value!.fortune ?? "",
-                motto: zodiacSignController.weeklyFortune.value!.mottosu ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.fortune ?? "",
+                motto: zodiacSignController.fortuneModel.value!.mottosu ?? "",
                 element:
-                    zodiacSignController.weeklyFortune.value!.elementi ?? "",
-                planet:
-                    zodiacSignController.weeklyFortune.value!.gezegeni ?? "",
+                    zodiacSignController.fortuneModel.value!.elementi ?? "",
+                planet: zodiacSignController.fortuneModel.value!.gezegeni ?? "",
               )
             : _loadingText();
 
       case 2:
-        return zodiacSignController.monthlyFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune:
-                    zodiacSignController.monthlyFortune.value!.fortune ?? "",
-                motto: zodiacSignController.monthlyFortune.value!.mottosu ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.fortune ?? "",
+                motto: zodiacSignController.fortuneModel.value!.mottosu ?? "",
                 element:
-                    zodiacSignController.monthlyFortune.value!.elementi ?? "",
-                planet:
-                    zodiacSignController.monthlyFortune.value!.gezegeni ?? "",
+                    zodiacSignController.fortuneModel.value!.elementi ?? "",
+                planet: zodiacSignController.fortuneModel.value!.gezegeni ?? "",
               )
             : _loadingText();
 
       case 3:
-        return zodiacSignController.yearlyFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune:
-                    zodiacSignController.yearlyFortune.value!.fortune ?? "",
-                motto: zodiacSignController.yearlyFortune.value!.mottosu ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.fortune ?? "",
+                motto: zodiacSignController.fortuneModel.value!.mottosu ?? "",
                 element:
-                    zodiacSignController.yearlyFortune.value!.elementi ?? "",
-                planet:
-                    zodiacSignController.yearlyFortune.value!.gezegeni ?? "",
+                    zodiacSignController.fortuneModel.value!.elementi ?? "",
+                planet: zodiacSignController.fortuneModel.value!.gezegeni ?? "",
               )
             : _loadingText();
       case 4:
-        return zodiacSignController.loveFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.loveFortune.value!.yorum ?? "",
-                motto: zodiacSignController.loveFortune.value!.baslik ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.yorum ?? "",
+                motto: zodiacSignController.fortuneModel.value!.baslik ?? "",
                 element: "",
                 planet: "",
               )
             : _loadingText();
       case 5:
-        return zodiacSignController.careerFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.careerFortune.value!.yorum ?? "",
-                motto: zodiacSignController.careerFortune.value!.baslik ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.yorum ?? "",
+                motto: zodiacSignController.fortuneModel.value!.baslik ?? "",
                 element: "",
                 planet: "",
               )
             : _loadingText();
       case 6:
-        return zodiacSignController.healthFortune.value != null
+        return zodiacSignController.fortuneModel.value != null
             ? FortuneWidget(
-                fortune: zodiacSignController.healthFortune.value!.yorum ?? "",
-                motto: zodiacSignController.healthFortune.value!.baslik ?? "",
+                fortune: zodiacSignController.fortuneModel.value!.yorum ?? "",
+                motto: zodiacSignController.fortuneModel.value!.baslik ?? "",
                 element: "",
                 planet: "",
               )
@@ -226,7 +220,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 1;
             await zodiacSignController
-                .getWeeklyFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -236,7 +230,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 2;
             await zodiacSignController
-                .getMonthlyFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -246,7 +240,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 3;
             await zodiacSignController
-                .getYearlyFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -256,7 +250,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 4;
             await zodiacSignController
-                .getLoveFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -266,7 +260,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 5;
             await zodiacSignController
-                .getCareerFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
         ExpandedItem2(
@@ -276,7 +270,7 @@ class ZodiacSignsView extends StatelessWidget {
           onTap: () async {
             zodiacTabController.setIndex = 6;
             await zodiacSignController
-                .getHealthFortune(zodiacPickerController.choosenSign.value);
+                .getFortune(zodiacPickerController.choosenSign.value);
           },
         ),
       ],

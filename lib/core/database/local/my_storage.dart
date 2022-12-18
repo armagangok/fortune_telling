@@ -15,7 +15,7 @@ class StorageImp implements StorageContract {
   }
 
   @override
-  Future<void> remove<T>(String key) async {
+  Future<void> delete<T>(String key) async {
     await _storage.remove(key);
   }
 
