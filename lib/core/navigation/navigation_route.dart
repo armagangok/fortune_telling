@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../feature/all_sign/view/all_signs_view.dart';
 import '../../feature/find/view/find_zodiac_view.dart';
 import '../../feature/home/view/home_view.dart';
 import '../../feature/login/view/login_view.dart';
 import '../../feature/personal/view/personal_view.dart';
 import '../../feature/splash/view/splash_view.dart';
-import '../../feature/zodiac_signs/view/zodiac_signs_view.dart';
+
 import 'constant/routes.dart';
 
 class NavigationRoute {
@@ -27,10 +28,10 @@ class NavigationRoute {
         return _getRoute(PersonalView());
 
       case KRoute.ZODIAC_DETAIL_PAGE:
-        return _getRoute(ZodiacSignsView());
+        return _getRoute(AllSignsView());
 
       case KRoute.ZODIAC_SIGN_PAGE:
-        return _getRoute(ZodiacSignsView());
+        return _getRoute(AllSignsView());
 
       case KRoute.FIND:
         return _getRoute(FindZodiacView());

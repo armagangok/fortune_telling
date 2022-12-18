@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../domain/contract/tab_controller.dart';
 
-class ZodiacTabController extends GetxController with BaseTabControler {
+class SignTabController extends GetxController with BaseTabControler {
   final RxInt _currentIndex = RxInt(-1);
 
   @override

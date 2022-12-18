@@ -11,16 +11,29 @@ import '../../../data/fortune_data.dart';
 import '../../../data/models/zodiac_model.dart';
 import '../../../injection_container.dart';
 import '../components/fortune_widget.dart';
-import '../controller/zodiac_picker_controller.dart';
-import '../controller/zodiac_sign_controller.dart';
-import '../controller/zodiac_tab_controller.dart';
+import '../controller/all_sign_controller.dart';
+import '../controller/sign_picker_controller.dart';
+import '../controller/tab_controller.dart';
 
-class ZodiacSignsView extends StatelessWidget {
-  ZodiacSignsView({Key? key}) : super(key: key);
+class AllSignsView extends StatefulWidget {
+  AllSignsView({Key? key}) : super(key: key);
 
-  final zodiacTabController = getIt.call<ZodiacTabController>();
-  final zodiacPickerController = getIt.call<ZodiacPickerController>();
-  final zodiacSignController = getIt.call<ZodiacSignController>();
+  @override
+  State<AllSignsView> createState() => _AllSignsViewState();
+}
+
+class _AllSignsViewState extends State<AllSignsView> {
+  late final SignTabController zodiacTabController;
+  late final SignPickerController zodiacPickerController;
+  late final AllSignController zodiacSignController;
+
+  @override
+  void initState() {
+    zodiacTabController = getIt.call<SignTabController>();
+    zodiacPickerController = getIt.call<SignPickerController>();
+    zodiacSignController = getIt.call<AllSignController>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,35 +41,45 @@ class ZodiacSignsView extends StatelessWidget {
       decoration: AppDecoration.scaffoldDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: CustomAppBar(
-          title: Obx(
-            () => Text(
-              zodiacPickerController.choosenSign.value,
-              style: context.textTheme.headline4!.copyWith(color: Colors.white),
+        appBar: _buildAppBar(),
+        body: _buildBody(),
+      ),
+    );
+  }
+
+  Padding _buildBody() {
+    return Padding(
+      padding: context.normalPadding,
+      child: Column(
+        children: [
+          buildCupertinoPicker,
+          SizedBox(
+            height: context.mediumHeight,
+          ),
+          buildTabBar,
+          SizedBox(height: context.normalHeight),
+          Expanded(
+            child: ListView(
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              children: [
+                Obx(
+                  () => fortunes,
+                ),
+              ],
             ),
           ),
-        ),
-        body: Padding(
-          padding: context.normalPadding,
-          child: Column(
-            children: [
-              buildCupertinoPicker,
-              SizedBox(
-                height: context.mediumHeight,
-              ),
-              buildTabBar,
-              SizedBox(height: context.normalHeight),
-              Expanded(
-                child: ListView(
-                  physics: const ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [
-                    Obx(() => fortunes),
-                  ],
-                ),
-              ),
-            ],
-          ),
+        ],
+      ),
+    );
+  }
+
+  CustomAppBar _buildAppBar() {
+    return CustomAppBar(
+      title: Obx(
+        () => Text(
+          zodiacPickerController.choosenSign.value,
+          style: context.textTheme.headline4!.copyWith(color: Colors.white),
         ),
       ),
     );
@@ -166,114 +189,112 @@ class ZodiacSignsView extends StatelessWidget {
 
       default:
         return const Center(
-            child: AutoSizeText(
-          "Sonuçları görmek için lütfen kategori seçiniz.",
-          maxLines: 1,
-        ));
+          child: AutoSizeText(
+            "Sonuçları görmek için lütfen kategori seçiniz.",
+            maxLines: 1,
+          ),
+        );
     }
   }
 
-  Widget _loadingText() =>
-      const Center(child: Text("Burç verileri getiriliyor..."));
+  Widget _loadingText() => const Center(
+        child: Text("Burç verileri getiriliyor..."),
+      );
 
-  Widget signPicker(ZodiacModel item) {
-    return Center(
-      child: RotatedBox(
-        quarterTurns: 3,
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.black.withOpacity(0.4),
+  Widget signPicker(ZodiacModel item) => Center(
+        child: RotatedBox(
+          quarterTurns: 3,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.black.withOpacity(0.4),
+            ),
+            child: Builder(builder: (context) {
+              return Padding(
+                padding: context.lowPadding,
+                child: Image.asset(
+                  item.path,
+                  fit: BoxFit.fitHeight,
+                ),
+              );
+            }),
           ),
-          child: Builder(builder: (context) {
-            return Padding(
-              padding: context.lowPadding,
-              child: Image.asset(
-                item.path,
-                fit: BoxFit.fitHeight,
-              ),
-            );
-          }),
         ),
-      ),
-    );
-  }
+      );
 
-  TabBarWidget get buildTabBar {
-    return TabBarWidget(
-      widgetList: [
-        ExpandedItem2(
-          text: "Günlük",
-          clickedNumber: 0,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 0;
+  TabBarWidget get buildTabBar => TabBarWidget(
+        widgetList: [
+          ExpandedItem2(
+            text: "Günlük",
+            clickedNumber: 0,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 0;
 
-            await zodiacSignController
-                .getDailyFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Haftalık",
-          clickedNumber: 1,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 1;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Aylık",
-          tabBarController: zodiacTabController,
-          clickedNumber: 2,
-          onTap: () async {
-            zodiacTabController.setIndex = 2;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Yıllık",
-          clickedNumber: 3,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 3;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Aşk",
-          clickedNumber: 4,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 4;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Kariyer",
-          clickedNumber: 5,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 5;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-        ExpandedItem2(
-          text: "Sağlık",
-          clickedNumber: 6,
-          tabBarController: zodiacTabController,
-          onTap: () async {
-            zodiacTabController.setIndex = 6;
-            await zodiacSignController
-                .getFortune(zodiacPickerController.choosenSign.value);
-          },
-        ),
-      ],
-    );
-  }
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Haftalık",
+            clickedNumber: 1,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 1;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Aylık",
+            tabBarController: zodiacTabController,
+            clickedNumber: 2,
+            onTap: () async {
+              zodiacTabController.setIndex = 2;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Yıllık",
+            clickedNumber: 3,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 3;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Aşk",
+            clickedNumber: 4,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 4;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Kariyer",
+            clickedNumber: 5,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 5;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+          ExpandedItem2(
+            text: "Sağlık",
+            clickedNumber: 6,
+            tabBarController: zodiacTabController,
+            onTap: () async {
+              zodiacTabController.setIndex = 6;
+              await zodiacSignController
+                  .getFortune(zodiacPickerController.choosenSign.value);
+            },
+          ),
+        ],
+      );
 }
